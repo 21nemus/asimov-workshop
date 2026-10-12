@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.DS_Store
+
+# Pinned upstream clones, the 520 MB assembly STEP and other large inputs.
+# Re-create with `npm run sources:fetch`; pins and hashes live in references/pins.json.
+.reference-cache/
+
+# Build intermediates and local captures (screenshots, logs, baseline runs).
+tools/.cache/
+.claude/

@@ -1,0 +1,40 @@
+{
+  "name": "asimov-workshop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ASIMOV WORKSHOP: build it, bring it up, test it. An interactive robotics apprenticeship based on Menlo Research's open-source Asimov 1 humanoid.",
+  "license": "SEE LICENSE IN docs/LICENSES.md",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "vite --port 5180 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 5181 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test tests/*.test.ts",
+    "sources:verify": "node tools/sources.mjs verify",
+    "sources:fetch": "node tools/sources.mjs fetch",
+    "robot:compress": "node tools/compress-glb.mjs public/robot/asimov-cad.glb public/robot/asimov-cad.glb && node tools/compress-glb.mjs public/robot/sim-links.glb public/robot/sim-links.glb"
+  },
+  "dependencies": {
+    "@fontsource/barlow": "5.3.0",
+    "@fontsource/barlow-condensed": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "mujoco-js": "0.0.7",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "4.5.1",
+    "@gltf-transform/extensions": "4.5.1",
+    "@gltf-transform/functions": "4.5.1",
+    "@types/node": "22.20.5",
+    "@types/three": "0.186.0",
+    "meshoptimizer": "1.3.0",
+    "occt-import-js": "0.0.23",
+    "onnxruntime-web": "1.29.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.3"
+  }
+}

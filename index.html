@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f1ede4" />
+    <title>ASIMOV WORKSHOP</title>
+    <meta name="description" content="Build it. Bring it up. Test it. An interactive apprenticeship on Menlo Research's open-source Asimov 1 humanoid: source-backed assembly, the parallel ankle, and a live browser simulation of Menlo's published walking policy." />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <!-- Share preview: a browser-rendered frame of the workshop (tools/.cache/captures/preview-hero.jpg). -->
+    <link rel="canonical" href="https://21nemus.github.io/asimov-workshop/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ASIMOV WORKSHOP" />
+    <meta property="og:description" content="Build it. Bring it up. Test it. Assemble Menlo Research's open-source Asimov 1 from its CAD, put its parallel ankle under the microscope, and run its published walking policy live in your browser." />
+    <meta property="og:url" content="https://21nemus.github.io/asimov-workshop/" />
+    <meta property="og:image" content="https://21nemus.github.io/asimov-workshop/preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ASIMOV WORKSHOP" />
+    <meta name="twitter:description" content="Build it. Bring it up. Test it. Menlo Research's open-source Asimov 1: real CAD, the parallel ankle solved live, and the published walking policy in your browser." />
+    <meta name="twitter:image" content="https://21nemus.github.io/asimov-workshop/preview.jpg" />
+  </head>
+  <body>
+    <noscript>
+      <p class="noscript">ASIMOV WORKSHOP needs JavaScript and WebGL. The project's sources and documentation are on GitHub.</p>
+    </noscript>
+    <div id="app">
+      <canvas id="stage" aria-label="3D view of the Asimov 1 robot in a robotics workshop"></canvas>
+      <div id="ui" class="ui"></div>
+      <div id="boot" class="boot" role="status" aria-live="polite">
+        <div class="boot__card">
+          <p class="boot__mark">ASIMOV WORKSHOP</p>
+          <p class="boot__line">Build it. Bring it up. Test it.</p>
+          <div class="boot__bar" aria-hidden="true"><span></span></div>
+          <p class="boot__state">Opening the workshop</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

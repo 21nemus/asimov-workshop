@@ -1,0 +1,515 @@
+{
+ "checkpoint": {
+  "id": "asimov/model_aug_18_1",
+  "onnx": "policy.onnx",
+  "onnxSha256": "47f70691ecd5afda2933b2e6430d2375004c943552284172a2d7b28b84188a0c",
+  "envYamlSha256": "5016e9fdec39a90bfe67b2a6ca634c9df5fcd821d4281b38a2e0dabc30df22eb",
+  "referenceConfigSha256": "68d5a781762e0334cf927399e6a170b05a84bdf0720656d50346debb04cbbc38",
+  "source": "https://github.com/menloresearch/humanoid-policy-viewer@0c2107805ec2a82c2788b7e2fdd06c7aaa8e18a8 public/examples/checkpoints/asimov/model_aug_18_1/",
+  "licence": "BSD-3-Clause (humanoid-policy-viewer THIRD_PARTY_NOTICES.md: trained by Menlo Research Pte. Ltd.)",
+  "trainedIn": "Isaac Lab (PhysX), per env.yaml; this app runs it in MuJoCo (sim-to-sim)"
+ },
+ "joints": [
+  "left_hip_pitch_joint",
+  "left_hip_roll_joint",
+  "left_hip_yaw_joint",
+  "left_knee_joint",
+  "left_ankle_pitch_joint",
+  "left_ankle_roll_joint",
+  "right_hip_pitch_joint",
+  "right_hip_roll_joint",
+  "right_hip_yaw_joint",
+  "right_knee_joint",
+  "right_ankle_pitch_joint",
+  "right_ankle_roll_joint",
+  "waist_yaw_joint",
+  "right_shoulder_pitch_joint",
+  "right_shoulder_roll_joint",
+  "right_shoulder_yaw_joint",
+  "right_elbow_joint",
+  "right_wrist_yaw_joint",
+  "left_shoulder_pitch_joint",
+  "left_shoulder_roll_joint",
+  "left_shoulder_yaw_joint",
+  "left_elbow_joint",
+  "left_wrist_yaw_joint"
+ ],
+ "observation": {
+  "size": 78,
+  "recipe": [
+   {
+    "name": "AsimovAngVel",
+    "scale": 0.25
+   },
+   {
+    "name": "AsimovProjectedGravity"
+   },
+   {
+    "name": "AsimovCommand"
+   },
+   {
+    "name": "AsimovJointPosSlot",
+    "slot_name": "slot01",
+    "indices": [
+     0,
+     1,
+     6,
+     7,
+     12,
+     13,
+     14,
+     18,
+     19
+    ]
+   },
+   {
+    "name": "AsimovJointPosSlot",
+    "slot_name": "slot23",
+    "indices": [
+     2,
+     3,
+     8,
+     9,
+     15,
+     16,
+     20,
+     21
+    ]
+   },
+   {
+    "name": "AsimovJointPosSlot",
+    "slot_name": "slot45",
+    "indices": [
+     4,
+     5,
+     10,
+     11,
+     17,
+     22
+    ]
+   },
+   {
+    "name": "AsimovJointVelSlot",
+    "slot_name": "slot01",
+    "scale": 0.1,
+    "indices": [
+     0,
+     1,
+     6,
+     7,
+     12,
+     13,
+     14,
+     18,
+     19
+    ]
+   },
+   {
+    "name": "AsimovJointVelSlot",
+    "slot_name": "slot23",
+    "scale": 0.1,
+    "indices": [
+     2,
+     3,
+     8,
+     9,
+     15,
+     16,
+     20,
+     21
+    ]
+   },
+   {
+    "name": "AsimovJointVelSlot",
+    "slot_name": "slot45",
+    "scale": 0.1,
+    "indices": [
+     4,
+     5,
+     10,
+     11,
+     17,
+     22
+    ]
+   },
+   {
+    "name": "AsimovPrevActions"
+   }
+  ],
+  "angVelScale": 0.25
+ },
+ "action": {
+  "size": 23,
+  "scale": [
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25,
+   0.25
+  ],
+  "defaultPose": [
+   -0.15,
+   0,
+   0,
+   0.45,
+   -0.3,
+   0,
+   0.15,
+   0,
+   0,
+   -0.45,
+   0.3,
+   0,
+   0,
+   0.25,
+   0.05,
+   0,
+   -0.4,
+   0,
+   -0.25,
+   -0.05,
+   0,
+   0.4,
+   0
+  ],
+  "clip": 10
+ },
+ "pd": {
+  "stiffness": [
+   150,
+   150,
+   150,
+   150,
+   110,
+   110,
+   150,
+   150,
+   150,
+   150,
+   110,
+   110,
+   65,
+   57,
+   86,
+   96,
+   40,
+   40,
+   57,
+   86,
+   96,
+   40,
+   40
+  ],
+  "damping": [
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   2,
+   2,
+   5,
+   5,
+   5,
+   2,
+   2
+  ],
+  "kdFeedForward": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "torqueLimit": [
+   45,
+   45,
+   28,
+   45,
+   40,
+   17,
+   45,
+   45,
+   28,
+   45,
+   40,
+   17,
+   40,
+   30,
+   25,
+   20,
+   12,
+   12,
+   30,
+   25,
+   20,
+   12,
+   12
+  ]
+ },
+ "timing": {
+  "policyHz": 50,
+  "physicsDt": 0.005,
+  "decimation": 4,
+  "actionDelayLagSubsteps": 2,
+  "actionLpfHz": 1000,
+  "actionLpfAlpha": 0.9921050786334458
+ },
+ "commandLimits": {
+  "vx": [
+   -0.6,
+   0.8
+  ],
+  "vy": [
+   -0.5,
+   0.5
+  ],
+  "wz": [
+   -0.8,
+   0.8
+  ]
+ },
+ "fallRule": {
+  "projectedGravityZAbove": -0.166,
+  "tiltDeg": 80.4,
+  "commentInSourceSays": "30 deg",
+  "dampKp": 10,
+  "dampKd": 3,
+  "latched": "until reset"
+ },
+ "reset": {
+  "rootZ": 0.614,
+  "rootQuat": [
+   1,
+   0,
+   0,
+   0
+  ],
+  "jointPos": "defaultPose (stored as float32)",
+  "qvel": 0
+ },
+ "provenance": {
+  "description": "reference_policy_config.json (fallback)",
+  "onnx": "reference_policy_config.json (fallback)",
+  "obs_config": "env.yaml",
+  "policy_joint_names": "reference_policy_config.json (fallback)",
+  "action_scale": "env.yaml",
+  "stiffness": "env.yaml",
+  "damping": "env.yaml",
+  "kd_ff": "reference_policy_config.json (fallback)",
+  "default_joint_pos": "env.yaml",
+  "control_type": "reference_policy_config.json (fallback)",
+  "delay_min_lag": "env.yaml",
+  "delay_max_lag": "env.yaml",
+  "action_lpf_hz": "reference_policy_config.json (fallback)",
+  "policy_hz": "reference_policy_config.json (fallback)",
+  "torque_limit": "env.yaml",
+  "command_limits": "env.yaml",
+  "decimation": "viewer constant: round(0.02 / model timestep)",
+  "policy_period_s": "viewer constant (POLICY_PERIOD_S); env.yaml sim.dt 0.005 x decimation 4 = 0.02 checked by the upstream parser",
+  "action_delay_lag": "viewer rule: midpoint of [delay_min_lag, delay_max_lag] (resetActionDelay)",
+  "action_lpf_alpha": "viewer rule from reference action_lpf_hz and policy_hz",
+  "action_clip": "viewer default (PolicyRunner.actionClip)",
+  "fall_rule": "viewer main.js main_loop",
+  "reset": "viewer main.js resetSimulation"
+ },
+ "fallbacksNotUsed": {
+  "stiffness": [
+   200,
+   200,
+   204.69,
+   250,
+   191.08,
+   191.08,
+   200,
+   200,
+   204.69,
+   250,
+   191.08,
+   191.08,
+   201.47,
+   100.45,
+   100,
+   100,
+   95.54,
+   95.54,
+   100.45,
+   100,
+   100,
+   95.54,
+   95.54
+  ],
+  "damping": [
+   15,
+   15,
+   15,
+   15,
+   12.16,
+   12.16,
+   15,
+   15,
+   15,
+   15,
+   12.16,
+   12.16,
+   15,
+   15,
+   5,
+   5,
+   6.08,
+   6.08,
+   15,
+   5,
+   5,
+   6.08,
+   6.08
+  ],
+  "action_scale": [
+   0.18,
+   0.14,
+   0.14,
+   0.2,
+   0.16,
+   0.06,
+   0.18,
+   0.14,
+   0.14,
+   0.2,
+   0.16,
+   0.06,
+   0.12,
+   0.25,
+   0.18,
+   0.15,
+   0.1,
+   0.06,
+   0.25,
+   0.18,
+   0.15,
+   0.1,
+   0.06
+  ],
+  "default_joint_pos": [
+   -0.25,
+   0,
+   0,
+   0.5,
+   -0.25,
+   0,
+   0.25,
+   0,
+   0,
+   -0.5,
+   0.25,
+   0,
+   0,
+   0.25,
+   0.05,
+   0,
+   -0.4,
+   0,
+   -0.25,
+   -0.05,
+   0,
+   0.4,
+   0
+  ]
+ },
+ "mlp": {
+  "file": "mlp.bin",
+  "layers": [
+   {
+    "name": "/actor/actor.0/Gemm",
+    "out": 512,
+    "in": 78,
+    "weights": 0,
+    "bias": 159744,
+    "activation": {
+     "type": "elu",
+     "alpha": 1
+    }
+   },
+   {
+    "name": "/actor/actor.2/Gemm",
+    "out": 256,
+    "in": 512,
+    "weights": 161792,
+    "bias": 686080,
+    "activation": {
+     "type": "elu",
+     "alpha": 1
+    }
+   },
+   {
+    "name": "/actor/actor.4/Gemm",
+    "out": 128,
+    "in": 256,
+    "weights": 687104,
+    "bias": 818176,
+    "activation": {
+     "type": "elu",
+     "alpha": 1
+    }
+   },
+   {
+    "name": "/actor/actor.6/Gemm",
+    "out": 23,
+    "in": 128,
+    "weights": 818688,
+    "bias": 830464,
+    "activation": null
+   }
+  ],
+  "opset": 11,
+  "producer": "pytorch 2.7.0",
+  "input": "obs",
+  "output": "actions"
+ }
+}

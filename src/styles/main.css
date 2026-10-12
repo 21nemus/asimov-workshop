@@ -1,0 +1,57 @@
+/* ASIMOV WORKSHOP design tokens and base layout.
+   Workshop paper, ink and safety orange; tags and stamps rather than glass panels. */
+:root {
+  --paper: #f3f0e9;
+  --paper-2: #e9e4d9;
+  --paper-edge: #d4ccbb;
+  --ink: #17181b;
+  --ink-2: #3c3e43;
+  --ink-3: #6d6f74;
+  --orange: #d9631f;
+  --orange-ink: #a8470f;
+  --tape: #e98b2c;
+  --steel: #a9adb2;
+  --ok: #2f7d4f;
+  --warn: #b7791f;
+  --stop: #b83a2b;
+  --info: #2c62c9;
+  --sim: #2c62c9;
+  --concept: #7a4fb5;
+  --radius: 4px;
+  --shadow: 0 1px 0 rgba(23, 24, 27, 0.08), 0 6px 18px -8px rgba(23, 24, 27, 0.35);
+  --font-ui: 'Barlow', system-ui, sans-serif;
+  --font-sign: 'Barlow Condensed', 'Barlow', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #d9d5cc; color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+#app { position: fixed; inset: 0; }
+#stage { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; outline: none; }
+/* A soft photographic vignette over the 3D view (decorative; never intercepts input). */
+#app::before { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; background: radial-gradient(ellipse 85% 80% at 50% 45%, transparent 62%, rgba(24, 22, 19, 0.16) 100%); }
+.ui { z-index: 2; }
+.ui { position: absolute; inset: 0; pointer-events: none; }
+.ui > * { pointer-events: auto; }
+.noscript { padding: 24px; font-family: var(--font-ui); }
+
+/* Boot screen */
+.boot { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(120% 90% at 50% 40%, #f4f1ea 0%, #ddd8cd 100%); transition: opacity 600ms ease, visibility 600ms; z-index: 50; }
+.boot--done { opacity: 0; visibility: hidden; }
+.boot__card { width: min(360px, calc(100vw - 48px)); }
+.boot__mark { font-family: var(--font-sign); font-weight: 700; font-size: 34px; letter-spacing: 0.06em; margin: 0; }
+.boot__line { margin: 2px 0 18px; color: var(--ink-2); font-size: 15px; }
+.boot__bar { height: 4px; background: var(--paper-edge); border-radius: 2px; overflow: hidden; }
+.boot__bar span { display: block; height: 100%; width: 3%; background: var(--orange); transition: width 200ms ease; }
+.boot__state { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); margin: 10px 0 0; min-height: 1.4em; }
+.boot--error .boot__bar span { background: var(--stop); }
+.boot--error .boot__state { color: var(--stop); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+}

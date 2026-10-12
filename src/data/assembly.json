@@ -1,0 +1,4162 @@
+{
+ "source": {
+  "origin": "https://docs.menlo.ai (llms.txt + llms-full.txt)",
+  "sha256": "ce14167fe6ea2b10b0ddd0f02871fd897bcde11b14b0a101ebae20f40c0faef8",
+  "retrievedAt": "2026-10-09T12:44:41Z",
+  "note": "Step titles, part numbers, counts and URLs are extracted; instruction text is linked, not copied."
+ },
+ "modules": [
+  {
+   "id": "left-leg",
+   "label": "Left leg",
+   "prefix": "600",
+   "steps": [
+    {
+     "id": "left-leg/01",
+     "n": 1,
+     "title": "Set Up Actuator ID 3",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/thigh-assembly/step-1",
+     "parts": [
+      {
+       "raw": "600_02X",
+       "partNumber": "ASV1_600_02X",
+       "label": "EC-A3814-H14-107 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 3,
+       "context": "EC-A3814-H14-107 actuator (ID 3)"
+      }
+     ],
+     "fasteners": [],
+     "cables": [
+      {
+       "name": "280 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "150 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [],
+     "carried": [],
+     "requires": []
+    },
+    {
+     "id": "left-leg/02",
+     "n": 2,
+     "title": "Install Actuator ID 3",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/thigh-assembly/step-2",
+     "parts": [
+      {
+       "raw": "600_02X",
+       "partNumber": "ASV1_600_02X",
+       "label": "EC-A3814-H14-107 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 3,
+       "context": "EC-A3814-H14-107 actuator (ID 3) with connected cables from Step 1"
+      },
+      {
+       "raw": "600_03C",
+       "partNumber": "ASV1_600_03C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_03C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x10 Socket bolt",
+       "count": 8,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "left-leg/01"
+     ]
+    },
+    {
+     "id": "left-leg/03",
+     "n": 3,
+     "title": "Install Actuator ID 4",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/thigh-assembly/step-3",
+     "parts": [
+      {
+       "raw": "600_02X",
+       "partNumber": "ASV1_600_02X",
+       "label": "EC-A3814-H14-107 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 3,
+       "context": "Assembly from Step 2 containing part 600_03C and EC-A3814-H14-107 actuator (ID 3)"
+      },
+      {
+       "raw": "600_07X",
+       "partNumber": "ASV1_600_07X",
+       "label": "EC-A4315-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 4,
+       "context": "EC-A4315-P2-36 actuator (ID 4)"
+      },
+      {
+       "raw": "600_05A",
+       "partNumber": "ASV1_600_05A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_05A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x14 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M3x20 Socket bolt",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "left-leg/02"
+     ]
+    },
+    {
+     "id": "left-leg/04",
+     "n": 4,
+     "title": "Attach Part 600_06A",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/thigh-assembly/step-4",
+     "parts": [
+      {
+       "raw": "600_06A",
+       "partNumber": "ASV1_600_06A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_06A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x14 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M3x20 Socket bolt",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 3",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/03"
+     ]
+    },
+    {
+     "id": "left-leg/05",
+     "n": 5,
+     "title": "Attach Part 600_12A",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/thigh-assembly/step-5",
+     "parts": [
+      {
+       "raw": "600_12A",
+       "partNumber": "ASV1_600_12A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_12A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x6 Socket bolt",
+       "count": 2,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 4",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/04"
+     ]
+    },
+    {
+     "id": "left-leg/06",
+     "n": 6,
+     "title": "Install the Outer Housing",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/thigh-assembly/step-6",
+     "parts": [
+      {
+       "raw": "600_14C",
+       "partNumber": "ASV1_600_14C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_14C"
+      },
+      {
+       "raw": "600_04C",
+       "partNumber": "ASV1_600_04C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_04C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x14 Socket bolt",
+       "count": 17,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [
+      {
+       "text": "Current assembly from Step 5",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/05"
+     ]
+    },
+    {
+     "id": "left-leg/07",
+     "n": 7,
+     "title": "Attach the Actuator Hub",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/thigh-assembly/step-7",
+     "parts": [
+      {
+       "raw": "600_01B",
+       "partNumber": "ASV1_600_01B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_01B"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x25 Socket bolt",
+       "count": 5,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      },
+      {
+       "name": "Super glue",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 6",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/06"
+     ]
+    },
+    {
+     "id": "left-leg/08",
+     "n": 8,
+     "title": "Assemble the Knee Housing",
+     "group": "Knee and Calf Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/knee-and-calf-assembly/step-8",
+     "parts": [
+      {
+       "raw": "600_10C",
+       "partNumber": "ASV1_600_10C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_10C"
+      },
+      {
+       "raw": "600_08A",
+       "partNumber": "ASV1_600_08A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_08A"
+      },
+      {
+       "raw": "600_09A",
+       "partNumber": "ASV1_600_09A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_09A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x10 Flat bolt",
+       "count": 18,
+       "countNote": null
+      },
+      {
+       "name": "M3x18 Socket bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Thigh assembly from Step 7",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/07"
+     ]
+    },
+    {
+     "id": "left-leg/09",
+     "n": 9,
+     "title": "Install Left Ankle A and B Actuators",
+     "group": "Knee and Calf Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/knee-and-calf-assembly/step-9",
+     "parts": [
+      {
+       "raw": "600_15X",
+       "partNumber": "ASV1_600_15X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 5,
+       "context": "Left ankle A EC-A4310-P2-36 actuator (ID 5)"
+      },
+      {
+       "raw": "600_16X",
+       "partNumber": "ASV1_600_16X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 6,
+       "context": "Left ankle B EC-A4310-P2-36 actuator (ID 6)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 12,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "100 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 8",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/08"
+     ]
+    },
+    {
+     "id": "left-leg/10",
+     "n": 10,
+     "title": "Install the Linkage Cranks and Cover",
+     "group": "Knee and Calf Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/knee-and-calf-assembly/step-10",
+     "parts": [
+      {
+       "raw": "600_17B",
+       "partNumber": "ASV1_600_17B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_17B"
+      },
+      {
+       "raw": "600_18B",
+       "partNumber": "ASV1_600_18B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_18B"
+      },
+      {
+       "raw": "600_13C",
+       "partNumber": "ASV1_600_13C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_13C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 16,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "100 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 9",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/09"
+     ]
+    },
+    {
+     "id": "left-leg/11",
+     "n": 11,
+     "title": "Install the Linkage Shaft",
+     "group": "Foot Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/foot-assembly/step-11",
+     "parts": [
+      {
+       "raw": "600_36A",
+       "partNumber": "ASV1_600_36A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_36A"
+      },
+      {
+       "raw": "600_39C",
+       "partNumber": "ASV1_600_39C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_39C"
+      },
+      {
+       "raw": "600_37C",
+       "partNumber": "ASV1_600_37C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_37C"
+      },
+      {
+       "raw": "600_31X",
+       "partNumber": "ASV1_600_31X",
+       "label": "6mm D-Shaft Stainless Steel",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "6mm D-Shaft Stainless Steel"
+      },
+      {
+       "raw": "mirror1602-0032,mirror1600-0515",
+       "partNumber": null,
+       "label": "6mm Bore 1-Side, 2-Post Pillow Block",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "6mm Bore 1-Side, 2-Post Pillow Block"
+      },
+      {
+       "raw": "600_19X",
+       "partNumber": "ASV1_600_19X",
+       "label": "Ball Joint Rod End",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Ball Joint Rod End"
+      },
+      {
+       "raw": "mirror2920-0001,mirror2806-0005-0004-91390a117-776",
+       "partNumber": null,
+       "label": "Steel Set-Screw Collar",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Steel Set-Screw Collar"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x16 Flat bolt",
+       "count": 11,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "left-leg/10"
+     ]
+    },
+    {
+     "id": "left-leg/12",
+     "n": 12,
+     "title": "Assemble the Foot Pivot",
+     "group": "Foot Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/foot-assembly/step-12",
+     "parts": [
+      {
+       "raw": "600_26B",
+       "partNumber": "ASV1_600_26B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_26B"
+      },
+      {
+       "raw": "600_25A",
+       "partNumber": "ASV1_600_25A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "600_25A"
+      },
+      {
+       "raw": "600_27X",
+       "partNumber": "ASV1_600_27X",
+       "label": "12mm Bore 1-Side, 2-Post Pillow Block",
+       "count": 4,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "12mm Bore 1-Side, 2-Post Pillow Block"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x20 Socket bolt",
+       "count": 4,
+       "countNote": null
+      },
+      {
+       "name": "M4x16 Flat bolt",
+       "count": 4,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Foot assembly from Step 11",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/11"
+     ]
+    },
+    {
+     "id": "left-leg/13",
+     "n": 13,
+     "title": "Join the Ankle Assemblies",
+     "group": "Ankle Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/ankle-assembly/step-13",
+     "parts": [
+      {
+       "raw": "m4-steel-nylon-insert-locknut-din-985",
+       "partNumber": null,
+       "label": "M4 nylon-insert nuts",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 nylon-insert nuts"
+      },
+      {
+       "raw": "600_21X",
+       "partNumber": "ASV1_600_21X",
+       "label": "Ball Joint Rod End",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Ball Joint Rod End"
+      },
+      {
+       "raw": "600_23A",
+       "partNumber": "ASV1_600_23A",
+       "label": "194 mm Stainless Steel Bar",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "194 mm Stainless Steel Bar"
+      },
+      {
+       "raw": "600_24A",
+       "partNumber": "ASV1_600_24A",
+       "label": "124 mm Stainless Steel Bar",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "124 mm Stainless Steel Bar"
+      },
+      {
+       "raw": "m3-steel-washer-din-125",
+       "partNumber": null,
+       "label": "M3 steel washer",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M3 steel washer"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x25 Socket bolt",
+       "count": 2,
+       "countNote": null
+      },
+      {
+       "name": "M3x6 Socket bolt",
+       "count": 2,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [
+      {
+       "text": "Leg assembly from Step 10",
+       "count": 1
+      },
+      {
+       "text": "Foot assembly from Step 12",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-leg/12"
+     ]
+    },
+    {
+     "id": "left-leg/14",
+     "n": 14,
+     "title": "Complete the Left Leg Module",
+     "group": "Complete Left Leg Review",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/complete-left-leg-review/step-14",
+     "parts": [],
+     "fasteners": [],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "left-leg/13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "right-leg",
+   "label": "Right leg",
+   "prefix": "500",
+   "steps": [
+    {
+     "id": "right-leg/01",
+     "n": 1,
+     "title": "Set Up Actuator ID 9",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/thigh-assembly/step-1",
+     "parts": [
+      {
+       "raw": "500_02X",
+       "partNumber": "ASV1_500_02X",
+       "label": "EC-A3814-H14-107 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 9,
+       "context": "EC-A3814-H14-107 actuator (ID 9)"
+      }
+     ],
+     "fasteners": [],
+     "cables": [
+      {
+       "name": "280 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "150 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [],
+     "carried": [],
+     "requires": []
+    },
+    {
+     "id": "right-leg/02",
+     "n": 2,
+     "title": "Install Actuator ID 9",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/thigh-assembly/step-2",
+     "parts": [
+      {
+       "raw": "500_02X",
+       "partNumber": "ASV1_500_02X",
+       "label": "EC-A3814-H14-107 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 9,
+       "context": "EC-A3814-H14-107 actuator (ID 9) with connected cables from Step 1"
+      },
+      {
+       "raw": "500_03C",
+       "partNumber": "ASV1_500_03C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_03C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x10 Socket bolt",
+       "count": 8,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "right-leg/01"
+     ]
+    },
+    {
+     "id": "right-leg/03",
+     "n": 3,
+     "title": "Install Actuator ID 10",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/thigh-assembly/step-3",
+     "parts": [
+      {
+       "raw": "500_02X",
+       "partNumber": "ASV1_500_02X",
+       "label": "EC-A3814-H14-107 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 9,
+       "context": "Assembly from Step 2 containing part 500_03C and EC-A3814-H14-107 actuator (ID 9)"
+      },
+      {
+       "raw": "500_07X",
+       "partNumber": "ASV1_500_07X",
+       "label": "EC-A4315-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 10,
+       "context": "EC-A4315-P2-36 actuator (ID 10)"
+      },
+      {
+       "raw": "500_05A",
+       "partNumber": "ASV1_500_05A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_05A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x14 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M3x20 Socket bolt",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "right-leg/02"
+     ]
+    },
+    {
+     "id": "right-leg/04",
+     "n": 4,
+     "title": "Attach Part 500_06A",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/thigh-assembly/step-4",
+     "parts": [
+      {
+       "raw": "500_06A",
+       "partNumber": "ASV1_500_06A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_06A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x14 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M3x20 Socket bolt",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 3",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/03"
+     ]
+    },
+    {
+     "id": "right-leg/05",
+     "n": 5,
+     "title": "Attach Part 500_12A",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/thigh-assembly/step-5",
+     "parts": [
+      {
+       "raw": "500_12A",
+       "partNumber": "ASV1_500_12A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_12A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x6 Socket bolt",
+       "count": 2,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 4",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/04"
+     ]
+    },
+    {
+     "id": "right-leg/06",
+     "n": 6,
+     "title": "Install the Outer Housing",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/thigh-assembly/step-6",
+     "parts": [
+      {
+       "raw": "500_14C",
+       "partNumber": "ASV1_500_14C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_14C"
+      },
+      {
+       "raw": "500_04C",
+       "partNumber": "ASV1_500_04C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_04C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x14 Socket bolt",
+       "count": 17,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [
+      {
+       "text": "Current assembly from Step 5",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/05"
+     ]
+    },
+    {
+     "id": "right-leg/07",
+     "n": 7,
+     "title": "Attach the Actuator Hub",
+     "group": "Thigh Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/thigh-assembly/step-7",
+     "parts": [
+      {
+       "raw": "500_01B",
+       "partNumber": "ASV1_500_01B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_01B"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x25 Socket bolt",
+       "count": 5,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      },
+      {
+       "name": "Super glue",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 6",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/06"
+     ]
+    },
+    {
+     "id": "right-leg/08",
+     "n": 8,
+     "title": "Assemble the Knee Housing",
+     "group": "Knee and Calf Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/knee-and-calf-assembly/step-8",
+     "parts": [
+      {
+       "raw": "500_10C",
+       "partNumber": "ASV1_500_10C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_10C"
+      },
+      {
+       "raw": "500_08A",
+       "partNumber": "ASV1_500_08A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_08A"
+      },
+      {
+       "raw": "500_09A",
+       "partNumber": "ASV1_500_09A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_09A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x10 Flat bolt",
+       "count": 18,
+       "countNote": null
+      },
+      {
+       "name": "M3x18 Socket bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Thigh assembly from Step 7",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/07"
+     ]
+    },
+    {
+     "id": "right-leg/09",
+     "n": 9,
+     "title": "Install Right Ankle A and B Actuators",
+     "group": "Knee and Calf Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/knee-and-calf-assembly/step-9",
+     "parts": [
+      {
+       "raw": "500_15X",
+       "partNumber": "ASV1_500_15X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 11,
+       "context": "Right ankle A EC-A4310-P2-36 actuator (ID 11)"
+      },
+      {
+       "raw": "500_16X",
+       "partNumber": "ASV1_500_16X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 12,
+       "context": "Right ankle B EC-A4310-P2-36 actuator (ID 12)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 12,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "100 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 8",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/08"
+     ]
+    },
+    {
+     "id": "right-leg/10",
+     "n": 10,
+     "title": "Install the Linkage Cranks and Cover",
+     "group": "Knee and Calf Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/knee-and-calf-assembly/step-10",
+     "parts": [
+      {
+       "raw": "500_17B",
+       "partNumber": "ASV1_500_17B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_17B"
+      },
+      {
+       "raw": "500_18B",
+       "partNumber": "ASV1_500_18B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_18B"
+      },
+      {
+       "raw": "500_13C",
+       "partNumber": "ASV1_500_13C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_13C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 16,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "100 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current assembly from Step 9",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/09"
+     ]
+    },
+    {
+     "id": "right-leg/11",
+     "n": 11,
+     "title": "Install the Linkage Shaft",
+     "group": "Foot Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/foot-assembly/step-11",
+     "parts": [
+      {
+       "raw": "500_36A",
+       "partNumber": "ASV1_500_36A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_36A"
+      },
+      {
+       "raw": "500_39C",
+       "partNumber": "ASV1_500_39C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_39C"
+      },
+      {
+       "raw": "500_37C",
+       "partNumber": "ASV1_500_37C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_37C"
+      },
+      {
+       "raw": "500_31X",
+       "partNumber": "ASV1_500_31X",
+       "label": "6mm D-Shaft Stainless Steel",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "6mm D-Shaft Stainless Steel"
+      },
+      {
+       "raw": "1602-0032-0006-1038,1600-0515-0006-1039",
+       "partNumber": null,
+       "label": "6mm Bore 1-Side, 2-Post Pillow Block",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "6mm Bore 1-Side, 2-Post Pillow Block"
+      },
+      {
+       "raw": "500_19X",
+       "partNumber": "ASV1_500_19X",
+       "label": "Ball Joint Rod End",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Ball Joint Rod End"
+      },
+      {
+       "raw": "2920-0001-0006-1035,2806-0005-0004-91390a117-1034",
+       "partNumber": null,
+       "label": "Steel Set-Screw Collar",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Steel Set-Screw Collar"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x16 Flat bolt",
+       "count": 11,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "right-leg/10"
+     ]
+    },
+    {
+     "id": "right-leg/12",
+     "n": 12,
+     "title": "Assemble the Foot Pivot",
+     "group": "Foot Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/foot-assembly/step-12",
+     "parts": [
+      {
+       "raw": "500_26B",
+       "partNumber": "ASV1_500_26B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_26B"
+      },
+      {
+       "raw": "500_25A",
+       "partNumber": "ASV1_500_25A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "500_25A"
+      },
+      {
+       "raw": "500_27X",
+       "partNumber": "ASV1_500_27X",
+       "label": "12mm Bore 1-Side, 2-Post Pillow Block",
+       "count": 4,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "12mm Bore 1-Side, 2-Post Pillow Block"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x20 Socket bolt",
+       "count": 4,
+       "countNote": null
+      },
+      {
+       "name": "M4x16 Flat bolt",
+       "count": 4,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Foot assembly from Step 11",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/11"
+     ]
+    },
+    {
+     "id": "right-leg/13",
+     "n": 13,
+     "title": "Join the Ankle Assemblies",
+     "group": "Ankle Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/ankle-assembly/step-13",
+     "parts": [
+      {
+       "raw": "m4-steel-nylon-insert-locknut-din-985",
+       "partNumber": null,
+       "label": "M4 nylon-insert nuts",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 nylon-insert nuts"
+      },
+      {
+       "raw": "500_21X",
+       "partNumber": "ASV1_500_21X",
+       "label": "Ball Joint Rod End",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Ball Joint Rod End"
+      },
+      {
+       "raw": "500_23A",
+       "partNumber": "ASV1_500_23A",
+       "label": "194 mm Stainless Steel Bar",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "194 mm Stainless Steel Bar"
+      },
+      {
+       "raw": "500_24A",
+       "partNumber": "ASV1_500_24A",
+       "label": "124 mm Stainless Steel Bar",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "124 mm Stainless Steel Bar"
+      },
+      {
+       "raw": "m3-steel-washer-din-125",
+       "partNumber": null,
+       "label": "M3 steel washer",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M3 steel washer"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x25 Socket bolt",
+       "count": 2,
+       "countNote": null
+      },
+      {
+       "name": "M3x6 Socket bolt",
+       "count": 2,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [
+      {
+       "text": "Leg assembly from Step 10",
+       "count": 1
+      },
+      {
+       "text": "Foot assembly from Step 12",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-leg/12"
+     ]
+    },
+    {
+     "id": "right-leg/14",
+     "n": 14,
+     "title": "Complete the Right Leg Module",
+     "group": "Complete Right Leg Review",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/complete-right-leg-review/step-14",
+     "parts": [],
+     "fasteners": [],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "right-leg/13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pelvis",
+   "label": "Pelvis",
+   "prefix": "200",
+   "steps": [
+    {
+     "id": "pelvis/01",
+     "n": 1,
+     "title": "Install the Waist Yaw Actuator",
+     "group": "Pelvis",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/pelvis/step-1",
+     "parts": [
+      {
+       "raw": "200_10X",
+       "partNumber": "ASV1_200_10X",
+       "label": "EC-A6416-P2-25 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 23,
+       "context": "EC-A6416-P2-25 actuator (ID 23)"
+      },
+      {
+       "raw": "200_16A",
+       "partNumber": "ASV1_200_16A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_16A"
+      },
+      {
+       "raw": "200_01C",
+       "partNumber": "ASV1_200_01C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_01C"
+      },
+      {
+       "raw": "18-8-stainless-steel-thin-profile-square-nuts",
+       "partNumber": null,
+       "label": "M4 square nuts",
+       "count": 8,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 square nuts"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x10 Flat bolt",
+       "count": 8,
+       "countNote": null
+      },
+      {
+       "name": "M4x18 Socket bolt",
+       "count": 8,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Paper tape",
+       "count": null,
+       "countNote": "As needed"
+      },
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": []
+    },
+    {
+     "id": "pelvis/02",
+     "n": 2,
+     "title": "Install the Left Hip Pitch Actuator",
+     "group": "Pelvis",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/pelvis/step-2",
+     "parts": [
+      {
+       "raw": "200_11X",
+       "partNumber": "ASV1_200_11X",
+       "label": "EC-A6416-P2-25 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 1,
+       "context": "EC-A6416-P2-25 actuator (ID 1)"
+      },
+      {
+       "raw": "200_03A",
+       "partNumber": "ASV1_200_03A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_03A"
+      },
+      {
+       "raw": "m4-steel-nylon-insert-locknut-din-985",
+       "partNumber": null,
+       "label": "M4 nylon-insert locknuts",
+       "count": 8,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 nylon-insert locknuts"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x10 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x16 Flat bolt",
+       "count": 8,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "200 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Pelvis assembly from Step 1",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "pelvis/01"
+     ]
+    },
+    {
+     "id": "pelvis/03",
+     "n": 3,
+     "title": "Install the Right Hip Pitch Actuator",
+     "group": "Pelvis",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/pelvis/step-3",
+     "parts": [
+      {
+       "raw": "200_12X",
+       "partNumber": "ASV1_200_12X",
+       "label": "EC-A6416-P2-25 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 7,
+       "context": "EC-A6416-P2-25 actuator (ID 7)"
+      },
+      {
+       "raw": "200_02A",
+       "partNumber": "ASV1_200_02A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_02A"
+      },
+      {
+       "raw": "m4-steel-nylon-insert-locknut-din-985",
+       "partNumber": null,
+       "label": "M4 nylon-insert locknuts",
+       "count": 8,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 nylon-insert locknuts"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x10 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x16 Flat bolt",
+       "count": 8,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "200 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Pelvis assembly from Step 2",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "pelvis/02"
+     ]
+    },
+    {
+     "id": "pelvis/04",
+     "n": 4,
+     "title": "Route the Hip Cables and Install the Cover",
+     "group": "Pelvis",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/pelvis/step-4",
+     "parts": [
+      {
+       "raw": "200_15C",
+       "partNumber": "ASV1_200_15C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_15C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x8 Flat bolt",
+       "count": 4,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "300 mm double-ended XT30 (2+2) cable",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Masking tape",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Pelvis assembly from Step 3",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "pelvis/03"
+     ]
+    },
+    {
+     "id": "pelvis/05",
+     "n": 5,
+     "title": "Install the Right Hip Roll Actuator",
+     "group": "Right and Left Hip Roll",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/right-and-left-hip-roll/step-5",
+     "parts": [
+      {
+       "raw": "200_05B",
+       "partNumber": "ASV1_200_05B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_05B"
+      },
+      {
+       "raw": "200_06C",
+       "partNumber": "ASV1_200_06C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_06C"
+      },
+      {
+       "raw": "200_07C",
+       "partNumber": "ASV1_200_07C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_07C"
+      },
+      {
+       "raw": "200_13X",
+       "partNumber": "ASV1_200_13X",
+       "label": "EC-A5013-H17-100 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 8,
+       "context": "EC-A5013-H17-100 actuator (ID 8)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x12 Socket bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x6 Socket bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x14 Socket bolt",
+       "count": 3,
+       "countNote": null
+      },
+      {
+       "name": "M4x8 Socket bolt",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "180 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Pelvis assembly from Step 4",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "pelvis/04"
+     ]
+    },
+    {
+     "id": "pelvis/06",
+     "n": 6,
+     "title": "Install the Left Hip Roll Actuator",
+     "group": "Right and Left Hip Roll",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/right-and-left-hip-roll/step-6",
+     "parts": [
+      {
+       "raw": "200_04B",
+       "partNumber": "ASV1_200_04B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_04B"
+      },
+      {
+       "raw": "200_08C",
+       "partNumber": "ASV1_200_08C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_08C"
+      },
+      {
+       "raw": "200_09C",
+       "partNumber": "ASV1_200_09C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "200_09C"
+      },
+      {
+       "raw": "200_14X",
+       "partNumber": "ASV1_200_14X",
+       "label": "EC-A5013-H17-100 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 2,
+       "context": "EC-A5013-H17-100 actuator (ID 2)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x12 Socket bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x6 Socket bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x14 Socket bolt",
+       "count": 3,
+       "countNote": null
+      },
+      {
+       "name": "M4x8 Socket bolt",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "180 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Pelvis assembly from Step 5",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "pelvis/05"
+     ]
+    },
+    {
+     "id": "pelvis/07",
+     "n": 7,
+     "title": "Attach the Right Leg Module to the Pelvis",
+     "group": "Attach Left and Right Legs",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/attach-left-and-right-legs/step-7",
+     "parts": [
+      {
+       "raw": "200_13X",
+       "partNumber": "ASV1_200_13X",
+       "label": "EC-A5013-H17-100 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 8,
+       "context": "Pelvis assembly containing right hip roll EC-A5013-H17-100 actuator (ID 8)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M5x25 Socket bolt",
+       "count": 5,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      },
+      {
+       "name": "Approved soldering and insulation supplies",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Completed Right Leg Module",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "pelvis/06",
+      "right-leg/14"
+     ]
+    },
+    {
+     "id": "pelvis/08",
+     "n": 8,
+     "title": "Attach the Left Leg Module to the Pelvis",
+     "group": "Attach Left and Right Legs",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/attach-left-and-right-legs/step-8",
+     "parts": [
+      {
+       "raw": "200_14X",
+       "partNumber": "ASV1_200_14X",
+       "label": "EC-A5013-H17-100 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 2,
+       "context": "Pelvis and right-leg assembly containing left hip roll EC-A5013-H17-100 actuator (ID 2)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M5x25 Socket bolt",
+       "count": 5,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      },
+      {
+       "name": "Approved soldering and insulation supplies",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Completed Left Leg Module",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "pelvis/07",
+      "left-leg/14"
+     ]
+    },
+    {
+     "id": "pelvis/09",
+     "n": 9,
+     "title": "Complete the Pelvis Module",
+     "group": "Final Review",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/final-review/step-9",
+     "parts": [],
+     "fasteners": [],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "pelvis/08"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "left-arm",
+   "label": "Left arm",
+   "prefix": "400",
+   "steps": [
+    {
+     "id": "left-arm/01",
+     "n": 1,
+     "title": "Mount the Shoulder Actuator",
+     "group": "Shoulder Joint Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/shoulder-joint-assembly/step-1",
+     "parts": [
+      {
+       "raw": "400_17X",
+       "partNumber": "ASV1_400_17X",
+       "label": "EC-A5013-H17-100 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 13,
+       "context": "EC-A5013-H17-100 actuator (ID 13)"
+      },
+      {
+       "raw": "400_04B",
+       "partNumber": "ASV1_400_04B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_04B"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x8 Flat bolt",
+       "count": 12,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": []
+    },
+    {
+     "id": "left-arm/02",
+     "n": 2,
+     "title": "Attach the Shoulder Base and Route the Cable",
+     "group": "Shoulder Joint Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/shoulder-joint-assembly/step-2",
+     "parts": [
+      {
+       "raw": "400_17X",
+       "partNumber": "ASV1_400_17X",
+       "label": "EC-A5013-H17-100 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 13,
+       "context": "Shoulder actuator assembly containing EC-A5013-H17-100 actuator (ID 13) from Step 1"
+      },
+      {
+       "raw": "400_02A",
+       "partNumber": "ASV1_400_02A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_02A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M5x25 Socket bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "180 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "left-arm/01"
+     ]
+    },
+    {
+     "id": "left-arm/03",
+     "n": 3,
+     "title": "Prepare the Bearing Housing",
+     "group": "Upper Arm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/upper-arm-assembly/step-3",
+     "parts": [
+      {
+       "raw": "400_13C",
+       "partNumber": "ASV1_400_13C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_13C"
+      },
+      {
+       "raw": "m4-steel-square-nuts-din-562",
+       "partNumber": null,
+       "label": "M4 square nuts",
+       "count": 3,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 square nuts"
+      },
+      {
+       "raw": "400_19X",
+       "partNumber": "ASV1_400_19X",
+       "label": "Flanged ball bearing 4390N159",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Flanged ball bearing 4390N159"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x16 Socket bolt",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "left-arm/02"
+     ]
+    },
+    {
+     "id": "left-arm/04",
+     "n": 4,
+     "title": "Prepare the Actuator Housing",
+     "group": "Upper Arm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/upper-arm-assembly/step-4",
+     "parts": [
+      {
+       "raw": "400_14C",
+       "partNumber": "ASV1_400_14C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_14C"
+      },
+      {
+       "raw": "m4-steel-square-nuts-din-562",
+       "partNumber": null,
+       "label": "M4 square nuts",
+       "count": 7,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 square nuts"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x16 Socket bolt",
+       "count": 3,
+       "countNote": null
+      },
+      {
+       "name": "M4x25 Socket bolt",
+       "count": 4,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "left-arm/03"
+     ]
+    },
+    {
+     "id": "left-arm/05",
+     "n": 5,
+     "title": "Connect the Shoulder Cable Connectors and Position the Actuators",
+     "group": "Upper Arm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/upper-arm-assembly/step-5",
+     "parts": [
+      {
+       "raw": "400_18X",
+       "partNumber": "ASV1_400_18X",
+       "label": "EC-A4315-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 14,
+       "context": "EC-A4315-P2-36 actuator (ID 14)"
+      },
+      {
+       "raw": "400_20X",
+       "partNumber": "ASV1_400_20X",
+       "label": "EC-A3814-H14-107 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 15,
+       "context": "EC-A3814-H14-107 actuator (ID 15)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x8 Socket bolt",
+       "count": 3,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "100 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "180 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Actuator housing from Step 4",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "left-arm/04"
+     ]
+    },
+    {
+     "id": "left-arm/06",
+     "n": 6,
+     "title": "Close the Shoulder Actuator Housing",
+     "group": "Upper Arm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/upper-arm-assembly/step-6",
+     "parts": [],
+     "fasteners": [
+      {
+       "name": "M4x8 Socket bolt",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Bearing housing from Step 3",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Actuator housing assembly from Step 5",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-arm/05"
+     ]
+    },
+    {
+     "id": "left-arm/07",
+     "n": 7,
+     "title": "Connect and Join the Shoulder Assemblies",
+     "group": "Shoulder and Upper Arm Connection",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/shoulder-and-upper-arm-connection/step-7",
+     "parts": [
+      {
+       "raw": "400_03A",
+       "partNumber": "ASV1_400_03A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_03A"
+      },
+      {
+       "raw": "400_01A",
+       "partNumber": "ASV1_400_01A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_01A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x12 Flat bolt",
+       "count": 8,
+       "countNote": null
+      },
+      {
+       "name": "M3x16 Flat bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "100 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      },
+      {
+       "name": "Approved soldering and insulation supplies",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Shoulder assembly from Step 2",
+       "count": 1
+      },
+      {
+       "text": "Upper arm assembly from Step 6",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-arm/06"
+     ]
+    },
+    {
+     "id": "left-arm/08",
+     "n": 8,
+     "title": "Attach the Shoulder Yaw Joint Plate and Shaft Mount",
+     "group": "Shoulder and Upper Arm Connection",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/shoulder-and-upper-arm-connection/step-8",
+     "parts": [
+      {
+       "raw": "400_05A",
+       "partNumber": "ASV1_400_05A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_05A"
+      },
+      {
+       "raw": "400_06B",
+       "partNumber": "ASV1_400_06B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_06B"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 8,
+       "countNote": null
+      },
+      {
+       "name": "M4x20 Socket bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current shoulder assembly from Step 7",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-arm/07"
+     ]
+    },
+    {
+     "id": "left-arm/09",
+     "n": 9,
+     "title": "Install the Elbow Actuator and Route Its Cables",
+     "group": "Forearm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/forearm-assembly/step-9",
+     "parts": [
+      {
+       "raw": "400_22X",
+       "partNumber": "ASV1_400_22X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 16,
+       "context": "EC-A4310-P2-36 actuator (ID 16)"
+      },
+      {
+       "raw": "400_15C",
+       "partNumber": "ASV1_400_15C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_15C"
+      }
+     ],
+     "fasteners": [],
+     "cables": [
+      {
+       "name": "100 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "230 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "left-arm/08"
+     ]
+    },
+    {
+     "id": "left-arm/10",
+     "n": 10,
+     "title": "Attach the Elbow Housing Plates",
+     "group": "Forearm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/forearm-assembly/step-10",
+     "parts": [
+      {
+       "raw": "400_08A",
+       "partNumber": "ASV1_400_08A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_08A"
+      },
+      {
+       "raw": "400_07A",
+       "partNumber": "ASV1_400_07A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_07A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x16 Flat bolt",
+       "count": 10,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Elbow actuator-and-housing assembly from Step 9",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-arm/09"
+     ]
+    },
+    {
+     "id": "left-arm/11",
+     "n": 11,
+     "title": "Attach the Elbow Shaft Plate and Actuator Housing",
+     "group": "Forearm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/forearm-assembly/step-11",
+     "parts": [
+      {
+       "raw": "400_09A",
+       "partNumber": "ASV1_400_09A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_09A"
+      },
+      {
+       "raw": "400_16C",
+       "partNumber": "ASV1_400_16C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_16C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x16 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x10 Flat bolt",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Assembly from Step 10",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-arm/10"
+     ]
+    },
+    {
+     "id": "left-arm/12",
+     "n": 12,
+     "title": "Install and Connect the Wrist Actuator",
+     "group": "Forearm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/forearm-assembly/step-12",
+     "parts": [
+      {
+       "raw": "400_10A",
+       "partNumber": "ASV1_400_10A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_10A"
+      },
+      {
+       "raw": "400_11A",
+       "partNumber": "ASV1_400_11A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_11A"
+      },
+      {
+       "raw": "400_12B",
+       "partNumber": "ASV1_400_12B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "400_12B"
+      },
+      {
+       "raw": "400_23X",
+       "partNumber": "ASV1_400_23X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 17,
+       "context": "EC-A4310-P2-36 actuator (ID 17)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x10 Flat bolt",
+       "count": 3,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 16,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Assembly from Step 11",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-arm/11"
+     ]
+    },
+    {
+     "id": "left-arm/13",
+     "n": 13,
+     "title": "Connect the Shoulder and Elbow Assemblies",
+     "group": "Upper Arm and Forearm Connection",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/upper-arm-and-forearm-connection/step-13",
+     "parts": [],
+     "fasteners": [
+      {
+       "name": "M4x12 Socket bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x30 Socket bolt",
+       "count": 12,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "WAGO connector",
+       "count": 4,
+       "countNote": null
+      },
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Shoulder and upper arm assembly from Step 8",
+       "count": 1
+      },
+      {
+       "text": "Forearm assembly from Step 12",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "left-arm/12"
+     ]
+    },
+    {
+     "id": "left-arm/14",
+     "n": 14,
+     "title": "Complete the Left Arm Module",
+     "group": "Final Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/final-assembly/step-14",
+     "parts": [],
+     "fasteners": [],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "left-arm/13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "right-arm",
+   "label": "Right arm",
+   "prefix": "300",
+   "steps": [
+    {
+     "id": "right-arm/01",
+     "n": 1,
+     "title": "Mount the Shoulder Actuator",
+     "group": "Shoulder Joint Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/shoulder-joint-assembly/step-1",
+     "parts": [
+      {
+       "raw": "300_17X",
+       "partNumber": "ASV1_300_17X",
+       "label": "EC-A5013-H17-100 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 18,
+       "context": "EC-A5013-H17-100 actuator (ID 18)"
+      },
+      {
+       "raw": "300_04B",
+       "partNumber": "ASV1_300_04B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_04B"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x8 Flat bolt",
+       "count": 12,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": []
+    },
+    {
+     "id": "right-arm/02",
+     "n": 2,
+     "title": "Attach the Shoulder Base and Route the Cable",
+     "group": "Shoulder Joint Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/shoulder-joint-assembly/step-2",
+     "parts": [
+      {
+       "raw": "300_17X",
+       "partNumber": "ASV1_300_17X",
+       "label": "EC-A5013-H17-100 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 18,
+       "context": "Shoulder actuator assembly containing EC-A5013-H17-100 actuator (ID 18) from Step 1"
+      },
+      {
+       "raw": "300_02A",
+       "partNumber": "ASV1_300_02A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_02A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M5x25 Socket bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "180 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "right-arm/01"
+     ]
+    },
+    {
+     "id": "right-arm/03",
+     "n": 3,
+     "title": "Prepare the Bearing Housing",
+     "group": "Upper Arm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/upper-arm-assembly/step-3",
+     "parts": [
+      {
+       "raw": "300_13C",
+       "partNumber": "ASV1_300_13C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_13C"
+      },
+      {
+       "raw": "m4-steel-square-nuts-din-562",
+       "partNumber": null,
+       "label": "M4 square nuts",
+       "count": 3,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 square nuts"
+      },
+      {
+       "raw": "300_19X",
+       "partNumber": "ASV1_300_19X",
+       "label": "Flanged ball bearing 4390N159",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Flanged ball bearing 4390N159"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x16 Socket bolt",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "right-arm/02"
+     ]
+    },
+    {
+     "id": "right-arm/04",
+     "n": 4,
+     "title": "Prepare the Actuator Housing",
+     "group": "Upper Arm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/upper-arm-assembly/step-4",
+     "parts": [
+      {
+       "raw": "300_14C",
+       "partNumber": "ASV1_300_14C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_14C"
+      },
+      {
+       "raw": "m4-steel-square-nuts-din-562",
+       "partNumber": null,
+       "label": "M4 square nuts",
+       "count": 7,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M4 square nuts"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x16 Socket bolt",
+       "count": 3,
+       "countNote": null
+      },
+      {
+       "name": "M4x25 Socket bolt",
+       "count": 4,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "right-arm/03"
+     ]
+    },
+    {
+     "id": "right-arm/05",
+     "n": 5,
+     "title": "Connect the Shoulder Cable Connectors and Position the Actuators",
+     "group": "Upper Arm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/upper-arm-assembly/step-5",
+     "parts": [
+      {
+       "raw": "300_18X",
+       "partNumber": "ASV1_300_18X",
+       "label": "EC-A4315-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 19,
+       "context": "EC-A4315-P2-36 actuator (ID 19)"
+      },
+      {
+       "raw": "300_20X",
+       "partNumber": "ASV1_300_20X",
+       "label": "EC-A3814-H14-107 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 20,
+       "context": "EC-A3814-H14-107 actuator (ID 20)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x8 Socket bolt",
+       "count": 3,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "100 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "180 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Actuator housing from Step 4",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [],
+     "requires": [
+      "right-arm/04"
+     ]
+    },
+    {
+     "id": "right-arm/06",
+     "n": 6,
+     "title": "Close the Shoulder Actuator Housing",
+     "group": "Upper Arm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/upper-arm-assembly/step-6",
+     "parts": [],
+     "fasteners": [
+      {
+       "name": "M4x8 Socket bolt",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Bearing housing from Step 3",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Actuator housing assembly from Step 5",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-arm/05"
+     ]
+    },
+    {
+     "id": "right-arm/07",
+     "n": 7,
+     "title": "Connect and Join the Shoulder Assemblies",
+     "group": "Shoulder and Upper Arm Connection",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/shoulder-and-upper-arm-connection/step-7",
+     "parts": [
+      {
+       "raw": "300_03A",
+       "partNumber": "ASV1_300_03A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_03A"
+      },
+      {
+       "raw": "300_01A",
+       "partNumber": "ASV1_300_01A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_01A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x12 Flat bolt",
+       "count": 8,
+       "countNote": null
+      },
+      {
+       "name": "M3x16 Flat bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "100 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      },
+      {
+       "name": "Approved soldering and insulation supplies",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Shoulder assembly from Step 2",
+       "count": 1
+      },
+      {
+       "text": "Upper arm assembly from Step 6",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-arm/06"
+     ]
+    },
+    {
+     "id": "right-arm/08",
+     "n": 8,
+     "title": "Attach the Shoulder Yaw Joint Plate and Shaft Mount",
+     "group": "Shoulder and Upper Arm Connection",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/shoulder-and-upper-arm-connection/step-8",
+     "parts": [
+      {
+       "raw": "300_05A",
+       "partNumber": "ASV1_300_05A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_05A"
+      },
+      {
+       "raw": "300_06B",
+       "partNumber": "ASV1_300_06B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_06B"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 8,
+       "countNote": null
+      },
+      {
+       "name": "M4x20 Socket bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Current shoulder assembly from Step 7",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-arm/07"
+     ]
+    },
+    {
+     "id": "right-arm/09",
+     "n": 9,
+     "title": "Install the Elbow Actuator and Route Its Cables",
+     "group": "Forearm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/forearm-assembly/step-9",
+     "parts": [
+      {
+       "raw": "300_22X",
+       "partNumber": "ASV1_300_22X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 21,
+       "context": "EC-A4310-P2-36 actuator (ID 21)"
+      },
+      {
+       "raw": "300_15C",
+       "partNumber": "ASV1_300_15C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_15C"
+      }
+     ],
+     "fasteners": [],
+     "cables": [
+      {
+       "name": "100 mm single-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "230 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "right-arm/08"
+     ]
+    },
+    {
+     "id": "right-arm/10",
+     "n": 10,
+     "title": "Attach the Elbow Housing Plates",
+     "group": "Forearm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/forearm-assembly/step-10",
+     "parts": [
+      {
+       "raw": "300_08A",
+       "partNumber": "ASV1_300_08A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_08A"
+      },
+      {
+       "raw": "300_07A",
+       "partNumber": "ASV1_300_07A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_07A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x16 Flat bolt",
+       "count": 10,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Elbow actuator-and-housing assembly from Step 9",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-arm/09"
+     ]
+    },
+    {
+     "id": "right-arm/11",
+     "n": 11,
+     "title": "Attach the Elbow Shaft Plate and Actuator Housing",
+     "group": "Forearm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/forearm-assembly/step-11",
+     "parts": [
+      {
+       "raw": "300_09A",
+       "partNumber": "ASV1_300_09A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_09A"
+      },
+      {
+       "raw": "300_16C",
+       "partNumber": "ASV1_300_16C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_16C"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x16 Flat bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x10 Flat bolt",
+       "count": 3,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Assembly from Step 10",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-arm/10"
+     ]
+    },
+    {
+     "id": "right-arm/12",
+     "n": 12,
+     "title": "Install and Connect the Wrist Actuator",
+     "group": "Forearm Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/forearm-assembly/step-12",
+     "parts": [
+      {
+       "raw": "300_10A",
+       "partNumber": "ASV1_300_10A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_10A"
+      },
+      {
+       "raw": "300_11A",
+       "partNumber": "ASV1_300_11A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_11A"
+      },
+      {
+       "raw": "300_12B",
+       "partNumber": "ASV1_300_12B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "300_12B"
+      },
+      {
+       "raw": "300_23X",
+       "partNumber": "ASV1_300_23X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 22,
+       "context": "EC-A4310-P2-36 actuator (ID 22)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x10 Flat bolt",
+       "count": 3,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 16,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Assembly from Step 11",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-arm/11"
+     ]
+    },
+    {
+     "id": "right-arm/13",
+     "n": 13,
+     "title": "Connect the Shoulder and Elbow Assemblies",
+     "group": "Upper Arm and Forearm Connection",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/upper-arm-and-forearm-connection/step-13",
+     "parts": [],
+     "fasteners": [
+      {
+       "name": "M4x12 Socket bolt",
+       "count": 6,
+       "countNote": null
+      },
+      {
+       "name": "M4x30 Socket bolt",
+       "count": 12,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "WAGO connector",
+       "count": 4,
+       "countNote": null
+      },
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Shoulder and upper arm assembly from Step 8",
+       "count": 1
+      },
+      {
+       "text": "Forearm assembly from Step 12",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "right-arm/12"
+     ]
+    },
+    {
+     "id": "right-arm/14",
+     "n": 14,
+     "title": "Complete the Right Arm Module",
+     "group": "Final Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/final-assembly/step-14",
+     "parts": [],
+     "fasteners": [],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "right-arm/13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "torso",
+   "label": "Torso and head",
+   "prefix": "100",
+   "steps": [
+    {
+     "id": "torso/01",
+     "n": 1,
+     "title": "Install the Shoulder Hardware",
+     "group": "Torso Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/torso-assembly/step-1",
+     "parts": [
+      {
+       "raw": "100_01C",
+       "partNumber": "ASV1_100_01C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "100_01C"
+      },
+      {
+       "raw": "m6-steel-nylon-insert-locknut-din-985",
+       "partNumber": null,
+       "label": "M6 nylon-insert locknuts",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M6 nylon-insert locknuts"
+      },
+      {
+       "raw": "100_07X",
+       "partNumber": "ASV1_100_07X",
+       "label": "Chain Shackle",
+       "count": 2,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Chain Shackle"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M6x85 Socket bolt",
+       "count": 2,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": []
+    },
+    {
+     "id": "torso/02",
+     "n": 2,
+     "title": "Install the Waist Plate",
+     "group": "Torso Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/torso-assembly/step-2",
+     "parts": [
+      {
+       "raw": "100_02A",
+       "partNumber": "ASV1_100_02A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "100_02A waist plate"
+      },
+      {
+       "raw": "m6-steel-nylon-insert-locknut-din-985",
+       "partNumber": null,
+       "label": "M6 nylon-insert locknuts",
+       "count": 4,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "M6 nylon-insert locknuts"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M6x25 Flat bolt",
+       "count": 4,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Masking tape or temporary retainer",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Torso assembly from Step 1",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/01"
+     ]
+    },
+    {
+     "id": "torso/03",
+     "n": 3,
+     "title": "Install the Neck Yaw Actuator",
+     "group": "Torso Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/torso-assembly/step-3",
+     "parts": [
+      {
+       "raw": "100_09X",
+       "partNumber": "ASV1_100_09X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 24,
+       "context": "EC-A4310-P2-36 actuator (ID 24)"
+      },
+      {
+       "raw": "100_03A",
+       "partNumber": "ASV1_100_03A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "100_03A"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 4,
+       "countNote": null
+      },
+      {
+       "name": "M4x12 Flat bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "200 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "600 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "1000 mm Ethernet cable",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Torso assembly from Step 2",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/02"
+     ]
+    },
+    {
+     "id": "torso/04",
+     "n": 4,
+     "title": "Install the Speaker",
+     "group": "Torso Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/torso-assembly/step-4",
+     "parts": [
+      {
+       "raw": "100_13X",
+       "partNumber": "ASV1_100_13X",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "100_13X speaker"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x8 Socket bolt",
+       "count": 4,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "50 mm wire",
+       "count": 2,
+       "countNote": null
+      },
+      {
+       "name": "Approved soldering and insulation supplies",
+       "count": null,
+       "countNote": "As needed"
+      },
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Torso assembly from Step 3",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/03"
+     ]
+    },
+    {
+     "id": "torso/05",
+     "n": 5,
+     "title": "Attach the Arm Modules",
+     "group": "Attach Left and Right Arms",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/attach-left-and-right-arms/step-5",
+     "parts": [
+      {
+       "raw": "100_05A",
+       "partNumber": "ASV1_100_05A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "100_05A left mounting plate"
+      },
+      {
+       "raw": "100_08A",
+       "partNumber": "ASV1_100_08A",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "100_08A right mounting plate"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x30 Socket bolt",
+       "count": 24,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Torso assembly from Step 4",
+       "count": 1
+      },
+      {
+       "text": "Completed Left Arm Module",
+       "count": 1
+      },
+      {
+       "text": "Completed Right Arm Module",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/04",
+      "left-arm/14",
+      "right-arm/14"
+     ]
+    },
+    {
+     "id": "torso/06",
+     "n": 6,
+     "title": "Attach the Torso to the Pelvis",
+     "group": "Attach Lower Half and Wiring",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/attach-lower-half-and-wiring/step-6",
+     "parts": [],
+     "fasteners": [
+      {
+       "name": "M4x20 Socket bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Torso-with-arms assembly from Step 5",
+       "count": 1
+      },
+      {
+       "text": "Completed pelvis and lower-body assembly",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/05",
+      "pelvis/09"
+     ]
+    },
+    {
+     "id": "torso/07",
+     "n": 7,
+     "title": "Install the RPU and Connect Its Cable Connectors",
+     "group": "Attach Lower Half and Wiring",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/attach-lower-half-and-wiring/step-7",
+     "parts": [],
+     "fasteners": [
+      {
+       "name": "M3x8 Socket bolt",
+       "count": 4,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "400 mm double-ended XT30 (2+2) cable",
+       "count": 2,
+       "countNote": null
+      }
+     ],
+     "consumables": [
+      {
+       "name": "Robot Processing Unit (RPU)",
+       "count": 1,
+       "countNote": null
+      }
+     ],
+     "carried": [
+      {
+       "text": "Integrated torso and pelvis assembly from Step 6",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/06"
+     ]
+    },
+    {
+     "id": "torso/08",
+     "n": 8,
+     "title": "Install the Neck Pitch Actuator and Head Base",
+     "group": "Head Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/head-assembly/step-8",
+     "parts": [
+      {
+       "raw": "700_02B",
+       "partNumber": "ASV1_700_02B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "700_02B"
+      },
+      {
+       "raw": "700_01B",
+       "partNumber": "ASV1_700_01B",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "700_01B"
+      },
+      {
+       "raw": "700_03C",
+       "partNumber": "ASV1_700_03C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Head assembly from [Head Compute Unit Setup](/asimov/1/build/assembly-preparations/compute-module-setup/head-compute-unit-setup) (700_03C head base with 700_05C head carrier)"
+      },
+      {
+       "raw": "700_05C",
+       "partNumber": "ASV1_700_05C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "Head assembly from [Head Compute Unit Setup](/asimov/1/build/assembly-preparations/compute-module-setup/head-compute-unit-setup) (700_03C head base with 700_05C head carrier)"
+      },
+      {
+       "raw": "700_13X",
+       "partNumber": "ASV1_700_13X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 25,
+       "context": "EC-A4310-P2-36 actuator (ID 25)"
+      },
+      {
+       "raw": "100_09X",
+       "partNumber": "ASV1_100_09X",
+       "label": "EC-A4310-P2-36 actuator",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": 24,
+       "context": "200 mm double-ended XT30 (2+2) cable, connected to neck yaw EC-A4310-P2-36 actuator (ID 24)"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M3x12 Flat bolt",
+       "count": 5,
+       "countNote": null
+      },
+      {
+       "name": "M3x12 Socket bolt",
+       "count": 2,
+       "countNote": null
+      },
+      {
+       "name": "M3x20 Socket bolt",
+       "count": 6,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [
+      {
+       "name": "Threadlocker",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "carried": [
+      {
+       "text": "Integrated assembly from Step 7",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/07"
+     ]
+    },
+    {
+     "id": "torso/09",
+     "n": 9,
+     "title": "Complete the Head Enclosure",
+     "group": "Head Assembly",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/head-assembly/step-9",
+     "parts": [
+      {
+       "raw": "700_04C",
+       "partNumber": "ASV1_700_04C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "700_04C top head cover"
+      },
+      {
+       "raw": "700_06C",
+       "partNumber": "ASV1_700_06C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "700_06C left head cover"
+      },
+      {
+       "raw": "700_07C",
+       "partNumber": "ASV1_700_07C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "700_07C right head cover"
+      },
+      {
+       "raw": "head-board",
+       "partNumber": null,
+       "label": "Head Board",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "1000 mm XT30-Male to XT30-Female power cable (highlighted in red), connected to the Head Board in Head Compute Unit Setup"
+      },
+      {
+       "raw": "700_09X",
+       "partNumber": "ASV1_700_09X",
+       "label": "Raspberry Pi 5",
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "1000 mm Ethernet cable (highlighted in blue), connected to the Raspberry Pi 5 in Head Compute Unit Setup"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x10 Flat bolt",
+       "count": 10,
+       "countNote": null
+      }
+     ],
+     "cables": [
+      {
+       "name": "600 mm double-ended XT30 (2+2) cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "WAGO connector for the speaker cable",
+       "count": null,
+       "countNote": "As needed"
+      }
+     ],
+     "consumables": [],
+     "carried": [
+      {
+       "text": "Integrated assembly from Step 8",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/08"
+     ]
+    },
+    {
+     "id": "torso/10",
+     "n": 10,
+     "title": "Install the Battery Assembly and Torso Covers",
+     "group": "Battery and Cover Installation",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/battery-and-cover-installation/step-10",
+     "parts": [
+      {
+       "raw": "100_06C",
+       "partNumber": "ASV1_100_06C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "100_06C front torso cover"
+      },
+      {
+       "raw": "100_04C",
+       "partNumber": "ASV1_100_04C",
+       "label": null,
+       "count": 1,
+       "countNote": null,
+       "actuatorId": null,
+       "context": "100_04C rear torso cover"
+      }
+     ],
+     "fasteners": [
+      {
+       "name": "M4x20 Flat bolt",
+       "count": 2,
+       "countNote": null
+      },
+      {
+       "name": "M4x8 Flat bolt",
+       "count": 16,
+       "countNote": null
+      }
+     ],
+     "cables": [],
+     "consumables": [],
+     "carried": [
+      {
+       "text": "Integrated robot assembly from Step 9",
+       "count": 1
+      },
+      {
+       "text": "Battery assembly from Battery Setup",
+       "count": 1
+      }
+     ],
+     "requires": [
+      "torso/09"
+     ]
+    }
+   ]
+  }
+ ],
+ "finish": {
+  "title": "Finish Assembly",
+  "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/finish-assembly",
+  "requires": [
+   "torso/10"
+  ]
+ }
+}

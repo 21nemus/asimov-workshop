@@ -1,0 +1,12 @@
+{
+  "name": "baseline-flat-01",
+  "description": "Flat floor: stand 3 s, walk forward at 0.5 m/s, lateral push through the pelvis centre of mass while walking, continue to 10 s.",
+  "ticks": 500,
+  "commands": [
+    { "tick": 0, "vx": 0, "vy": 0, "wz": 0 },
+    { "tick": 150, "vx": 0.5, "vy": 0, "wz": 0 }
+  ],
+  "pushes": [
+    { "tick": 300, "body": "pelvis_link", "dir": [0, 1, 0], "force": 150, "duration": 0.15 }
+  ]
+}

@@ -1,0 +1,453 @@
+{
+ "source": {
+  "origin": "https://docs.menlo.ai/asimov/1 (hardware: joints and actuators)",
+  "export": "docs-llms-full.txt",
+  "sha256": "ce14167fe6ea2b10b0ddd0f02871fd897bcde11b14b0a101ebae20f40c0faef8",
+  "note": "Copied as written. The ankle actuator rows carry joint-space pitch (A) and roll (B) torques; see the ankle mechanism."
+ },
+ "actuators": [
+  {
+   "id": 1,
+   "role": "left_hip_pitch_joint",
+   "model": "EC-A6416-P2-25",
+   "rangeText": "-2.09 to 1.00",
+   "range": [
+    -2.09,
+    1
+   ],
+   "velocityLimit": 12.57,
+   "kt": 2.75,
+   "armature": 0.095625,
+   "ratedTorque": 40,
+   "peakTorque": 120,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.05
+  },
+  {
+   "id": 2,
+   "role": "left_hip_roll_joint",
+   "model": "EC-A5013-H17-100",
+   "rangeText": "-0.79 to 0.79",
+   "range": [
+    -0.79,
+    0.79
+   ],
+   "velocityLimit": 3.98,
+   "kt": 7.15,
+   "armature": 0.11,
+   "ratedTorque": 30,
+   "peakTorque": 90,
+   "staticFriction": 0.2,
+   "dynamicFriction": 0.02
+  },
+  {
+   "id": 3,
+   "role": "left_hip_yaw_joint",
+   "model": "EC-A3814-H14-107",
+   "rangeText": "-0.79 to 0.79",
+   "range": [
+    -0.79,
+    0.79
+   ],
+   "velocityLimit": 5.45,
+   "kt": 5.7,
+   "armature": 0.038,
+   "ratedTorque": 20,
+   "peakTorque": 60,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.05
+  },
+  {
+   "id": 4,
+   "role": "left_knee_joint",
+   "model": "EC-A4315-P2-36",
+   "rangeText": "0.00 to 1.50",
+   "range": [
+    0,
+    1.5
+   ],
+   "velocityLimit": 12.25,
+   "kt": 2.53,
+   "armature": 0.0339552,
+   "ratedTorque": 25,
+   "peakTorque": 75,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.02
+  },
+  {
+   "id": 5,
+   "role": "left_ankle_A",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "See ankle mechanism",
+   "range": null,
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0565056,
+   "ratedTorque": 40,
+   "peakTorque": 145.4,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 6,
+   "role": "left_ankle_B",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "See ankle mechanism",
+   "range": null,
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0565056,
+   "ratedTorque": 17,
+   "peakTorque": 57.6,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 7,
+   "role": "right_hip_pitch_joint",
+   "model": "EC-A6416-P2-25",
+   "rangeText": "-1.00 to 2.09",
+   "range": [
+    -1,
+    2.09
+   ],
+   "velocityLimit": 12.57,
+   "kt": 2.75,
+   "armature": 0.095625,
+   "ratedTorque": 40,
+   "peakTorque": 120,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.05
+  },
+  {
+   "id": 8,
+   "role": "right_hip_roll_joint",
+   "model": "EC-A5013-H17-100",
+   "rangeText": "-0.79 to 0.79",
+   "range": [
+    -0.79,
+    0.79
+   ],
+   "velocityLimit": 3.98,
+   "kt": 7.15,
+   "armature": 0.11,
+   "ratedTorque": 30,
+   "peakTorque": 90,
+   "staticFriction": 0.2,
+   "dynamicFriction": 0.02
+  },
+  {
+   "id": 9,
+   "role": "right_hip_yaw_joint",
+   "model": "EC-A3814-H14-107",
+   "rangeText": "-0.79 to 0.79",
+   "range": [
+    -0.79,
+    0.79
+   ],
+   "velocityLimit": 5.45,
+   "kt": 5.7,
+   "armature": 0.038,
+   "ratedTorque": 20,
+   "peakTorque": 60,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.05
+  },
+  {
+   "id": 10,
+   "role": "right_knee_joint",
+   "model": "EC-A4315-P2-36",
+   "rangeText": "-1.50 to 0.00",
+   "range": [
+    -1.5,
+    0
+   ],
+   "velocityLimit": 12.25,
+   "kt": 2.53,
+   "armature": 0.0339552,
+   "ratedTorque": 25,
+   "peakTorque": 75,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.02
+  },
+  {
+   "id": 11,
+   "role": "right_ankle_A",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "See ankle mechanism",
+   "range": null,
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0565056,
+   "ratedTorque": 40,
+   "peakTorque": 145.4,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 12,
+   "role": "right_ankle_B",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "See ankle mechanism",
+   "range": null,
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0565056,
+   "ratedTorque": 17,
+   "peakTorque": 57.6,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 13,
+   "role": "left_shoulder_pitch_joint",
+   "model": "EC-A5013-H17-100",
+   "rangeText": "-3.14 to 0.87",
+   "range": [
+    -3.14,
+    0.87
+   ],
+   "velocityLimit": 3.98,
+   "kt": 7.15,
+   "armature": 0.11,
+   "ratedTorque": 30,
+   "peakTorque": 90,
+   "staticFriction": 0.2,
+   "dynamicFriction": 0.02
+  },
+  {
+   "id": 14,
+   "role": "left_shoulder_roll_joint",
+   "model": "EC-A4315-P2-36",
+   "rangeText": "-1.57 to 0.00",
+   "range": [
+    -1.57,
+    0
+   ],
+   "velocityLimit": 12.25,
+   "kt": 2.53,
+   "armature": 0.0339552,
+   "ratedTorque": 25,
+   "peakTorque": 75,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.02
+  },
+  {
+   "id": 15,
+   "role": "left_shoulder_yaw_joint",
+   "model": "EC-A3814-H14-107",
+   "rangeText": "-1.57 to 1.57",
+   "range": [
+    -1.57,
+    1.57
+   ],
+   "velocityLimit": 5.45,
+   "kt": 5.7,
+   "armature": 0.038,
+   "ratedTorque": 20,
+   "peakTorque": 60,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.05
+  },
+  {
+   "id": 16,
+   "role": "left_elbow_joint",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "0.00 to 2.44",
+   "range": [
+    0,
+    2.44
+   ],
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0282528,
+   "ratedTorque": 12,
+   "peakTorque": 36,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 17,
+   "role": "left_wrist_yaw_joint",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "-3.14 to 3.14",
+   "range": [
+    -3.14,
+    3.14
+   ],
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0282528,
+   "ratedTorque": 12,
+   "peakTorque": 36,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 18,
+   "role": "right_shoulder_pitch_joint",
+   "model": "EC-A5013-H17-100",
+   "rangeText": "-0.87 to 3.14",
+   "range": [
+    -0.87,
+    3.14
+   ],
+   "velocityLimit": 3.98,
+   "kt": 7.15,
+   "armature": 0.11,
+   "ratedTorque": 30,
+   "peakTorque": 90,
+   "staticFriction": 0.2,
+   "dynamicFriction": 0.02
+  },
+  {
+   "id": 19,
+   "role": "right_shoulder_roll_joint",
+   "model": "EC-A4315-P2-36",
+   "rangeText": "0.00 to 1.57",
+   "range": [
+    0,
+    1.57
+   ],
+   "velocityLimit": 12.25,
+   "kt": 2.53,
+   "armature": 0.0339552,
+   "ratedTorque": 25,
+   "peakTorque": 75,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.02
+  },
+  {
+   "id": 20,
+   "role": "right_shoulder_yaw_joint",
+   "model": "EC-A3814-H14-107",
+   "rangeText": "-1.57 to 1.57",
+   "range": [
+    -1.57,
+    1.57
+   ],
+   "velocityLimit": 5.45,
+   "kt": 5.7,
+   "armature": 0.038,
+   "ratedTorque": 20,
+   "peakTorque": 60,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.05
+  },
+  {
+   "id": 21,
+   "role": "right_elbow_joint",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "-2.44 to 0.00",
+   "range": [
+    -2.44,
+    0
+   ],
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0282528,
+   "ratedTorque": 12,
+   "peakTorque": 36,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 22,
+   "role": "right_wrist_yaw_joint",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "-3.14 to 3.14",
+   "range": [
+    -3.14,
+    3.14
+   ],
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0282528,
+   "ratedTorque": 12,
+   "peakTorque": 36,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 23,
+   "role": "waist_yaw_joint",
+   "model": "EC-A6416-P2-25",
+   "rangeText": "-1.57 to 1.57",
+   "range": [
+    -1.57,
+    1.57
+   ],
+   "velocityLimit": 12.57,
+   "kt": 2.75,
+   "armature": 0.095625,
+   "ratedTorque": 40,
+   "peakTorque": 120,
+   "staticFriction": 0.7,
+   "dynamicFriction": 0.05
+  },
+  {
+   "id": 24,
+   "role": "neck_yaw_joint",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "-1.57 to 1.57",
+   "range": [
+    -1.57,
+    1.57
+   ],
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0282528,
+   "ratedTorque": 12,
+   "peakTorque": 36,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  },
+  {
+   "id": 25,
+   "role": "neck_pitch_joint",
+   "model": "EC-A4310-P2-36",
+   "rangeText": "-0.79 to 0.79",
+   "range": [
+    -0.79,
+    0.79
+   ],
+   "velocityLimit": 9.32,
+   "kt": 1.81,
+   "armature": 0.0282528,
+   "ratedTorque": 12,
+   "peakTorque": 36,
+   "staticFriction": 0.4,
+   "dynamicFriction": 0.015
+  }
+ ],
+ "ankleJointLimits": {
+  "left_ankle_pitch_joint": {
+   "range": [
+    -0.35,
+    0.35
+   ],
+   "axis": "0 1 0"
+  },
+  "right_ankle_pitch_joint": {
+   "range": [
+    -0.35,
+    0.35
+   ],
+   "axis": "0 -1 0"
+  },
+  "left_ankle_roll_joint": {
+   "range": [
+    -0.1,
+    0.1
+   ],
+   "axis": "-1 0 0"
+  },
+  "right_ankle_roll_joint": {
+   "range": [
+    -0.1,
+    0.1
+   ],
+   "axis": "-1 0 0"
+  }
+ }
+}

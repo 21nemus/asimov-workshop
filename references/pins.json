@@ -1,0 +1,337 @@
+{
+ "generated": "2026-10-09T13:06:41.757Z",
+ "retrieved": "2026-10-09",
+ "note": "Hashes are SHA-256 of the exact bytes read from the upstream revision.",
+ "sources": [
+  {
+   "id": "asimov-1@viewer-submodule",
+   "repository": "https://github.com/menloresearch/asimov-1",
+   "commit": "35ae7b3581ce36762bfddb00b8fc5e7c957ee7fa",
+   "committed": "2026-09-28T14:18:34+08:00",
+   "title": "fix(sim-model): Update urdf and xml motion range to align with the hardware limits (#25)",
+   "why": "The asimov-1 revision the pinned policy viewer uses as its submodule: the simulation model of the baseline.",
+   "license": "CERN-OHL-S-2.0 (HARDWARE-LICENSE.txt); repository software GPL-2.0 (SOFTWARE-LICENSE.txt)",
+   "files": {
+    "sim-model/README.md": {
+     "sha256": "cfa7f9919e950801e52d75fe4836dd20952a95ff34b48ecff4adc8224572379c",
+     "bytes": 942
+    },
+    "sim-model/xmls/asimov_1.xml": {
+     "sha256": "66b8776a9bcc0efc83f17cce5cc5ba1f1504ded99b54bb8cb06b0b2305cba41f",
+     "bytes": 29090
+    },
+    "sim-model/urdf/asimov_1.urdf": {
+     "sha256": "b080188264eeac00cd4fe69d5d0735371b7079664615503ca5e7ee63a28afd99",
+     "bytes": 27611
+    },
+    "sim-model/assets/meshes/ANKLE_B_NEW.STL": {
+     "sha256": "5379b4e0a89e67dfe862f50ef22e3b091588d9c21542ef199b5a65ef6614262b",
+     "bytes": 4629584
+    },
+    "sim-model/assets/meshes/IMU_ORIGIN.STL": {
+     "sha256": "4103db420f4b511026f9967711366852243e80904909ff491300117e796194de",
+     "bytes": 3030084
+    },
+    "sim-model/assets/meshes/LEFT_ANKLE_A.STL": {
+     "sha256": "00dd23a465b135d15ef991b46bb314bf801c0b03c7aada1db8d1f9e17d9568a2",
+     "bytes": 221184
+    },
+    "sim-model/assets/meshes/LEFT_ELBOW.STL": {
+     "sha256": "fc697105abe95a3a3b23356527f7180113055d6168f40e66472c834eab485375",
+     "bytes": 621484
+    },
+    "sim-model/assets/meshes/LEFT_HIP_PITCH.STL": {
+     "sha256": "b63a1752cbae0cc09b140052df32c8ea45e14c0ebaea5d53ad317c8c90246d9a",
+     "bytes": 1110384
+    },
+    "sim-model/assets/meshes/LEFT_HIP_ROLL.STL": {
+     "sha256": "7bd909211765b2a133354677bc6ee09a38f290d8afab0e325b419ff9db79a12c",
+     "bytes": 332684
+    },
+    "sim-model/assets/meshes/LEFT_HIP_YAW.STL": {
+     "sha256": "ef18971b3c0aae2e06ad66a1e4c3a98440163d337e3ffa3750a1c3969e40a422",
+     "bytes": 1833784
+    },
+    "sim-model/assets/meshes/LEFT_KNEE.STL": {
+     "sha256": "c1429554f677ad70f0d1c26969079ad19add24c08c2c0ce29ed2c31c1a1c41f1",
+     "bytes": 3627284
+    },
+    "sim-model/assets/meshes/LEFT_SHOULDER_PITCH.STL": {
+     "sha256": "5e7c93c3f5f7e60f7cc139da16237507915db84fa3a6d67bc6b07158b77e7e23",
+     "bytes": 714084
+    },
+    "sim-model/assets/meshes/LEFT_SHOULDER_ROLL.STL": {
+     "sha256": "539c9175e7b60d0df3ffd6d9620825244ae684967a63aec05d3da7aac7879237",
+     "bytes": 2651384
+    },
+    "sim-model/assets/meshes/LEFT_SHOULDER_YAW.STL": {
+     "sha256": "82df3e536649a1d4bb218c157de154de4a94736ae195dc974e4ab97b8e86caa5",
+     "bytes": 685184
+    },
+    "sim-model/assets/meshes/LEFT_WRIST_YAW.STL": {
+     "sha256": "966dd01e04b12fb5f5d46720d8fd82a094f3f8a8404f643c9b9c5b0c01018c38",
+     "bytes": 160484
+    },
+    "sim-model/assets/meshes/NECK_PITCH.STL": {
+     "sha256": "6467104a3890738a7dd4f946c1533d0f136d75ad6566e9627f57f64cda874798",
+     "bytes": 837984
+    },
+    "sim-model/assets/meshes/NECK_YAW.STL": {
+     "sha256": "47b311a7138ebae9326216e5b79d85cf2750f0283a133188eaf5b9a14670a7c7",
+     "bytes": 346484
+    },
+    "sim-model/assets/meshes/RIGHT_ANKLE_A.STL": {
+     "sha256": "351c68c81211de8ff1bb0dbeea7e933335ec3a1a9035446f48829c4029a42d5f",
+     "bytes": 221284
+    },
+    "sim-model/assets/meshes/RIGHT_ELBOW.STL": {
+     "sha256": "aa3df244f5dbe2404911005d288f658814709f0ff64b8c03d0a5af3079f5e6c6",
+     "bytes": 622584
+    },
+    "sim-model/assets/meshes/RIGHT_HIP_PITCH.STL": {
+     "sha256": "3d7b4b69b2e5f13baaf2c822a3965c9e1db16a444b375f66813be57c6d1800a4",
+     "bytes": 1105884
+    },
+    "sim-model/assets/meshes/RIGHT_HIP_ROLL.STL": {
+     "sha256": "c4b84b8450d8e2830217f69b22999d10795c15fd72a7f99382fd1abcccda65b1",
+     "bytes": 344284
+    },
+    "sim-model/assets/meshes/RIGHT_HIP_YAW.STL": {
+     "sha256": "664a399f5b9a15cd11567cf08cf20e6fb386ff48f3ac741cd1f25848e237276e",
+     "bytes": 1833684
+    },
+    "sim-model/assets/meshes/RIGHT_KNEE.STL": {
+     "sha256": "64d35ef5e9cb1d1a57e2232d670cb798d2aa7a6985bdafdaed7b3dd125aba7fe",
+     "bytes": 3623984
+    },
+    "sim-model/assets/meshes/RIGHT_SHOULDER_PITCH.STL": {
+     "sha256": "325c6cf9b79c09f53ec05cf5fd7c89e2d430d85f4fa2fe2ae5827879437d9531",
+     "bytes": 715784
+    },
+    "sim-model/assets/meshes/RIGHT_SHOULDER_ROLL.STL": {
+     "sha256": "7ea6c316d2292a5e929f91963fde0a72e378343758575c7652a40cbf8d3b51b3",
+     "bytes": 2654584
+    },
+    "sim-model/assets/meshes/RIGHT_SHOULDER_YAW.STL": {
+     "sha256": "3bf54ab880e06c09f841d640374e9a91a99d3146cd2c5df98a79487c0c357f25",
+     "bytes": 2499884
+    },
+    "sim-model/assets/meshes/RIGHT_WRIST_YAW.STL": {
+     "sha256": "f71c5a4e4b762bd141477ac6b46af9598300630ce923f67f6c02bf98d4a67586",
+     "bytes": 160384
+    },
+    "sim-model/assets/meshes/WAIST_YAW.STL": {
+     "sha256": "24d5000c0a90bc5b053c6734ce517d8d23e9957d3ee59994e1b65d3a1db52a7d",
+     "bytes": 8739984
+    }
+   }
+  },
+  {
+   "id": "asimov-1@main",
+   "repository": "https://github.com/menloresearch/asimov-1",
+   "commit": "f71f3fe87ddfa6b7aac2a5cddeaad5dbbc19cca7",
+   "committed": "2026-10-06T08:34:17+08:00",
+   "title": "Update latest Asimov v1 CAD files (#27)",
+   "why": "Repository main at retrieval: full-body CAD assembly, part CAD, wiring tables and licences. sim-model/ is byte-identical to the submodule pin.",
+   "license": "CERN-OHL-S-2.0 (HARDWARE-LICENSE.txt); repository software GPL-2.0 (SOFTWARE-LICENSE.txt)",
+   "files": {
+    "README.md": {
+     "sha256": "df091b58d3fd57c057f508706368852ddab6f48b73bb0f67120b33a6a64a661c"
+    },
+    "HARDWARE-LICENSE.txt": {
+     "sha256": "253ad3f89603e728abfa60c36fbcaf8225cf55c1eab12725f19fb3d74d647f3a"
+    },
+    "SOFTWARE-LICENSE.txt": {
+     "sha256": "4f2416509c30c4f0c4de101cc30c571e3be33fdb5c42cabc0d2915e8ed5ea51e"
+    },
+    "electrical/wiring/motor-wires.csv": {
+     "sha256": "3cbdc5503c0a627fb249843772777586aa7e6b9c20b7779bcad3ce28e53a4583"
+    },
+    "electrical/wiring/misc-wires.csv": {
+     "sha256": "627b26ecd8dd5f3148c877beccb0f664477c6710bbc494333b21ecd8ec125a50"
+    },
+    "electrical/README.md": {
+     "sha256": "72d0d08fb1df5ae26f6a5fd960e71e63892a5a321973b0afedfbf933af0eb9da"
+    },
+    "mechanical/naming_convention.png": {
+     "sha256": "3d83e23a9c496bff8bf4c98fd8d1518b7db0a872ecb948c974940a40a3d9f50f"
+    },
+    "mechanical/ASV1/FullBodyAssembly/Asimov_1.STEP": {
+     "sha256": "35903b20bffd0e21d709acc75a30d0ee98323fa6c76b59fefffd181471422ba7",
+     "bytes": 520654540,
+     "transport": "git-lfs media endpoint",
+     "mediaUrl": "https://media.githubusercontent.com/media/menloresearch/asimov-1/f71f3fe87ddfa6b7aac2a5cddeaad5dbbc19cca7/mechanical/ASV1/FullBodyAssembly/Asimov_1.STEP"
+    },
+    "mechanical/ASV1/500/FABRICATION/MJF_PA12/ASV1_500_04C.STEP": {
+     "sha256": "30c47c2b8ab4a60d9478007953bce0b22bb42ef9d98eed795f290e4238c786ca",
+     "bytes": 3813047,
+     "transport": "git-lfs media endpoint",
+     "mediaUrl": "https://media.githubusercontent.com/media/menloresearch/asimov-1/f71f3fe87ddfa6b7aac2a5cddeaad5dbbc19cca7/mechanical/ASV1/500/FABRICATION/MJF_PA12/ASV1_500_04C.STEP"
+    },
+    "mechanical/ASV1/500/FABRICATION/MJF_PA12/ASV1_500_14C.STEP": {
+     "sha256": "a920cbc30d7c8d0a082a999dbbf0284d5b87e76bbbc9128251a60b9b7029425a",
+     "bytes": 3300105,
+     "transport": "git-lfs media endpoint",
+     "mediaUrl": "https://media.githubusercontent.com/media/menloresearch/asimov-1/f71f3fe87ddfa6b7aac2a5cddeaad5dbbc19cca7/mechanical/ASV1/500/FABRICATION/MJF_PA12/ASV1_500_14C.STEP"
+    },
+    "mechanical/ASV1/600/FABRICATION/MJF_PA12/ASV1_600_04C.STEP": {
+     "sha256": "e26eb9f3ebcd37e091fa173afeef6f394c8fba7e69ad8a2989d68f354086dfed",
+     "bytes": 3033915,
+     "transport": "git-lfs media endpoint",
+     "mediaUrl": "https://media.githubusercontent.com/media/menloresearch/asimov-1/f71f3fe87ddfa6b7aac2a5cddeaad5dbbc19cca7/mechanical/ASV1/600/FABRICATION/MJF_PA12/ASV1_600_04C.STEP"
+    },
+    "mechanical/ASV1/600/FABRICATION/MJF_PA12/ASV1_600_14C.STEP": {
+     "sha256": "8093617ae56b43f538ce0c7ca96760f8df49096d54c10ebce0c777a169557978",
+     "bytes": 2595979,
+     "transport": "git-lfs media endpoint",
+     "mediaUrl": "https://media.githubusercontent.com/media/menloresearch/asimov-1/f71f3fe87ddfa6b7aac2a5cddeaad5dbbc19cca7/mechanical/ASV1/600/FABRICATION/MJF_PA12/ASV1_600_14C.STEP"
+    }
+   }
+  },
+  {
+   "id": "humanoid-policy-viewer",
+   "repository": "https://github.com/menloresearch/humanoid-policy-viewer",
+   "commit": "0c2107805ec2a82c2788b7e2fdd06c7aaa8e18a8",
+   "committed": "2026-10-06T13:06:37+08:00",
+   "title": "Run policies from a local folder and refuse policies the viewer would run wrongly (#5)",
+   "why": "Browser policy baseline: checkpoint, training env.yaml, reference policy contract, runtime source and dependency lock.",
+   "license": "BSD-3-Clause (LICENSE); checkpoint folder model_aug_18_1 BSD-3-Clause per THIRD_PARTY_NOTICES.md; robot description CERN-OHL-S-2.0 (submodule)",
+   "files": {
+    "LICENSE": {
+     "sha256": "8862e981b2b0fdead92b8a9f0adefa8e1d0b9fd190da9567df880c9b5a3c9f3d",
+     "bytes": 1564
+    },
+    "THIRD_PARTY_NOTICES.md": {
+     "sha256": "31b6a4d34bd007c9d7cb37f67f2b77c960fb61a1c3b92fb352a65141890a889f",
+     "bytes": 2430
+    },
+    "README.md": {
+     "sha256": "d6d06134a57c95340a51a37c66ffa8f8020b3fae38181c376cd1eaaf17561f0c",
+     "bytes": 7006
+    },
+    "package.json": {
+     "sha256": "001eeff6bc61f5bcc3333570509cecc972cfd5e20ddef2a807b7efa8f7de8d0e",
+     "bytes": 1112
+    },
+    "package-lock.json": {
+     "sha256": "acc442f5a8b6dd7663f79ca5e7c3bbb8c6f7401345793df307b02cdbd02b33f7",
+     "bytes": 100416
+    },
+    "public/examples/checkpoints/asimov/reference_policy_config.json": {
+     "sha256": "68d5a781762e0334cf927399e6a170b05a84bdf0720656d50346debb04cbbc38",
+     "bytes": 4678
+    },
+    "public/examples/checkpoints/asimov/model_aug_18_1/env.yaml": {
+     "sha256": "5016e9fdec39a90bfe67b2a6ca634c9df5fcd821d4281b38a2e0dabc30df22eb",
+     "bytes": 62145
+    },
+    "public/examples/checkpoints/asimov/model_aug_18_1/policy_isaaclab_new.onnx": {
+     "sha256": "47f70691ecd5afda2933b2e6430d2375004c943552284172a2d7b28b84188a0c",
+     "bytes": 831809
+    },
+    "src/simulation/main.js": {
+     "sha256": "5177353a6d28a75b2b56d36b9237d4554ac8773e61cd45c2906cbdb434c85f23",
+     "bytes": 41934
+    },
+    "src/simulation/mujocoUtils.js": {
+     "sha256": "d6014e161522ca73a0622b25ef31ba3a3f851b2ed1a4958156797d07cd70963b",
+     "bytes": 25018
+    },
+    "src/simulation/policyRunner.js": {
+     "sha256": "037e70a460beb1ab4fe6b746c0f6bd9b2df0dd4a0ff00e63e10800ba0cabd5eb",
+     "bytes": 19733
+    },
+    "src/simulation/envPolicyConfig.js": {
+     "sha256": "59b5cbf797ef361a4c9f530552195a946a7c9a55bd11846f35902c33c928d793",
+     "bytes": 24250
+    },
+    "src/simulation/observationHelpers.js": {
+     "sha256": "f9e147a74ebd25ee592ab9772bf7e9d9117286c5c31f6dc2b74f7f1ab8d2ad43",
+     "bytes": 15510
+    },
+    "src/simulation/sceneOverlay.js": {
+     "sha256": "9d546d5faf806e467fe596eb6947b197cab38f653fc9f9b6113d6cd4686f43fe",
+     "bytes": 2382
+    },
+    "src/simulation/onnxHelper.js": {
+     "sha256": "dd50ea54b604d47826875ee9180d6fe74d3955fbc5bc3efb26de2b7430fbcb26",
+     "bytes": 3500
+    },
+    "src/simulation/policyState.js": {
+     "sha256": "c0d2b59886cded7661f9f9ac8ec36810eafffcd9af439c6cb2f0726081644ffc",
+     "bytes": 3979
+    },
+    "src/simulation/policyIO.js": {
+     "sha256": "c3d8cc2abb84defd8cc6ef4bc8577655a8e40a1a385735e3cd55f361b55b9a51",
+     "bytes": 2631
+    },
+    "src/simulation/benchmarkRunner.js": {
+     "sha256": "52f90f3e6e2e95c794bb6313ef82c14e7f2319d5fc58b2be431499c251676042",
+     "bytes": 18597
+    },
+    "benchmark/METHODOLOGY.md": {
+     "sha256": "5e6f6c93ec33de31ed162cb90d3971d439950c19b339c09eaf7536bbc1c262d5",
+     "bytes": 27835
+    },
+    "docs/policy-config.md": {
+     "sha256": "0af7ba17f6c7bbbb199d0fdb7432962842c42076ef5f02555923ed76271a7be8",
+     "bytes": 5075
+    }
+   }
+  },
+  {
+   "id": "cyclotron",
+   "repository": "https://github.com/menloresearch/cyclotron",
+   "commit": "d970f0633a8794506b6f2bc897eba8c4e04e1e63",
+   "committed": null,
+   "title": "HEAD of main at retrieval (2026-10-09)",
+   "why": "Training framework, referenced only; not installed or executed.",
+   "license": "BSD-3-Clause (GitHub API)",
+   "files": {}
+  },
+  {
+   "id": "docs.menlo.ai",
+   "repository": "https://docs.menlo.ai",
+   "commit": null,
+   "why": "Hardware overview, system tour, part organisation and assembly steps. Full-text export used so the exact text read is hashable.",
+   "license": "No licence stated on the documentation site (checked 2026-10-09). Text is paraphrased and linked, not copied.",
+   "files": {
+    "docs-llms.txt": {
+     "sha256": "1456527df116dc6695df5eef15366ca1b0017ee2655138a1d738cdf802a78d6c",
+     "bytes": 35384
+    },
+    "docs-llms-full.txt": {
+     "sha256": "ce14167fe6ea2b10b0ddd0f02871fd897bcde11b14b0a101ebae20f40c0faef8",
+     "bytes": 955087
+    }
+   },
+   "urls": [
+    "https://docs.menlo.ai/llms.txt",
+    "https://docs.menlo.ai/llms-full.txt"
+   ],
+   "retrievedAt": "2026-10-09T12:44:41Z"
+  }
+ ],
+ "userSupplied": [
+  {
+   "id": "bom-workbook",
+   "name": "Asimov 1 - Bill of Materials.xlsx",
+   "bytes": 791039,
+   "sha256": "5aedfcf9223ea6e4dd7ac8d98533ed66a75d1e63c22727d608f40614a70d3a90",
+   "identity": "Cover!B3:B4: BOM-ASV1-001, \"Public Release V1.1 – 2026\"; scope \"All parts for 1 robot\"",
+   "use": "Per-part quantity, material, finish and procurement facts are extracted with sheet+row provenance into src/data/bom.json. The workbook itself is not redistributed.",
+   "license": "Not stated. Menlo distributes the BOM through an email request form on docs.menlo.ai. Redistribution of extracted facts needs the owner's review before public release."
+  },
+  {
+   "id": "lab-screenshots",
+   "name": "Screenshot 2026-10-09 at 12.13.41 / 12.14.48 / 12.15.25 (.png)",
+   "sha256": [
+    "399c9f6249a0393759bcf64d5fcf8d67e656c29aea49665c5a3d23e378b0a186",
+    "8abf31d3548899a0fa751f8823ccf8dd3bd61cd6c3d8e9e5f0b09df5a0a775dd",
+    "f3aa74bca18e45aff51eb7246ee6bb5e03c41268d34340b0729ba6364da341d3"
+   ],
+   "use": "Appearance reference for the original workshop scene and the photo-matched shell hue. Not shipped.",
+   "license": "Third-party video frames; not redistributed."
+  }
+ ]
+}

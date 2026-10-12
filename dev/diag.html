@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CAD registration diagnostic</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #20232a; color: #ddd; font: 13px system-ui; }
+      #c { width: 100%; height: 100%; display: block; }
+      #hud { position: fixed; left: 12px; top: 12px; background: rgba(0,0,0,.6); padding: 8px 10px; border-radius: 6px; }
+      label { display: block; }
+    </style>
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+    <div id="hud"></div>
+    <script type="module">
+      import * as THREE from 'three';
+      import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+      import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+      const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+      renderer.setPixelRatio(devicePixelRatio);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(35, 1, 0.01, 50);
+      camera.position.set(2.2, 1.0, 1.4);
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.target.set(0, 0.65, 0);
+      scene.background = new THREE.Color('#e8e6e1'); scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 2.2));
+      const dl = new THREE.DirectionalLight(0xffffff, 1.5); dl.position.set(2, 3, 1); scene.add(dl);
+      const root = new THREE.Group(); root.rotation.x = -Math.PI / 2; scene.add(root);
+      const params = new URLSearchParams(location.search);
+      const gltf = await new GLTFLoader().loadAsync(params.get('file') ?? '/tools/.cache/cad/diag.glb');
+      root.add(gltf.scene);
+      const hud = document.getElementById('hud');
+      for (const child of gltf.scene.children) {
+        const group = child.name.split(':')[0];
+        if (!hud.querySelector(`[data-g="${group}"]`)) {
+          const l = document.createElement('label');
+          l.dataset.g = group;
+          l.innerHTML = `<input type="checkbox" checked> ${group}`;
+          l.querySelector('input').onchange = (e) => gltf.scene.children.filter((c) => c.name.startsWith(group + ':')).forEach((c) => (c.visible = e.target.checked));
+          hud.appendChild(l);
+        }
+      }
+      window.__diag = { scene, camera, controls, gltf, renderer, capture: async (name) => { controls.update(); renderer.render(scene, camera); const url = renderer.domElement.toDataURL('image/jpeg', 0.9); return (await fetch('/__capture?name=' + name, { method: 'POST', body: url })).text(); } };
+      function resize() { renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); }
+      addEventListener('resize', resize); resize();
+      renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
+    </script>
+  </body>
+</html>
