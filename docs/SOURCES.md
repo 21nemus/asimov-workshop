@@ -15,6 +15,7 @@ Retrieved 2026-10-09.
 | `asimov-1@viewer-submodule` | same repository | `35ae7b3581ce36762bfddb00b8fc5e7c957ee7fa` (2026-09-28) | Simulation model `sim-model/` (MJCF `asimov_1.xml`, URDF, 25 STL meshes): the exact revision the policy viewer uses. `sim-model/` is byte-identical at `f71f3fe`. |
 | `humanoid-policy-viewer` | https://github.com/menloresearch/humanoid-policy-viewer | `0c2107805ec2a82c2788b7e2fdd06c7aaa8e18a8` (2026-10-06) | Walking policy checkpoint `asimov/model_aug_18_1` (ONNX), its training `env.yaml`, the reference policy JSON, the browser control loop, dependency lock |
 | `cyclotron` | https://github.com/menloresearch/cyclotron | `d970f0633a8794506b6f2bc897eba8c4e04e1e63` | Training framework, referenced only (not installed or run) |
+| `menlo-sdk` | https://github.com/menloresearch/menlo-sdk | `7683801135a39c5881701646119e83397274c3db` (2026-10-12) | Read-only review only (not installed, never connected): firmware facts quoted in `docs/SDK_REVIEW.md` and `docs/DISCREPANCIES.md` (Apache-2.0) |
 | `docs.menlo.ai` | https://docs.menlo.ai (full-text export `llms-full.txt`) | SHA-256 `ce14167f…` (retrieved 2026-10-09) | Assembly steps, part organisation, joint and actuator tables, ankle mechanism mapping |
 
 ## Maintainer-supplied material

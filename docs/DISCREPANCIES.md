@@ -51,6 +51,18 @@ viewer `0c21078`, docs export retrieved 2026-10-09, BOM "Public Release V1.1 –
 | A4 | The docs do not state the actuators' positive direction ("predefined"). With angles measured positive about the forward axis, the signs of the docs' formula hold for both legs. | tests/ankle.test.ts | Stated in the microscope |
 | A5 | Docs step 12 specifies M4x20 socket bolts at the foot pivot; the CAD models M4x25 there. | lessons, CAD | BUILD step 12 shows the CAD part and notes the difference |
 
+## Simulation vs the real robot (Menlo's SDK, read-only review)
+
+Source: `menloresearch/menlo-sdk@7683801` (Apache-2.0), whose comments cite Menlo's firmware.
+Details in `docs/SDK_REVIEW.md`.
+
+| # | Finding | Evidence | Shown as |
+| --- | --- | --- | --- |
+| H1 | **Walking speed.** The robot's firmware clamps velocity to 0.4 m/s forward and sideways and 0.8 rad/s turning. The policy was trained on vx −0.6 to 0.8 m/s, and the upstream viewer's baseline (our TEST preset and WATCH scenario) walks at 0.5 m/s. The docs' Robot Control page gives a wider envelope (±1.0 m/s, ±1.5 rad/s) than the firmware cap the SDK states. | SDK `_command.py`, REFERENCE safety model; env.yaml; docs | Not yet stated in TEST (proposed text change) |
+| H2 | **Falls on the robot vs in the viewer.** The firmware raises `FALL_DETECTED` (a critical alert) and latches DAMP, in which every actuator is compliant, until the firmware restarts; the SDK places the fall trip at projected gravity z above −0.5 (about 60°). The viewer, and our faithful TEST, switch to a soft hold (kp 10, kd 3) past about 80° and reset on demand. | SDK `_state.py`, docs Robot Control; viewer `main.js` | TEST says "a safety hold, not a learned recovery"; the hardware difference is not yet stated (proposed) |
+| A6 | **Ankle constants confirmed.** The firmware maps ankle pitch and roll to actuators with A = 2.02·pitch − 0.8·roll and B = −2.02·pitch − 0.8·roll. Our CAD measurement gives 2.019 and 0.800 with the same signs. The firmware uses this linear map, so the exact-closure deviation in A3 is a real tracking difference on the robot. | SDK `robots.py` citing firmware `policy_thread.c` (2026-09-28); `tools/measure-ankle.mjs` | Microscope shows the CAD values; the firmware citation is proposed |
+| A7 | **Actuator order.** Firmware reports 25 actuators in the order legs, left arm, right arm, waist, neck; the policy and MJCF use legs, waist, right arm, left arm (23, neck locked). Ankles are reported as motors A/B, not pitch/roll. | SDK `robots.py`, docs actuator map; `contract.json` | Mapping table in `docs/SDK_REVIEW.md` |
+
 ## Bill of materials
 
 | # | Finding | Evidence | Shown as |

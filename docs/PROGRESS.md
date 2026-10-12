@@ -45,6 +45,14 @@ ARCHITECTURE, TEST_REPORT, this file.
 - **Support**: `src/config/support.ts`, disabled and empty, guarded renderer, tests.
 - **Licences**: `LICENSE` (MIT, original code), `public/licenses/` full texts, register.
 
+### SDK review (2026-10-12, read-only)
+`docs/SDK_REVIEW.md`: Menlo's Python SDK (`menlo-sdk@7683801`, Apache-2.0) compared with the
+workshop. Nothing installed or connected. Key facts: firmware ankle constants 2.02 / 0.8 confirm our
+CAD levers; firmware caps walking at 0.4 m/s (our TEST preset is 0.5); real falls latch a limp DAMP;
+25 firmware actuators vs our 23 joints (name map in the review). Proposed text changes and the
+future Real Robot Replay are **awaiting the maintainer's approval**. The viewer moved past our pin
+(`e115f35`, main.js rewritten): re-verify before claiming parity with the latest viewer.
+
 ### Next (in order)
 1. Decisions needed from the maintainer (see the final report and LICENSES.md "REVIEW"): BOM
    redistribution, sim-model licence reading, docs-derived data, repository and licence setup.
