@@ -11,6 +11,9 @@ run from a shell in the background (the shared `.claude/launch.json` is not edit
 pane's preview tool reads that shared file, so it cannot start this project). The upstream
 viewer baseline runs from `.reference-cache/viewer` on port 5182.
 
+GitHub: private repo `21nemus/asimov-workshop` (branch `main`). Deployment is manual only:
+`.github/workflows/pages.yml` has no push trigger while release blockers are open.
+
 All four areas and the tour work in dev and in the production build. `npm test`: 39 pass.
 `npm run build`: clean, 25 MB `dist/`. Docs complete: README, SOURCES, LICENSES, DISCREPANCIES,
 ARCHITECTURE, TEST_REPORT, this file.

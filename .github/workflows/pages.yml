@@ -2,10 +2,14 @@
 # The robot meshes, physics model and policy in public/ are committed, so CI downloads nothing upstream
 # (the two tests that compare against the upstream viewer harness skip when tools/.cache/ is absent).
 # Action versions match the sibling jumper-lab workflow, which is known to deploy.
-name: Deploy to GitHub Pages
+#
+# DEPLOYMENT IS MANUAL ONLY while release blockers are open (maintainer decision, 2026-10-12):
+# pushes to main do not run this workflow. To publish later, either start it from the Actions tab
+# ("Run workflow") or restore the push trigger:
+#   push:
+#     branches: [main]
+name: Deploy to GitHub Pages (manual)
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
