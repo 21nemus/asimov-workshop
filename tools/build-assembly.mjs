@@ -22,11 +22,16 @@ const MODULES = [
   { id: 'torso', slug: 'torso-module', label: 'Torso and head', prefix: '100' },
 ];
 
-// ---- index: step titles and URLs per module, in documented order ----
+// ---- index: step titles, group titles and URLs per module, in documented order ----
+// A group is the nearest unlinked bullet above a step. Its title can change while the URL slug
+// stays (2026-10 docs: "Complete Left Leg Review" became "Left Leg Verification").
 const entries = [];
+let groupTitle = null;
 for (const line of INDEX.split('\n')) {
+  const g = line.match(/^\s*- ([^[\]]+?)(?::\s.*)?$/);
+  if (g) groupTitle = g[1].trim();
   const m = line.match(/\[(Step \d+: [^\]]+)\]\((\/asimov\/1\/build\/assembly-steps\/([^/]+)\/([^/]+)\/step-(\d+))\)/);
-  if (m) entries.push({ title: m[1], path: m[2], moduleSlug: m[3], groupSlug: m[4], n: Number(m[5]) });
+  if (m) entries.push({ title: m[1], path: m[2], moduleSlug: m[3], groupSlug: m[4], groupTitle, n: Number(m[5]) });
 }
 
 // ---- full text: split into pages by top-level heading ----
@@ -87,7 +92,7 @@ const modules = MODULES.map((mod) => {
       id: `${mod.id}/${String(e.n).padStart(2, '0')}`,
       n: e.n,
       title: e.title.replace(/^Step \d+: /, ''),
-      group: e.groupSlug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()).replace(/\bAnd\b/g, 'and'),
+      group: e.groupTitle ? e.groupTitle.replace(/\s*[+&]\s*/g, ' and ') : e.groupSlug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()).replace(/\bAnd\b/g, 'and'),
       url: `https://docs.menlo.ai${e.path}`,
       ...parsed,
       requires: e.n > 1 ? [`${mod.id}/${String(e.n - 1).padStart(2, '0')}`] : [],

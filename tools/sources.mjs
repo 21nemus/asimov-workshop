@@ -60,7 +60,7 @@ const SOURCES = [
   {
     id: 'docs.menlo.ai', repository: 'https://docs.menlo.ai', commit: null,
     why: 'Hardware overview, system tour, part organisation and assembly steps. Full-text export used so the exact text read is hashable.',
-    license: 'No licence stated on the documentation site (checked 2026-10-09). Text is paraphrased and linked, not copied.',
+    license: 'No licence stated on the documentation site (checked 2026-10-09 and 2026-10-21). Text is paraphrased and linked, not copied.',
     dir: '.', files: ['docs-llms.txt', 'docs-llms-full.txt'], urls: ['https://docs.menlo.ai/llms.txt', 'https://docs.menlo.ai/llms-full.txt'],
   },
 ];
@@ -86,7 +86,7 @@ function gitBlobSha256(repoDir, commit, path) {
 }
 
 function pin() {
-  const out = { generated: new Date().toISOString(), retrieved: '2026-10-09', note: 'Hashes are SHA-256 of the exact bytes read from the upstream revision.', sources: [], userSupplied: USER_SUPPLIED };
+  const out = { generated: new Date().toISOString(), retrieved: '2026-10-09 (repositories); 2026-10-21 (docs.menlo.ai export)', note: 'Hashes are SHA-256 of the exact bytes read from the upstream revision.', sources: [], userSupplied: USER_SUPPLIED };
   for (const s of SOURCES) {
     const entry = { ...s, files: {} };
     delete entry.dir; delete entry.gitObjects; delete entry.lfs;

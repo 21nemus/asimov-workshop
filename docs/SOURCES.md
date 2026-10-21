@@ -5,7 +5,11 @@ revision. `references/pins.json` records the SHA-256 of every file read (62 file
 repositories plus the docs export). `npm run sources:verify` re-hashes a local copy against it
 and `npm run sources:fetch` restores the pinned files into `.reference-cache/`.
 
-Retrieved 2026-10-09.
+Repositories retrieved 2026-10-09. Docs export re-pinned 2026-10-21 after Menlo relaunched the
+User Manual (what changed: `docs/DISCREPANCIES.md`, D1–D3). On 2026-10-21 `asimov-1` and
+`menlo-sdk` were still at the pinned revisions; `humanoid-policy-viewer` was at `a90090b`, three
+commits past our pin (its asimov checkpoint and `env.yaml` unchanged, `main.js` and other runtime
+files changed), and `cyclotron` at `870c161`.
 
 ## Pinned sources
 
@@ -16,7 +20,7 @@ Retrieved 2026-10-09.
 | `humanoid-policy-viewer` | https://github.com/menloresearch/humanoid-policy-viewer | `0c2107805ec2a82c2788b7e2fdd06c7aaa8e18a8` (2026-10-06) | Walking policy checkpoint `asimov/model_aug_18_1` (ONNX), its training `env.yaml`, the reference policy JSON, the browser control loop, dependency lock |
 | `cyclotron` | https://github.com/menloresearch/cyclotron | `d970f0633a8794506b6f2bc897eba8c4e04e1e63` | Training framework, referenced only (not installed or run) |
 | `menlo-sdk` | https://github.com/menloresearch/menlo-sdk | `7683801135a39c5881701646119e83397274c3db` (2026-10-12) | Read-only review only (not installed, never connected): firmware facts quoted in `docs/SDK_REVIEW.md` and `docs/DISCREPANCIES.md` (Apache-2.0) |
-| `docs.menlo.ai` | https://docs.menlo.ai (full-text export `llms-full.txt`) | SHA-256 `ce14167f…` (retrieved 2026-10-09) | Assembly steps, part organisation, joint and actuator tables, ankle mechanism mapping |
+| `docs.menlo.ai` | https://docs.menlo.ai (full-text export `llms-full.txt`) | SHA-256 `7c7ac81c…` (retrieved 2026-10-21; first pin `ce14167f…`, 2026-10-09) | Assembly steps, part organisation, joint and actuator tables, ankle mechanism mapping (the Mechanical System Tour page carries Menlo's "update in progress" notice, see D1) |
 
 ## Maintainer-supplied material
 

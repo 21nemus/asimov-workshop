@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-09T13:06:41.757Z",
- "retrieved": "2026-10-09",
+ "generated": "2026-10-21T08:03:55.070Z",
+ "retrieved": "2026-10-09 (repositories); 2026-10-21 (docs.menlo.ai export)",
  "note": "Hashes are SHA-256 of the exact bytes read from the upstream revision.",
  "sources": [
   {
@@ -294,22 +294,22 @@
    "repository": "https://docs.menlo.ai",
    "commit": null,
    "why": "Hardware overview, system tour, part organisation and assembly steps. Full-text export used so the exact text read is hashable.",
-   "license": "No licence stated on the documentation site (checked 2026-10-09). Text is paraphrased and linked, not copied.",
+   "license": "No licence stated on the documentation site (checked 2026-10-09 and 2026-10-21). Text is paraphrased and linked, not copied.",
    "files": {
     "docs-llms.txt": {
-     "sha256": "1456527df116dc6695df5eef15366ca1b0017ee2655138a1d738cdf802a78d6c",
-     "bytes": 35384
+     "sha256": "fa658556e7bc51840d5e2243ae0e4e18ae2a36c7204f4fd9d4effecf48aef69e",
+     "bytes": 35677
     },
     "docs-llms-full.txt": {
-     "sha256": "ce14167fe6ea2b10b0ddd0f02871fd897bcde11b14b0a101ebae20f40c0faef8",
-     "bytes": 955087
+     "sha256": "7c7ac81cf1432b3a8118ad4ca5026dd36160ac6fd3341ac533040bf350d025b1",
+     "bytes": 976320
     }
    },
    "urls": [
     "https://docs.menlo.ai/llms.txt",
     "https://docs.menlo.ai/llms-full.txt"
    ],
-   "retrievedAt": "2026-10-09T12:44:41Z"
+   "retrievedAt": "2026-10-21T07:54:44Z"
   }
  ],
  "userSupplied": [

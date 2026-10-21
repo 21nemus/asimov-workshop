@@ -1,8 +1,8 @@
 {
  "source": {
   "origin": "https://docs.menlo.ai (llms.txt + llms-full.txt)",
-  "sha256": "ce14167fe6ea2b10b0ddd0f02871fd897bcde11b14b0a101ebae20f40c0faef8",
-  "retrievedAt": "2026-10-09T12:44:41Z",
+  "sha256": "7c7ac81cf1432b3a8118ad4ca5026dd36160ac6fd3341ac533040bf350d025b1",
+  "retrievedAt": "2026-10-21T07:54:44Z",
   "note": "Step titles, part numbers, counts and URLs are extracted; instruction text is linked, not copied."
  },
  "modules": [
@@ -765,8 +765,8 @@
     {
      "id": "left-leg/14",
      "n": 14,
-     "title": "Complete the Left Leg Module",
-     "group": "Complete Left Leg Review",
+     "title": "Left Leg Verification",
+     "group": "Left Leg Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/complete-left-leg-review/step-14",
      "parts": [],
      "fasteners": [],
@@ -1538,8 +1538,8 @@
     {
      "id": "right-leg/14",
      "n": 14,
-     "title": "Complete the Right Leg Module",
-     "group": "Complete Right Leg Review",
+     "title": "Right Leg Verification",
+     "group": "Right Leg Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/complete-right-leg-review/step-14",
      "parts": [],
      "fasteners": [],
@@ -2098,8 +2098,8 @@
     {
      "id": "pelvis/09",
      "n": 9,
-     "title": "Complete the Pelvis Module",
-     "group": "Final Review",
+     "title": "Pelvis Verification",
+     "group": "Pelvis Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/final-review/step-9",
      "parts": [],
      "fasteners": [],
@@ -2818,8 +2818,8 @@
     {
      "id": "left-arm/14",
      "n": 14,
-     "title": "Complete the Left Arm Module",
-     "group": "Final Assembly",
+     "title": "Left Arm Verification",
+     "group": "Left Arm Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/final-assembly/step-14",
      "parts": [],
      "fasteners": [],
@@ -3538,8 +3538,8 @@
     {
      "id": "right-arm/14",
      "n": 14,
-     "title": "Complete the Right Arm Module",
-     "group": "Final Assembly",
+     "title": "Right Arm Verification",
+     "group": "Right Arm Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/final-assembly/step-14",
      "parts": [],
      "fasteners": [],
@@ -3708,6 +3708,16 @@
        "name": "1000 mm Ethernet cable",
        "count": 1,
        "countNote": null
+      },
+      {
+       "name": "1000 mm XT30-Male to XT30-Female power cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "300 mm single-ended JST-XH cable",
+       "count": 1,
+       "countNote": null
       }
      ],
      "consumables": [
@@ -3755,6 +3765,11 @@
      "consumables": [
       {
        "name": "50 mm wire",
+       "count": 2,
+       "countNote": null
+      },
+      {
+       "name": "WAGO connector",
        "count": 2,
        "countNote": null
       },
@@ -4148,6 +4163,21 @@
      "requires": [
       "torso/09"
      ]
+    },
+    {
+     "id": "torso/11",
+     "n": 11,
+     "title": "Torso Verification",
+     "group": "Torso Verification",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/final-verification/step-11",
+     "parts": [],
+     "fasteners": [],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "requires": [
+      "torso/10"
+     ]
     }
    ]
   }
@@ -4156,7 +4186,7 @@
   "title": "Finish Assembly",
   "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/finish-assembly",
   "requires": [
-   "torso/10"
+   "torso/11"
   ]
  }
 }

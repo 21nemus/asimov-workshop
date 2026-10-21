@@ -223,7 +223,7 @@ export class BuildMode implements Mode {
       ...this.stepContents(sp),
       sectionTitle('All steps'),
       this.stepList(),
-      h('p', { class: 'fine' }, 'Parts, quantities and order follow docs.menlo.ai (retrieved 2026-10-09); the shapes and positions come from the CAD at f71f3fe. Where the two disagree, both are stated.'),
+      h('p', { class: 'fine' }, 'Parts, quantities and order follow docs.menlo.ai (retrieved 2026-10-21); the shapes and positions come from the CAD at f71f3fe. Where the two disagree, both are stated.'),
     );
   }
 

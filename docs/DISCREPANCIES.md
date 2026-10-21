@@ -5,7 +5,9 @@ entry says what was found, where, and what ASIMOV WORKSHOP shows. Nothing here i
 silently: the app shows both values, or the one the running code uses, and says which.
 
 Revisions: CAD and repository `asimov-1@f71f3fe`, simulation model `asimov-1@35ae7b3`, policy
-viewer `0c21078`, docs export retrieved 2026-10-09, BOM "Public Release V1.1 – 2026".
+viewer `0c21078`, docs export retrieved 2026-10-21 (re-pinned; first pin 2026-10-09), BOM "Public
+Release V1.1 – 2026". Every docs-based row below was re-checked against the 2026-10-21 export and
+still holds.
 
 ## Simulation and policy
 
@@ -62,6 +64,18 @@ Details in `docs/SDK_REVIEW.md`.
 | H2 | **Falls on the robot vs in the viewer.** The firmware raises `FALL_DETECTED` (a critical alert) and latches DAMP, in which every actuator is compliant, until the firmware restarts; the SDK places the fall trip at projected gravity z above −0.5 (about 60°). The viewer, and our faithful TEST, switch to a soft hold (kp 10, kd 3) past about 80° and reset on demand. | SDK `_state.py`, docs Robot Control; viewer `main.js` | TEST says "a safety hold, not a learned recovery"; the hardware difference is not yet stated (proposed) |
 | A6 | **Ankle constants confirmed.** The firmware maps ankle pitch and roll to actuators with A = 2.02·pitch − 0.8·roll and B = −2.02·pitch − 0.8·roll. Our CAD measurement gives 2.019 and 0.800 with the same signs. The firmware uses this linear map, so the exact-closure deviation in A3 is a real tracking difference on the robot. | SDK `robots.py` citing firmware `policy_thread.c` (2026-09-28); `tools/measure-ankle.mjs` | Microscope shows the CAD values; the firmware citation is proposed |
 | A7 | **Actuator order.** Firmware reports 25 actuators in the order legs, left arm, right arm, waist, neck; the policy and MJCF use legs, waist, right arm, left arm (23, neck locked). Ankles are reported as motors A/B, not pitch/roll. | SDK `robots.py`, docs actuator map; `contract.json` | Mapping table in `docs/SDK_REVIEW.md` |
+
+## Docs revision (relaunched User Manual, re-pinned 2026-10-21)
+
+Menlo announced the new manual on 2026-10-19. Export SHA-256 `ce14167f…` (2026-10-09) became
+`7c7ac81c…` (2026-10-21); 86 of 174 pages changed, mostly photos, list formatting and a
+threadlocker note on many steps.
+
+| # | Finding | Evidence | Shown as |
+| --- | --- | --- | --- |
+| D1 | **Joint table source flagged as outdated.** The Mechanical System Tour page now says its images and descriptions from "Structural Architecture" onward are outdated and being updated (older illustrations show actuated toes). That section holds the actuator table, the joint limits and the parallel-ankle mapping behind J1–J5 and A1–A4. The extracted values are identical in both exports. | docs Mechanical System Tour, `tools/build-joint-specs.mjs` output unchanged | Still SOURCE SPEC; not yet stated in the app. Re-check when Menlo publishes the update |
+| D2 | **Assembly steps.** The last step of both legs, the pelvis and both arms is now "… Verification" (a video check, no parts; same URLs). The torso gains Step 11 "Torso Verification", so it has 11 steps. Torso step 3 lists two more cables (1000 mm XT30 power cable, 300 mm JST-XH speaker cable) and step 4 two WAGO connectors. Part numbers, actuator IDs and fastener counts are unchanged. | `src/data/assembly.json`, `lessons.json` | BUILD follows the new export |
+| D3 | **Threadlocker.** The docs changed LOCTITE 222 (low strength) to 242 (medium strength), matching the BOM, which already listed 242 ("Change Loctite 222 for 242"). New rule: no more than 10 hours of operation in total without threadlocker. | docs Tools & Supplies, Assembly Conventions, Finish Assembly; BOM | Not shown; BUILD links to the docs for instructions |
 
 ## Bill of materials
 

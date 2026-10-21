@@ -45,6 +45,20 @@ ARCHITECTURE, TEST_REPORT, this file.
 - **Support**: `src/config/support.ts`, disabled and empty, guarded renderer, tests.
 - **Licences**: `LICENSE` (MIT, original code), `public/licenses/` full texts, register.
 
+### Docs re-pin (2026-10-21)
+Menlo relaunched the User Manual (announced 2026-10-19). The docs export was re-pinned
+(`7c7ac81c…`, retrieved 2026-10-21T07:54:44Z; the 2026-10-09 export and its page split are kept
+in `.reference-cache/docs@2026-10-09/` for diffing) and `assembly.json`, `lessons.json` and
+`joint-specs.json` regenerated. Effect: joint table and ankle limits identical; five final steps
+renamed "… Verification"; torso Step 11 "Torso Verification" added (video only, no parts); two
+cables and two WAGO connectors added to torso steps 3 and 4. Menlo now flags the Mechanical System
+Tour page (our joint-table source) as partly outdated. Details: `docs/DISCREPANCIES.md` D1–D3.
+`tools/build-assembly.mjs` now takes step group labels from the docs index titles ("+" and "&"
+written as "and") instead of the URL slugs, because Menlo renamed groups without changing URLs.
+BUILD checked in the browser: torso shows 11 steps, Step 11 is the module-complete step.
+Same day: `asimov-1` and `menlo-sdk` unchanged; the viewer is now at `a90090b` (re-verification
+target for the open parity item).
+
 ### SDK review (2026-10-12, read-only)
 `docs/SDK_REVIEW.md`: Menlo's Python SDK (`menlo-sdk@7683801`, Apache-2.0) compared with the
 workshop. Nothing installed or connected. Key facts: firmware ankle constants 2.02 / 0.8 confirm our

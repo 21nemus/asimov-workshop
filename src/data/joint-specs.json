@@ -2,7 +2,7 @@
  "source": {
   "origin": "https://docs.menlo.ai/asimov/1 (hardware: joints and actuators)",
   "export": "docs-llms-full.txt",
-  "sha256": "ce14167fe6ea2b10b0ddd0f02871fd897bcde11b14b0a101ebae20f40c0faef8",
+  "sha256": "7c7ac81cf1432b3a8118ad4ca5026dd36160ac6fd3341ac533040bf350d025b1",
   "note": "Copied as written. The ankle actuator rows carry joint-space pitch (A) and roll (B) torques; see the ankle mechanism."
  },
  "actuators": [

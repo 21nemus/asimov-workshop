@@ -717,8 +717,8 @@
     {
      "id": "left-leg/14",
      "n": 14,
-     "title": "Complete the Left Leg Module",
-     "group": "Complete Left Leg Review",
+     "title": "Left Leg Verification",
+     "group": "Left Leg Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-leg-module/complete-left-leg-review/step-14",
      "requires": [
       "left-leg/13"
@@ -1526,8 +1526,8 @@
     {
      "id": "right-leg/14",
      "n": 14,
-     "title": "Complete the Right Leg Module",
-     "group": "Complete Right Leg Review",
+     "title": "Right Leg Verification",
+     "group": "Right Leg Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-leg-module/complete-right-leg-review/step-14",
      "requires": [
       "right-leg/13"
@@ -2169,8 +2169,8 @@
     {
      "id": "pelvis/09",
      "n": 9,
-     "title": "Complete the Pelvis Module",
-     "group": "Final Review",
+     "title": "Pelvis Verification",
+     "group": "Pelvis Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/pelvis-module/final-review/step-9",
      "requires": [
       "pelvis/08"
@@ -2928,8 +2928,8 @@
     {
      "id": "left-arm/14",
      "n": 14,
-     "title": "Complete the Left Arm Module",
-     "group": "Final Assembly",
+     "title": "Left Arm Verification",
+     "group": "Left Arm Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/left-arm-module/final-assembly/step-14",
      "requires": [
       "left-arm/13"
@@ -3716,8 +3716,8 @@
     {
      "id": "right-arm/14",
      "n": 14,
-     "title": "Complete the Right Arm Module",
-     "group": "Final Assembly",
+     "title": "Right Arm Verification",
+     "group": "Right Arm Verification",
      "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/right-arm-module/final-assembly/step-14",
      "requires": [
       "right-arm/13"
@@ -3895,6 +3895,16 @@
        "name": "1000 mm Ethernet cable",
        "count": 1,
        "countNote": null
+      },
+      {
+       "name": "1000 mm XT30-Male to XT30-Female power cable",
+       "count": 1,
+       "countNote": null
+      },
+      {
+       "name": "300 mm single-ended JST-XH cable",
+       "count": 1,
+       "countNote": null
       }
      ],
      "consumables": [
@@ -3943,6 +3953,11 @@
      "consumables": [
       {
        "name": "50 mm wire",
+       "count": 2,
+       "countNote": null
+      },
+      {
+       "name": "WAGO connector",
        "count": 2,
        "countNote": null
       },
@@ -4286,6 +4301,22 @@
       "M4x20 Flat bolt: docs 2, CAD 0 found near this step.",
       "M4x8 Flat bolt: docs 16, CAD 0 found near this step."
      ]
+    },
+    {
+     "id": "torso/11",
+     "n": 11,
+     "title": "Torso Verification",
+     "group": "Torso Verification",
+     "url": "https://docs.menlo.ai/asimov/1/build/assembly-steps/torso-module/final-verification/step-11",
+     "requires": [
+      "torso/10"
+     ],
+     "parts": [],
+     "fastenerGroups": [],
+     "cables": [],
+     "consumables": [],
+     "carried": [],
+     "notes": []
     }
    ],
    "prepared": [
