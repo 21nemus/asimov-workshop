@@ -15,6 +15,7 @@ import { HINGES, KINEMATICS } from '../../robot/kinematics.ts';
 import { TRAINED_DEFAULT_POSE } from '../../robot/poses.ts';
 import { HOME } from '../../scene/layout.ts';
 import { benchLegPose, type AnkleMicroscope } from '../../understand/ankle-microscope.ts';
+import { meshFromNode } from '../../understand/node-mesh.ts';
 import type { Side } from '../../understand/ankle-linkage.ts';
 import { applyExplode, explodeVectors } from '../../robot/explode.ts';
 import specs from '../../data/joint-specs.json' with { type: 'json' };
@@ -219,7 +220,7 @@ export class UnderstandMode implements Mode {
         if (!g.mesh) continue;
         const src = byFile.get(key(KINEMATICS.meshFiles[g.mesh]));
         if (!src) continue;
-        const mesh = new Mesh(src.geometry, material);
+        const mesh = meshFromNode(src, material);
         mesh.castShadow = true;
         mesh.receiveShadow = true;
         const bodyName = KINEMATICS.bodies[g.body].name;

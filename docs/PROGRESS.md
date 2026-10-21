@@ -45,6 +45,15 @@ ARCHITECTURE, TEST_REPORT, this file.
 - **Support**: `src/config/support.ts`, disabled and empty, guarded renderer, tests.
 - **Licences**: `LICENSE` (MIT, original code), `public/licenses/` full texts, register.
 
+### Simulation model view fixed; promo video (2026-10-21)
+UNDERSTAND's "Simulation model" drew Menlo's MJCF links 10 to 25 times too large since v1: the
+compressed `sim-links.glb` keeps each mesh's dequantisation scale on its node and the view dropped
+it. Fixed in `src/understand/node-mesh.ts` with a regression test (see TEST_REPORT, Correction).
+A 45 s silent promo video (1920x1080) was recorded from the dev build by a frame-stepped
+headless-Chrome director: `tools/.cache/video/` (git-ignored) holds `record.mjs`, `director.js`
+and `asimov-workshop.mp4`. Re-render with `node tools/.cache/video/record.mjs` while
+`npx vite --port 5180` runs, then encode with ffmpeg (see the MP4 notes in that folder's scripts).
+
 ### SDK text changes, X links, repository link (2026-10-21)
 Maintainer tested locally ("working well") and approved the four SDK text changes (see
 `docs/SDK_REVIEW.md`, Status) and pushing the SDK review and docs re-pin commits (pushed). Added: X links

@@ -8,7 +8,7 @@ browser pane). Commands: `npm test` (Node test runner, TypeScript stripped), `np
 
 | Check | Result |
 | --- | --- |
-| `npm test` | **42 / 42 pass** (39 at v1; 3 firmware-fact tests added 2026-10-21) |
+| `npm test` | **44 / 44 pass** (39 at v1; 3 firmware-fact tests and 2 simulation-mesh tests added 2026-10-21) |
 | `npx tsc --noEmit` | clean |
 | `npm run build` (typecheck + Vite) | succeeds; 25 MB `dist/` (see sizes below) |
 | Upstream baseline reproduced in the browser, unmodified viewer | yes: stand, walk 0.5 m/s, 150 N push recovered |
@@ -74,6 +74,13 @@ parts with roles, fastener counts with status; hash updates per step.
 UNDERSTAND: explode, section (clip plane), simulation model (MJCF link meshes) and collision
 shapes, joint explorer (left knee moved to 1.2 rad: the foot moves back and up, checked
 numerically), ankle microscope.
+
+**Correction (2026-10-21):** the simulation model view was broken from v1 on. After mesh compression
+(`npm run robot:compress`) `sim-links.glb` stores quantised positions whose scale and offset sit on
+each node, and the view copied only the geometry, so every MJCF link was drawn 10 to 25 times too
+large. Found while recording the promo video; fixed by keeping the node transform
+(`src/understand/node-mesh.ts`, `tests/node-mesh.test.ts`) and checked in a rendered frame: the
+simulation body now stands at the robot's size, with the collision shapes on it.
 
 Ankle microscope: linkage closes visually in every motion; "Both" motion at pitch 0.30 rad:
 actuators +0.615 / -0.604 rad, docs rule off by 0.42° (pitch) and 0.09° (roll); "Actuator A
