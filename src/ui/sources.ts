@@ -4,6 +4,7 @@ import { h } from './dom.ts';
 import { icon, stamp } from './components.ts';
 import { BOM } from '../catalog/catalog.ts';
 import { SUPPORT, supportReady } from '../config/support.ts';
+import { LINKS } from '../config/links.ts';
 
 const a = (href: string, text: string) => h('a', { class: 'ext', href, target: '_blank', rel: 'noopener' }, text, icon('link'));
 
@@ -29,7 +30,8 @@ export function sourcesContent(): HTMLElement {
     h('p', null, stamp('APPROXIMATION'), ' a simplified model, valid only in the range stated.'),
     h('p', null, stamp('ILLUSTRATIVE'), ' shown to explain; not specified by any source.'),
     h('h3', null, 'This project'),
-    h('p', null, 'Original code and original workshop assets by @21nemus. The lab is inspired by Menlo’s lab, not a replica of it. See the repository’s docs/SOURCES.md, docs/LICENSES.md and docs/DISCREPANCIES.md for the full register.'),
+    source('ASIMOV WORKSHOP', ['Original code and original workshop assets by @21nemus. The code is MIT; files derived from Menlo’s releases keep their licences. The lab is inspired by Menlo’s lab, not a replica of it.', 'The repository’s docs/SOURCES.md, docs/LICENSES.md and docs/DISCREPANCIES.md hold the full register.'],
+      [[LINKS.repository, 'Source code on GitHub'], [LINKS.makerX, '@21nemus on X'], [LINKS.asimovX, '@asimovinc on X (Asimov 1)']]),
     supportReady() ? supportCard() : null,
   );
 }

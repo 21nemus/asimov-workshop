@@ -144,3 +144,11 @@ could compare with our browser timing in text, nothing more.
 Licensing: the SDK is Apache-2.0; citing its facts with attribution needs nothing more; copying
 code (for example the alert name table) would need the Apache-2.0 notice, compatible with our MIT
 code. Firmware facts are quoted from the SDK's comments, which cite private firmware files.
+
+## Status (2026-10-21)
+
+The maintainer approved the four UI text changes; they are in the app: the firmware velocity cap in
+TEST (note, band on the speed slider, "sim only" label), the real-robot fall behaviour in TEST's fall
+message, firmware IDs and names in the joint explorer (`src/catalog/firmware.ts`, checked against
+the docs' IDs by `tests/firmware.test.ts`), and the firmware ankle constants in the microscope and its
+sources. No SDK code is used; the features in the table above still need approval.

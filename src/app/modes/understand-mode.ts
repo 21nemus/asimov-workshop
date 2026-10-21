@@ -18,6 +18,7 @@ import { benchLegPose, type AnkleMicroscope } from '../../understand/ankle-micro
 import type { Side } from '../../understand/ankle-linkage.ts';
 import { applyExplode, explodeVectors } from '../../robot/explode.ts';
 import specs from '../../data/joint-specs.json' with { type: 'json' };
+import { FIRMWARE_ANKLE, SDK, firmwareActuators } from '../../catalog/firmware.ts';
 import type { AppContext, Mode, ModeId, ModeParams } from '../context.ts';
 import type { PartHit, PartInfo } from '../../robot/robot-model.ts';
 import type { PolicyContract } from '../../simulation/contract.ts';
@@ -328,6 +329,7 @@ export class UnderstandMode implements Mode {
       const idx = this.contract?.joints.indexOf(name) ?? -1;
       const simTorque = idx >= 0 ? this.contract!.pd.torqueLimit[idx] : null;
       const q = this.ctx.pose.joints[name] ?? 0;
+      const fw = firmwareActuators(name);
       const s = slider(jointLabel(name), { min: range[0], max: range[1], step: 0.005, value: q, format: (v) => `${v.toFixed(2)} rad (${deg(v)})`, onInput: (v) => this.ctx.pose.setJoint(name, v) });
       const differs = docRange && j.range && (Math.abs(docRange[0] - range[0]) > 0.006 || Math.abs(docRange[1] - range[1]) > 0.006);
       wrap.append(
@@ -339,6 +341,7 @@ export class UnderstandMode implements Mode {
             ['Docs range', docRange ? h('span', null, h('span', { class: 'mono' }, `${docRange[0].toFixed(2)} to ${docRange[1].toFixed(2)} rad`), ' ', stamp('SOURCE SPEC')) : 'not listed'],
             ['Axis', h('span', { class: 'mono' }, `${j.axis.map((v) => +v.toFixed(3)).join(' ')} (body frame)`)],
             ['Actuator', spec ? h('span', null, h('span', { class: 'mono' }, spec.model), ` · ${spec.ratedTorque} N·m rated, ${spec.peakTorque} N·m peak `, stamp('SOURCE SPEC')) : /ankle/.test(name) ? 'Two actuators through the ankle linkage' : 'not listed'],
+            ['Firmware ID', fw.length ? h('span', null, h('span', { class: 'mono' }, fw.map((a) => `${a.id} · ${a.name}`).join(', ')), ' ', stamp('SOURCE SPEC')) : 'not listed'],
             ['Sim torque limit', simTorque !== null ? h('span', null, h('span', { class: 'mono' }, `±${simTorque} N·m`), ' ', stamp('SIM VALUE')) : 'loading'],
           ]),
           differs ? h('p', { class: 'note note--warn' }, 'The documented range and the simulation model’s range differ. Both are shown as published.') : null,
@@ -359,7 +362,11 @@ export class UnderstandMode implements Mode {
         return b;
       })));
     }
-    wrap.append(h('p', { class: 'fine' }, 'The neck’s two joints are fixed in the simulation model (Menlo locks them for walking), so 23 of the robot’s 25 powered joints move here.'));
+    const neck = [...firmwareActuators('neck_yaw_joint'), ...firmwareActuators('neck_pitch_joint')].map((a) => `${a.id} · ${a.name}`).join(' and ');
+    wrap.append(
+      h('p', { class: 'fine' }, `The neck’s two joints are fixed in the simulation model, so 23 of the robot’s 25 powered joints move here. On the robot the neck is powered (firmware IDs ${neck}) and held locked while the walking policy runs.`),
+      h('p', { class: 'fine' }, `Firmware IDs and names: Menlo’s docs and the motor table quoted in the Menlo SDK (@ ${SDK.short}).`),
+    );
     return wrap;
   }
 
@@ -399,9 +406,10 @@ export class UnderstandMode implements Mode {
         ['Push rods', h('span', { class: 'mono' }, `A ${d.rodLengthMm.A.toFixed(1)} mm, B ${d.rodLengthMm.B.toFixed(1)} mm, ball to ball (bars 194 and 124 mm)`)],
         ['Cross axes', h('span', { class: 'mono' }, `${m.model.leg.ujoint.axisOffsetMm.toFixed(1)} mm apart, as in the simulation model`)],
         ['Lever ratios', h('span', { class: 'mono' }, `pitch ${d.jacobianAB_per_PR[0][0].toFixed(2)}, roll ${Math.abs(d.jacobianAB_per_PR[0][1]).toFixed(2)} (actuator rad per ankle rad)`)],
+        ['Robot firmware', h('span', null, h('span', { class: 'mono' }, `pitch ${FIRMWARE_ANKLE.kPitch}, roll ${FIRMWARE_ANKLE.kRoll}`), ' ', stamp('SOURCE SPEC'))],
       ]),
       h('p', { class: 'note note--sim' }, `Why it matters: two actuators rated 36 N·m peak, through these levers, give ${(d.jacobianAB_per_PR[0][0] * 72).toFixed(1)} N·m of pitch and ${(Math.abs(d.jacobianAB_per_PR[0][1]) * 72).toFixed(1)} N·m of roll. Menlo lists 145.4 and 57.6 N·m as the ankle’s joint-space peaks.`),
-      h('p', { class: 'note' }, 'In the simulation the ankle is two ideal joints the policy drives directly; on the robot, Menlo converts between joint angles and actuators A and B.'),
+      h('p', { class: 'note' }, `In the simulation the ankle is two ideal joints the policy drives directly. On the robot, the firmware converts between joint angles and actuators A and B with fixed ratios (A = ${FIRMWARE_ANKLE.kPitch}·pitch − ${FIRMWARE_ANKLE.kRoll}·roll, B = −${FIRMWARE_ANKLE.kPitch}·pitch − ${FIRMWARE_ANKLE.kRoll}·roll): a linear version of the linkage solved here, and the same levers this project measured on the CAD.`),
       h('p', { class: 'note note--warn' }, h('b', null, 'Approximation. '), 'Rigid links and ideal joints: no compliance, backlash or rod-end clearance. Limited to the documented ankle range (pitch ±0.35 rad, roll ±0.10 rad). Actuator angles are measured positive about the forward axis, zero in the CAD pose; Menlo does not publish its sign convention.'),
       h('div', { class: 'row' },
         button('Sources for this view', { icon: 'sources', onClick: () => this.ctx.ui.drawer.openWith('Ankle sources', ankleSources(this.side)) }),
@@ -476,6 +484,9 @@ function ankleSources(side: Side): HTMLElement {
     h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Mapping and limits ', stamp('SOURCE SPEC')),
       h('p', null, 'Menlo’s small-angle mapping (actuators A and B to pitch and roll) and the documented ankle range, pitch ±0.35 rad and roll ±0.10 rad.'),
       h('p', null, a('https://docs.menlo.ai/asimov/1/overview/system-tour/mechanical#parallel-ankle', 'Parallel ankle, docs.menlo.ai'))),
+    h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Robot firmware ', stamp('SOURCE SPEC')),
+      h('p', null, `The firmware maps ankle pitch and roll to actuators with A = ${FIRMWARE_ANKLE.kPitch}·pitch − ${FIRMWARE_ANKLE.kRoll}·roll and B = −${FIRMWARE_ANKLE.kPitch}·pitch − ${FIRMWARE_ANKLE.kRoll}·roll, quoted in the Menlo SDK from the firmware’s policy_thread.c. The CAD measurement above gives 2.019 and 0.800 with the same signs.`),
+      h('p', null, a(`${SDK.repo}/blob/${SDK.commit}/src/menlo/asimov/robots.py`, `Menlo SDK @ ${SDK.short}, robots.py`))),
     h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'In the simulation ', stamp('SIM VALUE')),
       h('p', null, 'The policy’s model drives ankle pitch and roll as two ideal joints (MJCF at asimov-1 @ 35ae7b3). The linkage shown here is explanatory and adds nothing to the physics in TEST.')),
     h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Model limits ', stamp('APPROXIMATION')),

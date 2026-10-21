@@ -8,7 +8,7 @@ browser pane). Commands: `npm test` (Node test runner, TypeScript stripped), `np
 
 | Check | Result |
 | --- | --- |
-| `npm test` | **39 / 39 pass** |
+| `npm test` | **42 / 42 pass** (39 at v1; 3 firmware-fact tests added 2026-10-21) |
 | `npx tsc --noEmit` | clean |
 | `npm run build` (typecheck + Vite) | succeeds; 25 MB `dist/` (see sizes below) |
 | Upstream baseline reproduced in the browser, unmodified viewer | yes: stand, walk 0.5 m/s, 150 N push recovered |

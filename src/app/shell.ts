@@ -4,6 +4,7 @@ import { button, Drawer, icon, Panel, toast } from '../ui/components.ts';
 import type { ModeId, Ui } from './context.ts';
 import type { IconName } from '../ui/icons.ts';
 import { sourcesContent } from '../ui/sources.ts';
+import { LINKS } from '../config/links.ts';
 
 const NAV: { id: ModeId; label: string; sub: string; icon: IconName; key: string }[] = [
   { id: 'build', label: 'BUILD', sub: 'assemble a leg', icon: 'build', key: 'B' },
@@ -43,10 +44,16 @@ export function createShell(root: HTMLElement, go: (m: ModeId) => void): Shell {
   }));
   const caption = h('div', { class: 'caption', role: 'status', 'aria-live': 'polite' });
   const hint = h('div', { class: 'hint' });
-  // Tab order: brand, Sources, areas, then the panel's content.
+  // The maker's and the robot maker's accounts on X, as on the Vibe A1 page.
+  const xLink = (href: string, handle: string, label: string) => h('a', { class: 'social__link', href, target: '_blank', rel: 'noopener', title: label, 'aria-label': label }, icon('x'), h('span', null, handle));
+  const social = h('div', { class: 'social' },
+    xLink(LINKS.makerX, '@21nemus', '@21nemus on X, who made this workshop'),
+    xLink(LINKS.asimovX, '@asimovinc', '@asimovinc on X, Asimov 1 by Menlo Research'),
+  );
+  // Tab order: brand, Sources, areas, then the panel's content, then the X links.
   root.append(brand, top, nav);
   const panel = new Panel(root, 'mode-panel');
-  root.append(caption, hint);
+  root.append(caption, hint, social);
   return {
     root, panel, drawer, nav, openSources,
     toast: (t) => toast(root, t),
@@ -66,7 +73,7 @@ export function createShell(root: HTMLElement, go: (m: ModeId) => void): Shell {
       }
     },
     setChromeHidden(hidden) {
-      for (const el of [brand, top, nav, hint]) el.style.visibility = hidden ? 'hidden' : '';
+      for (const el of [brand, top, nav, hint, social]) el.style.visibility = hidden ? 'hidden' : '';
     },
   };
 }

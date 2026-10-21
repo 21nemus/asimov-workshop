@@ -10,6 +10,7 @@ import type { JointReading, PerturbationRecord, SimulationAdapter } from '../../
 import type { PartHit } from '../../robot/robot-model.ts';
 import { mjToThree } from '../../utils/frames.ts';
 import { HOME, TEST_LANE } from '../../scene/layout.ts';
+import { FIRMWARE_MAX_VX } from '../../catalog/firmware.ts';
 
 /** The one perturbation TEST offers: upstream's benchmark push magnitude, through the pelvis CoM. */
 export const TEST_PUSH = { body: 'pelvis_link', dirWorld: [0, 1, 0] as [number, number, number], forceN: 150, durationS: 0.15, label: 'Lateral push through the pelvis centre of mass' };
@@ -204,7 +205,11 @@ export class TestMode implements Mode {
       const r = this.rootThree();
       void this.ctx.camera.goTo({ position: [r.x + TEST_SHOT.position[0] - HOME.x, TEST_SHOT.position[1], r.z + TEST_SHOT.position[2]], target: [r.x + 0.25, TEST_SHOT.target[1], r.z] }, 0.9).then(() => { if (this.follow && this.active) this.ctx.camera.follow(() => this.rootThree()); });
     } });
-    const vx = slider('Forward speed command', { min: limits.vx[0], max: limits.vx[1], step: 0.05, value: this.vx, format: (v) => `${v.toFixed(2)} m/s`, onInput: (v) => this.setVx(v) });
+    const aboveCap = (v: number) => Math.abs(v) > FIRMWARE_MAX_VX + 1e-9;
+    const vx = slider('Forward speed command', { min: limits.vx[0], max: limits.vx[1], step: 0.05, value: this.vx, format: (v) => `${v.toFixed(2)} m/s${aboveCap(v) ? ' · sim only' : ''}`, onInput: (v) => this.setVx(v) });
+    // The band marks what the robot's firmware accepts, on the same scale as the slider.
+    const at = (v: number) => (Math.min(Math.max(v, limits.vx[0]), limits.vx[1]) - limits.vx[0]) / (limits.vx[1] - limits.vx[0]);
+    vx.el.append(h('div', { class: 'slider__band', style: `--a:${at(-FIRMWARE_MAX_VX)};--b:${at(FIRMWARE_MAX_VX)}`, 'aria-hidden': 'true' }, h('i')));
     const presets = h('div', { class: 'row' },
       button('Stand still', { kind: 'quiet', onClick: () => { vx.set(0); this.setVx(0); } }),
       button('Walk 0.5 m/s', { kind: 'quiet', onClick: () => { vx.set(0.5); this.setVx(0.5); } }),
@@ -231,6 +236,7 @@ export class TestMode implements Mode {
       sectionTitle('Command', stamp('SIM VALUE')),
       vx.el, presets,
       h('p', { class: 'note note--sim' }, `Limited to the range the policy was trained on (env.yaml): ${limits.vx[0]} to ${limits.vx[1]} m/s forward.`),
+      h('p', { class: 'note' }, `The real robot’s firmware caps walking at ${FIRMWARE_MAX_VX} m/s forward or back (the dark band). Faster commands, including the 0.5 m/s preset from the upstream viewer’s baseline, run in simulation only. `, stamp('SOURCE SPEC')),
       sectionTitle('Perturbation', stamp('SIM VALUE')),
       kv([
         ['Body', h('span', { class: 'mono' }, `${TEST_PUSH.body}, through its centre of mass`)],
@@ -290,7 +296,7 @@ export class TestMode implements Mode {
     this.els.mode.textContent = s === 'ERROR'
       ? `The simulation stopped with an error: ${sim.error}`
       : mode === 'FALL_DAMP'
-        ? 'The robot tilted past about 80°. As in the upstream viewer, the policy is switched off and every joint holds softly (kp 10, kd 3) until reset. This is a safety hold, not a learned recovery.'
+        ? 'The robot tilted past about 80°. As in the upstream viewer, the policy is switched off and every joint holds softly (kp 10, kd 3) until reset. This is a safety hold, not a learned recovery. The real robot does something else: its firmware detects a fall at about 60° of tilt, lets every actuator go limp (DAMP) and refuses to stand again until the firmware is restarted.'
         : s === 'INSPECTION_FROZEN'
           ? 'Stepping is stopped and the complete physics and controller state is held. Resume continues from exactly this state.'
           : s === 'RUNNING'

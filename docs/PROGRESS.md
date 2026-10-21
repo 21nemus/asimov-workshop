@@ -14,7 +14,7 @@ viewer baseline runs from `.reference-cache/viewer` on port 5182.
 GitHub: private repo `21nemus/asimov-workshop` (branch `main`). Deployment is manual only:
 `.github/workflows/pages.yml` has no push trigger while release blockers are open.
 
-All four areas and the tour work in dev and in the production build. `npm test`: 39 pass.
+All four areas and the tour work in dev and in the production build. `npm test`: 42 pass.
 `npm run build`: clean, 25 MB `dist/`. Docs complete: README, SOURCES, LICENSES, DISCREPANCIES,
 ARCHITECTURE, TEST_REPORT, this file.
 
@@ -45,6 +45,14 @@ ARCHITECTURE, TEST_REPORT, this file.
 - **Support**: `src/config/support.ts`, disabled and empty, guarded renderer, tests.
 - **Licences**: `LICENSE` (MIT, original code), `public/licenses/` full texts, register.
 
+### SDK text changes, X links, repository link (2026-10-21)
+Maintainer tested locally ("working well") and approved the four SDK text changes (see
+`docs/SDK_REVIEW.md`, Status) and pushing the SDK review and docs re-pin commits (pushed). Added: X links
+(@21nemus, @asimovinc) bottom right beside the nav on screens 1100 px and wider, under the brand
+on narrower screens and phones, hidden during the tour (`src/config/links.ts`); a "This project"
+card in Sources with the repository and both X accounts. Checked at 1280x800, 1024x768, 390x844
+and 844x390.
+
 ### Docs re-pin (2026-10-21)
 Menlo relaunched the User Manual (announced 2026-10-19). The docs export was re-pinned
 (`7c7ac81c…`, retrieved 2026-10-21T07:54:44Z; the 2026-10-09 export and its page split are kept
@@ -64,7 +72,8 @@ target for the open parity item).
 workshop. Nothing installed or connected. Key facts: firmware ankle constants 2.02 / 0.8 confirm our
 CAD levers; firmware caps walking at 0.4 m/s (our TEST preset is 0.5); real falls latch a limp DAMP;
 25 firmware actuators vs our 23 joints (name map in the review). Proposed text changes and the
-future Real Robot Replay are **awaiting the maintainer's approval**. The viewer moved past our pin
+future Real Robot Replay were awaiting approval; the four text changes were approved and shipped on
+2026-10-21 (see below); the Real Robot Replay still needs approval. The viewer moved past our pin
 (`e115f35`, main.js rewritten): re-verify before claiming parity with the latest viewer.
 
 ### Next (in order)
