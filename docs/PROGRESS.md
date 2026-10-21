@@ -3,6 +3,28 @@
 Running record so another session can continue without the chat history.
 Newest entries at the top of each section.
 
+## Thigh housing fix approved (2026-10-21)
+
+Developed on `fix/build-thigh-housing-mesh`, based on `b2ba334`. The maintainer
+reviewed the local preview and approved merging and pushing the fix to `main`.
+Deployment remains manual. The repository is now public (the October 9 snapshot
+below is historical).
+
+Reproduced the left BUILD step 6 shards in dev and production. Parts are `600_14C`
+and `600_04C`, not `600_08C`. Root cause: near-zero-major-radius torus caps in the
+pinned STEP produce incorrect trim tessellation in occt-import-js. Added guarded,
+display-only spherical conditioning with a 0.138-micrometre surface-error bound.
+Exactly four housing products (eight surfaces, including the right-leg pair)
+regenerated. Original CAD, pins, part identities, registration and simulation
+remain unchanged. Per-part corrections are recorded in `parts.json`.
+
+52 tests pass, TypeScript and production build pass, 62 source hashes match.
+Browser checks include both housing picks, neighbouring BUILD steps, full robot,
+explode, section, TEST initialization and WATCH through its end card. The CAD
+asset is 6,980 bytes smaller. See [THIGH_MESH_FIX.md](THIGH_MESH_FIX.md) for exact
+evidence, before/after images, rebuild commands, remaining CAD seam issues and
+the changed-file list. Next: run the manual Pages workflow when ready to deploy.
+
 ## Where things are (2026-10-09, end of session)
 
 Project folder: `3d_visuals/asimov-lab/`, its own git repository (branch `main`), excluded from

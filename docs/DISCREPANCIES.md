@@ -42,6 +42,7 @@ still holds.
 | G3 | **CAD assembly pose.** The CAD is posed with shoulder pitch about ∓20.8°, shoulder yaw +10/-13.6° and elbows about 51° straighter than the MJCF reference. | registration `qCad` | Parts are re-posed on the rig |
 | G4 | **Ankle axes agree.** Fitted on the CAD bores, the pitch axis is 1.2 mm above and 1.5 mm in front of the MJCF pitch axis, the roll axis 1.3 mm above the MJCF roll axis, and the two axes are 10.0 mm apart in both. (An earlier estimate of "6.2 mm lower" compared the cross block's bounding-box centre and is withdrawn.) | `tools/measure-ankle.mjs` | Ankle microscope |
 | G5 | **Link meshes group parts differently.** The MJCF visual meshes put the knee side plates with the thigh; the foot mesh is labelled as coming from a different CAD ("friend's CAD"). | MJCF, STL inspection | UNDERSTAND hardware vs simulation view |
+| G6 | **Thigh cap tessellation.** Eight near-spherical torus surfaces in the pinned STEP have major radius −0.000137970042855 mm. The importer creates folded triangles outside their trim boundaries, causing the BUILD step 6 shards. All four 04C/14C thigh housings share this representation. | Raw vs shipped meshes, original STEP edge loops; [investigation and images](THIGH_MESH_FIX.md) | CAD DERIVED display-only APPROXIMATION: spherical limit before tessellation, at most 0.138 micrometres surface displacement. Original CAD and registration unchanged; corrections recorded per part. |
 
 ## Ankle mechanism (docs mapping vs CAD)
 

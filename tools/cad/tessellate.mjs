@@ -8,9 +8,10 @@
 //
 // Usage: node --max-old-space-size=6144 tools/cad/tessellate.mjs <Asimov_1.STEP> [--only <substring>]
 import { createRequire } from 'node:module';
-import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
+import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { readAssembly, flatten } from './assembly.mjs';
+import { conditionDisplaySurfaces } from './display-surfaces.mjs';
 
 const require = createRequire(import.meta.url);
 const args = process.argv.slice(2);
@@ -128,11 +129,18 @@ for (const [pd, name] of unique) {
   if (only && !name.includes(only)) continue;
   const key = productKey(name, pd);
   const jsonPath = join(MESH, `${key}.json`);
-  if (!force && existsSync(jsonPath)) { n++; continue; }
   const split = splitProduct(pd);
   if (!split) { console.warn('no geometry for', name); continue; }
+  const display = conditionDisplaySurfaces(split.text, PARAMS.linearDeflection);
+  if (!force && existsSync(jsonPath)) {
+    const cached = JSON.parse(readFileSync(jsonPath, 'utf8'));
+    // Invalidate old affected meshes even without --force. Unaffected products
+    // retain their existing geometry and cache. Changing tolerance also rebuilds.
+    if (JSON.stringify(cached.displaySurfaceCorrections ?? []) === JSON.stringify(display.corrections)
+      && JSON.stringify(cached.params) === JSON.stringify(PARAMS)) { n++; continue; }
+  }
   const t1 = Date.now();
-  const result = occt.ReadStepFile(new TextEncoder().encode(split.text), PARAMS);
+  const result = occt.ReadStepFile(new TextEncoder().encode(display.text), PARAMS);
   if (!result.success) { console.warn('OCCT failed for', name); continue; }
   const meshes = [];
   const chunks = [];
@@ -156,7 +164,7 @@ for (const [pd, name] of unique) {
     offset += pos.byteLength * 2 + idx.byteLength;
   }
   writeFileSync(join(MESH, `${key}.bin`), Buffer.concat(chunks));
-  writeFileSync(jsonPath, JSON.stringify({ key, name, pd, entityCount: split.entityCount, styledCount: split.styledCount, triangles: tris, bbox, meshes, params: PARAMS }));
+  writeFileSync(jsonPath, JSON.stringify({ key, name, pd, entityCount: split.entityCount, styledCount: split.styledCount, triangles: tris, bbox, meshes, params: PARAMS, displaySurfaceCorrections: display.corrections }));
   n++;
   summary.push([name, tris, ((Date.now() - t1) / 1000).toFixed(1)]);
   if (n % 10 === 0) console.log(`${n}/${unique.size} done, ${((Date.now() - t0) / 1000).toFixed(0)} s`);

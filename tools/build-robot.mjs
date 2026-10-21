@@ -126,7 +126,7 @@ function productGeometry(key, name, c) {
   for (let k = 2; r.index.length / 3 > b.cap && k <= 32; k *= 2) r = simplify(S, w.positions, w.index, { ratio: b.cap / (w.index.length / 3), maxError: b.maxError * k, permissive: true });
   const cpt = compact(w.positions, r.index);
   const g = creasedNormals(cpt.positions, cpt.index, 32);
-  const out = { ...g, rawTriangles: w.index.length / 3, error: r.error };
+  const out = { ...g, rawTriangles: w.index.length / 3, error: r.error, displaySurfaceCorrections: prod.meta.displaySurfaceCorrections ?? [] };
   productGeo.set(key, out);
   return out;
 }
@@ -173,6 +173,7 @@ for (const o of reg.occurrences) {
     center: [0, 1, 2].map((q) => +((mn[q] + mx[q]) / 2).toFixed(5)), size: [0, 1, 2].map((q) => +(mx[q] - mn[q]).toFixed(5)),
     range: { mesh: `${o.link}|${c.cls}`, start, count: g.index.length },
     triangles: g.index.length / 3, cadTriangles: g.rawTriangles, simplifyErrorMm: +(g.error * 1000).toFixed(3),
+    ...(g.displaySurfaceCorrections.length ? { displaySurfaceCorrections: g.displaySurfaceCorrections } : {}),
   });
 }
 
@@ -211,7 +212,7 @@ await io.write('public/robot/asimov-cad.glb', doc);
 
 const summary = {
   source: { repository: 'https://github.com/menloresearch/asimov-1', commit: 'f71f3fe87ddfa6b7aac2a5cddeaad5dbbc19cca7', file: 'mechanical/ASV1/FullBodyAssembly/Asimov_1.STEP', sha256: '35903b20bffd0e21d709acc75a30d0ee98323fa6c76b59fefffd181471422ba7', licence: 'CERN-OHL-S-2.0' },
-  conversion: 'STEP split per product (tools/cad/tessellate.mjs, OpenCascade via occt-import-js 0.0.23, 0.05 mm / 0.25 rad), registered to the MJCF reference pose (tools/cad/register.mjs), simplified per part (tools/build-robot.mjs).',
+  conversion: 'STEP split per product (tools/cad/tessellate.mjs, OpenCascade via occt-import-js 0.0.23, 0.05 mm / 0.25 rad). Near-zero-major-radius torus surfaces conditioned to spheres for display only (tools/cad/display-surfaces.mjs; per-part displaySurfaceCorrections). Registered to the MJCF reference pose (tools/cad/register.mjs), simplified per part (tools/build-robot.mjs).',
   triangles: { cad: rawTotal, shipped: outTotal },
   parts,
 };

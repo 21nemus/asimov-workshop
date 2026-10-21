@@ -56,3 +56,15 @@ files changed), and `cyclotron` at `870c161`.
 
 The intermediate CAD cache (`tools/.cache/cad/`, about 200 MB) and the reference cache
 (`.reference-cache/`) are not part of the repository; the tools rebuild them from the pins.
+
+### Thigh cap display correction (2026-10-21)
+
+The pinned assembly has eight nearly spherical torus surfaces across housings
+`500_04C`, `500_14C`, `600_04C` and `600_14C`. Their −0.000137970042855 mm major
+radius causes incorrect trim tessellation. `tools/cad/display-surfaces.mjs`
+conditions only near-zero-major-radius tori to their spherical limit before
+tessellation. This is a **CAD DERIVED display-only APPROXIMATION**, with maximum
+surface displacement 0.138 micrometres. Original source files, hashes, trim edges
+and registration stay intact. `parts.json` records each changed source entity and
+radius in `displaySurfaceCorrections`. See [the investigation](THIGH_MESH_FIX.md)
+for numerical evidence, scope, rebuild commands and limitations.

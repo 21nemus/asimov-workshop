@@ -4,11 +4,26 @@ Date: 2026-10-09. Machine: macOS (Apple silicon), Node 22.14.0, Chromium (Claude
 browser pane). Commands: `npm test` (Node test runner, TypeScript stripped), `npx tsc --noEmit`,
 `npx vite build`.
 
+## Thigh housing regression verification (2026-10-21)
+
+On branch `fix/build-thigh-housing-mesh`: **52/52 tests pass**, including eight new
+CAD surface/mesh tests. TypeScript and production build pass; source verification
+checks 62 files with zero mismatches. The original asset fails three of the new
+housing trim-bound tests; the corrected asset passes all four housing cases.
+
+Headless Chrome 155, actual WebGL rendering at 1440x1000: reproduced before and
+verified after in development and production. Checked ghosts off, normal and
+highlighted materials, both housing picks, BUILD steps 5/6/7/14 and right-leg
+step 6, full robot, UNDERSTAND explode/section, TEST initialization, and WATCH
+through its live TEST sequence to the end card. No browser errors logged.
+No real-device performance claim is made. See [the full report](THIGH_MESH_FIX.md)
+for before/after captures, scope, precise asset sizes and residual CAD seam issues.
+
 ## Summary
 
 | Check | Result |
 | --- | --- |
-| `npm test` | **44 / 44 pass** (39 at v1; 3 firmware-fact tests and 2 simulation-mesh tests added 2026-10-21) |
+| `npm test` | **52 / 52 pass** (39 at v1; 3 firmware-fact, 2 simulation-mesh and 8 CAD surface/mesh tests added 2026-10-21) |
 | `npx tsc --noEmit` | clean |
 | `npm run build` (typecheck + Vite) | succeeds; 25 MB `dist/` (see sizes below) |
 | Upstream baseline reproduced in the browser, unmodified viewer | yes: stand, walk 0.5 m/s, 150 N push recovered |
