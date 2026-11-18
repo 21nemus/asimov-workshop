@@ -166,7 +166,10 @@ export class SimulationAdapter {
     const fetchText = opts.fetchText ?? (async (u: string) => { const r = await fetch(u); if (!r.ok) throw new Error(`${u}: HTTP ${r.status}`); return r.text(); });
     try {
       opts.onProgress?.('Physics engine (MuJoCo 3.3.8, WebAssembly)', 0.05);
-      const load = opts.loadMujoco ?? (async () => (await import('mujoco-js')).default());
+      const load = opts.loadMujoco ?? (async () => {
+        const { mujocoUrl } = await import('./mujoco-url.ts');
+        return (await import(/* @vite-ignore */ mujocoUrl)).default();
+      });
       const [mujoco, xml, contractText] = await Promise.all([
         load(),
         fetchText(`${opts.base}sim/asimov_1.physics.xml`),

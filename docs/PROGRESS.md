@@ -92,6 +92,13 @@ hashed files); `npm run robot:variants` builds `src/data/neck.json`, `src/data/g
   sources). The joint explorer no longer draws the selected joint's axis line: drawn without depth
   test, it cut across the face for the neck joints and read as a glitch. The highlight of the
   moving parts stays.
+- **Hugging Face Space fix**: on the (private) static Space, TEST failed with "Failed to fetch
+  dynamically imported module". The Space redirects large files (the 10.8 MB MuJoCo chunk, stored
+  in Xet) to its CDN; a module's base URL is its final URL, so the bundled chunk's relative import
+  of `./index-….js` resolved on the CDN and got 403. mujoco-js's own file is self-contained
+  (WebAssembly embedded), so it now ships unbundled and byte-identical to the package
+  (`src/simulation/mujoco-url.ts`, `?url`) and loads by absolute URL. Checked: production build
+  and dev server run the policy live; tests unchanged (they pass their own loader).
 
 ### Simulation model view fixed; promo video (2026-10-21)
 UNDERSTAND's "Simulation model" drew Menlo's MJCF links 10 to 25 times too large since v1: the
