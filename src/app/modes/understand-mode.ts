@@ -2,7 +2,7 @@
 // compare it with what the simulation actually uses, move any joint through its range, and put
 // the parallel ankle under the microscope.
 import {
-  BoxGeometry, BufferGeometry, CapsuleGeometry, CylinderGeometry, DoubleSide, FrontSide, Line, LineBasicMaterial, Mesh,
+  BoxGeometry, BufferGeometry, CapsuleGeometry, CylinderGeometry, DoubleSide, FrontSide, Mesh,
   MeshStandardMaterial, Plane, SphereGeometry, Vector3, type Material,
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -51,7 +51,6 @@ export class UnderstandMode implements Mode {
   private simLinksLoading: Promise<Mesh[]> | null = null;
   private collisionMeshes: Mesh[] | null = null;
   private joint: string | null = null;
-  private axisLine: Line | null = null;
   private contract: PolicyContract | null = null;
   private micro: AnkleMicroscope | null = null;
   private side: Side = 'left';
@@ -257,7 +256,7 @@ export class UnderstandMode implements Mode {
         ['Jaw tilt', mono(`at most ${GRIPPER.jawTiltDegMax.toExponential(0)}° over the range`)],
       ]),
       h('p', { class: 'note' }, 'Each jaw hangs on two equal links, a parallelogram, so it slides open and shut without tilting. In MuJoCo the five tied joints are equality constraints on the driver; here they are applied exactly.'),
-      h('p', { class: 'note note--warn' }, h('b', null, 'Simulation model only. '), 'Menlo has not published gripper CAD, a parts list or assembly steps yet: the docs say extension guidance is coming soon, and the gripper’s electrical interface board is in an open pull request. The 27-DOF arm also differs from the arm on this robot, so the gripper stands on its own. Colours are illustrative.'),
+      h('p', { class: 'note note--warn' }, h('b', null, 'Simulation model only. '), 'Menlo has not published gripper CAD, a parts list or assembly steps yet: the docs say extension guidance is coming soon, and the gripper’s electrical interface board is in an open pull request. The 27-DOF arm also differs from the arm on this robot, so the gripper stands on its own. Its colours follow Menlo’s videos of the gripper on the robot.'),
       h('div', { class: 'row' },
         button('Sources for this view', { icon: 'sources', onClick: () => this.ctx.ui.drawer.openWith('Gripper sources', gripperSources()) }),
         button('Back to the robot', { icon: 'prev', kind: 'quiet', onClick: () => this.openOverview(1.4) }),
@@ -398,8 +397,6 @@ export class UnderstandMode implements Mode {
 
   private selectJoint(name: string | null): void {
     this.joint = name;
-    this.axisLine?.removeFromParent();
-    this.axisLine = null;
     if (!name) { this.ctx.highlights.clear('understand'); return; }
     const robot = this.ctx.robot;
     const body = robot.rig.bodies.find((b) => b.joint?.name === name)!;
@@ -409,13 +406,6 @@ export class UnderstandMode implements Mode {
     below.add(body.def.name);
     walk(body.def.id);
     this.ctx.highlights.set('understand', robot.parts.filter((p) => below.has(p.body)).map((p) => p.i), 0.45);
-    const j = body.joint!;
-    const ax = new Vector3(...j.axis).normalize();
-    const pos = new Vector3(...j.pos);
-    const geo = new BufferGeometry().setFromPoints([pos.clone().addScaledVector(ax, -0.12), pos.clone().addScaledVector(ax, 0.12)]);
-    this.axisLine = new Line(geo, new LineBasicMaterial({ color: 0xd9631f, depthTest: false, transparent: true }));
-    this.axisLine.renderOrder = 40;
-    body.frame.add(this.axisLine);
   }
 
   // ---------- panels ----------
@@ -647,6 +637,9 @@ function gripperSources(): HTMLElement {
     h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Not published yet'),
       h('p', null, 'Gripper CAD, parts list, assembly steps and control. The gripper’s electrical interface board is in an open pull request, and the docs say extension guidance is coming soon.'),
       h('p', { class: 'row' }, a('https://github.com/menloresearch/asimov-1/pull/30', 'asimov-1 pull request #30'), a('https://docs.menlo.ai/asimov/1/extend', 'Extend Asimov 1, docs.menlo.ai'))),
+    h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Colours ', stamp('ILLUSTRATIVE')),
+      h('p', null, 'The simulation model has no colours. Black housing and linkage, orange fingers: as in Menlo’s published videos of the gripper on Asimov 1.'),
+      h('p', null, a('https://www.youtube.com/watch?v=IvpT73Ehz9I', 'We gave an AI agent Asimov 1 and one task (Asimov, YouTube)'))),
     h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Licence'),
       h('p', null, 'asimov-1 states CERN-OHL-S-2.0 for hardware and GPL-2.0 for software without saying which covers sim-model/; either allows this use with the source and notices kept.')),
   );

@@ -87,6 +87,11 @@ hashed files); `npm run robot:variants` builds `src/data/neck.json`, `src/data/g
   R4 (gripper hardware unpublished); R1 resolved upstream.
 - Checked in the browser: gripper bench opens, motions and readout exact under fixed frames
   (closed 0.0 mm, open 65.1 mm), neck yaw 0.8 rad turns the head 0.8 rad and resets on TEST.
+- **Later the same day**: gripper colours follow Menlo's published videos of the gripper on
+  Asimov 1 (black housing and linkage, orange fingers; ILLUSTRATIVE, cited in the gripper's
+  sources). The joint explorer no longer draws the selected joint's axis line: drawn without depth
+  test, it cut across the face for the neck joints and read as a glitch. The highlight of the
+  moving parts stays.
 
 ### Simulation model view fixed; promo video (2026-10-21)
 UNDERSTAND's "Simulation model" drew Menlo's MJCF links 10 to 25 times too large since v1: the

@@ -109,11 +109,13 @@ export class GripperBench {
     const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync(`${this.base}robot/gripper.glb`);
     const nodes = new Map<string, Mesh>();
     gltf.scene.traverse((o) => { if ((o as Mesh).isMesh) nodes.set(o.name, o as Mesh); });
-    // Colours are ILLUSTRATIVE (the simulation model has none): the motor's link orange, the housing dark.
-    const grey = new MeshStandardMaterial({ color: 0xb9bcc1, roughness: 0.5, metalness: 0.1 });
-    const dark = new MeshStandardMaterial({ color: 0x2b2d31, roughness: 0.55, metalness: 0.15 });
-    const orange = new MeshStandardMaterial({ color: 0xd9631f, roughness: 0.45, metalness: 0.05 });
-    const materialFor = (b: GripperBody): Material => (b.parent === null ? dark : b.joint?.name === GRIPPER.driver ? orange : grey);
+    // Colours follow Menlo's published videos of this gripper on Asimov 1: black motor housing and
+    // linkage, orange fingers. ILLUSTRATIVE: the simulation model carries no colours. Hues from the
+    // robot's own palette (src/robot/materials.ts: actuator, pa12-black, shell orange).
+    const housing = new MeshStandardMaterial({ color: 0x2a2c30, roughness: 0.45, metalness: 0.35 });
+    const link = new MeshStandardMaterial({ color: 0x1d1e21, roughness: 0.7, metalness: 0.05 });
+    const finger = new MeshStandardMaterial({ color: 0xcf6524, roughness: 0.62, metalness: 0 });
+    const materialFor = (b: GripperBody): Material => (b.parent === null ? housing : /_finger(_follower)?_link$/.test(b.name) ? finger : link);
     // The gripper's own frame stood upright: its +x (towards the fingertips) points up, the jaws
     // open sideways and the joint axes face the room.
     const rig = gripperRig();
@@ -135,7 +137,7 @@ export class GripperBench {
     const box = new Box3().setFromObject(mj);
     const bench = ZONES.assemblyBench;
     const postH = 0.05;
-    const post = new Mesh(new CylinderGeometry(0.035, 0.04, postH, 32), dark);
+    const post = new Mesh(new CylinderGeometry(0.035, 0.04, postH, 32), new MeshStandardMaterial({ color: 0x3a3c41, roughness: 0.6, metalness: 0.3 }));
     post.position.set(0, bench.top + postH / 2, 0);
     post.castShadow = true;
     post.receiveShadow = true;
