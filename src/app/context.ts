@@ -15,6 +15,7 @@ import type { AnkleBench } from '../understand/ankle-bench.ts';
 import type { AnkleMicroscope } from '../understand/ankle-microscope.ts';
 import type { Side } from '../understand/ankle-linkage.ts';
 import { standOnFloor, TRAINED_DEFAULT_POSE } from '../robot/poses.ts';
+import { NECK_REST } from '../robot/kinematics.ts';
 
 export type ModeId = 'explore' | 'build' | 'understand' | 'test' | 'watch';
 
@@ -73,7 +74,8 @@ export class PoseDriver {
       this.blend = { from: { ...this.joints }, to: { ...joints }, t: 0, dur: duration };
     } else {
       this.blend = null;
-      this.joints = { ...joints };
+      // The neck returns to rest unless the pose names it (it is display only, see NECK_HINGES).
+      this.joints = { ...NECK_REST, ...joints };
       standOnFloor(this.robot.rig, this.joints);
     }
   }

@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-21T08:03:55.070Z",
- "retrieved": "2026-10-09 (repositories); 2026-10-21 (docs.menlo.ai export)",
+ "generated": "2026-11-18T08:42:19.163Z",
+ "retrieved": "2026-10-09 (repositories); 2026-10-21 (docs.menlo.ai export); 2026-11-18 (asimov-1 sim variants)",
  "note": "Hashes are SHA-256 of the exact bytes read from the upstream revision.",
  "sources": [
   {
@@ -310,6 +310,301 @@
     "https://docs.menlo.ai/llms-full.txt"
    ],
    "retrievedAt": "2026-10-21T07:54:44Z"
+  },
+  {
+   "id": "asimov-1@sim-variants",
+   "repository": "https://github.com/menloresearch/asimov-1",
+   "commit": "43aa368adebcce099c3d80d33b37df68b6d48bf1",
+   "committed": "2026-11-04T15:32:43+08:00",
+   "title": "Add shoes, dummy hands, and stool fabrication assets (#31)",
+   "why": "Repository main at retrieval (2026-11-18): the 25-DOF model (neck joints) and the 27-DOF model (wrist pitch and grippers). Display only: the walking physics stays on the viewer-submodule pin.",
+   "license": "CERN-OHL-S-2.0 (HARDWARE-LICENSE.txt); repository software GPL-2.0 (SOFTWARE-LICENSE.txt)",
+   "files": {
+    "sim-model/README.md": {
+     "sha256": "0f4fad190a74b28ddb6a093e1b38f361d9f48cd1f7c97c8af1cc42994d04561e",
+     "bytes": 2115
+    },
+    "sim-model/asimov_1_25dof/xml/asimov_1_25dof.xml": {
+     "sha256": "5d11a9002024d30572f7c34e4f12eb1c6c630f11c90862d6d8da4ff01f9aae1c",
+     "bytes": 29675
+    },
+    "sim-model/asimov_1_27dof/xml/asimov_1_27dof.xml": {
+     "sha256": "cf576aea7e2811b986961bce7a549dfbb921f24ff0ad3aa0df7608392aaebaef",
+     "bytes": 38499
+    },
+    "sim-model/asimov_1_25dof/meshes/left_ankle_pitch_link.STL": {
+     "sha256": "19e1917b48eaee35ee1da292368558b17e51e42201171ccf21be9796b63dc77a",
+     "bytes": 221284
+    },
+    "sim-model/asimov_1_25dof/meshes/left_ankle_roll_link.STL": {
+     "sha256": "511a94a8836ab025344cff98a97cc5b6cc0101e58be3ae8cd56e0261b51be65d",
+     "bytes": 4088434
+    },
+    "sim-model/asimov_1_25dof/meshes/left_elbow_link.STL": {
+     "sha256": "a038ae67934eaf5d05fc460f99054de77f524e2de8d0a17bc70ead43dcbc75cc",
+     "bytes": 390984
+    },
+    "sim-model/asimov_1_25dof/meshes/left_hip_pitch_link.STL": {
+     "sha256": "69d67c3d8d695203e43322e15d7da97a6dc89315bb0ce02724e74aefecd692d0",
+     "bytes": 1220134
+    },
+    "sim-model/asimov_1_25dof/meshes/left_hip_roll_link.STL": {
+     "sha256": "1433cb1c5db4c89d7a91e8f70fc298fd7754754ba967c9cffddfc42597b91d01",
+     "bytes": 370284
+    },
+    "sim-model/asimov_1_25dof/meshes/left_hip_yaw_link.STL": {
+     "sha256": "77081b3b3f779271610918d3ee09eb6b5ab422c4182696cda7c9e15b03745397",
+     "bytes": 1861384
+    },
+    "sim-model/asimov_1_25dof/meshes/left_knee_link.STL": {
+     "sha256": "cd35cd599bdfd25fbc00e5f99b49ef4be41df6c937ebb7a12daed6d4de68947e",
+     "bytes": 3449384
+    },
+    "sim-model/asimov_1_25dof/meshes/left_shoulder_pitch_link.STL": {
+     "sha256": "21f8c2c4b579ed6fc111ae318acc7f287b837d0577623a75dd028aeb203eb2b3",
+     "bytes": 239934
+    },
+    "sim-model/asimov_1_25dof/meshes/left_shoulder_roll_link.STL": {
+     "sha256": "908d4a03f9d235dedb7f3de522e4beb65b8afccaf620bdf7beda365ab4fe1faa",
+     "bytes": 868084
+    },
+    "sim-model/asimov_1_25dof/meshes/left_shoulder_yaw_link.STL": {
+     "sha256": "f2b67a0be553de3d475d2d1afd3604fc20b912d05b1025a4dea1fa7b454ba9be",
+     "bytes": 711384
+    },
+    "sim-model/asimov_1_25dof/meshes/left_wrist_yaw_link.STL": {
+     "sha256": "913c38bccc12882503171772e764fdcbde7919b00f330f73f557f1dc83582ab6",
+     "bytes": 882784
+    },
+    "sim-model/asimov_1_25dof/meshes/neck_pitch_link.STL": {
+     "sha256": "02b8f74aa436fad2316eec9923f0ccd50355ff3777bec7aec76cd21a6aa008e1",
+     "bytes": 2454684
+    },
+    "sim-model/asimov_1_25dof/meshes/neck_yaw_link.STL": {
+     "sha256": "0ec199de629a352610888d896efaaf6699cb42ccf0107849d1553dc0915bac25",
+     "bytes": 344984
+    },
+    "sim-model/asimov_1_25dof/meshes/pelvis_link.STL": {
+     "sha256": "d8a968e00ef8a3838aa760a58fd059e5f92a2b696acf7a00bc87d0d0708ef877",
+     "bytes": 9165984
+    },
+    "sim-model/asimov_1_25dof/meshes/right_ankle_pitch_link.STL": {
+     "sha256": "47718ddb1133aa87969d0e64f05b49f34709a42e5d8876f17e6678c9611899c8",
+     "bytes": 220984
+    },
+    "sim-model/asimov_1_25dof/meshes/right_ankle_roll_link.STL": {
+     "sha256": "21f2214e42e72aeb52842f50b3702457300a2539f8412d06a977cf3742764c2a",
+     "bytes": 4091734
+    },
+    "sim-model/asimov_1_25dof/meshes/right_elbow_link.STL": {
+     "sha256": "04667620945b5a838a97146e75e50bb8a9087f930d3a0411723f8e1bd8aead85",
+     "bytes": 401284
+    },
+    "sim-model/asimov_1_25dof/meshes/right_hip_pitch_link.STL": {
+     "sha256": "7ecc884721b175aaed091b2b3d67d94b8409649edabdeedde8e3d475a6869248",
+     "bytes": 1236034
+    },
+    "sim-model/asimov_1_25dof/meshes/right_hip_roll_link.STL": {
+     "sha256": "32f245002354c905702e352dbe0fa42b65f36f3430e2b739c293db9982f7da14",
+     "bytes": 368284
+    },
+    "sim-model/asimov_1_25dof/meshes/right_hip_yaw_link.STL": {
+     "sha256": "771cccee7503546623598c96894a2ae79d739648e72eeceb8e39ec67f3815a33",
+     "bytes": 1864784
+    },
+    "sim-model/asimov_1_25dof/meshes/right_knee_link.STL": {
+     "sha256": "69c407ee36dfe7e820ec7caf6f17bd9998ad561c84aedc08107c304ed11c22bb",
+     "bytes": 3447184
+    },
+    "sim-model/asimov_1_25dof/meshes/right_shoulder_pitch_link.STL": {
+     "sha256": "02c73779b8d8405cfa3280d8784c8d8d0ce4ca9aed6c092ee85b0cac6022b3f6",
+     "bytes": 239734
+    },
+    "sim-model/asimov_1_25dof/meshes/right_shoulder_roll_link.STL": {
+     "sha256": "4155d9397583a6acf550ef970c9a482fc6fb2e0de69ed53def50a1748f799379",
+     "bytes": 881284
+    },
+    "sim-model/asimov_1_25dof/meshes/right_shoulder_yaw_link.STL": {
+     "sha256": "9b1a1650100c784d64da9b45cfb8bc9bd35726236aa0708d0db45f5ec1b79217",
+     "bytes": 700984
+    },
+    "sim-model/asimov_1_25dof/meshes/right_wrist_yaw_link.STL": {
+     "sha256": "1a5c3740c0c23209b07397098eb6e0eb1ee89a209609d5bd46e321cc6d702b30",
+     "bytes": 882184
+    },
+    "sim-model/asimov_1_25dof/meshes/waist_yaw_link.STL": {
+     "sha256": "4574372f4057cbea7a5e4032bdf45a5c132b8f80e9a4618494a248fa369ce98f",
+     "bytes": 9750034
+    },
+    "sim-model/asimov_1_27dof/meshes/left_6dof_link.STL": {
+     "sha256": "56fb14db49cf3f8efd3c1f644f8d46b59f90992d9661788be8299946434a1035",
+     "bytes": 215484
+    },
+    "sim-model/asimov_1_27dof/meshes/left_ankle_pitch_link.STL": {
+     "sha256": "19e1917b48eaee35ee1da292368558b17e51e42201171ccf21be9796b63dc77a",
+     "bytes": 221284
+    },
+    "sim-model/asimov_1_27dof/meshes/left_ankle_roll_link.STL": {
+     "sha256": "511a94a8836ab025344cff98a97cc5b6cc0101e58be3ae8cd56e0261b51be65d",
+     "bytes": 4088434
+    },
+    "sim-model/asimov_1_27dof/meshes/left_elbow_link.STL": {
+     "sha256": "a038ae67934eaf5d05fc460f99054de77f524e2de8d0a17bc70ead43dcbc75cc",
+     "bytes": 390984
+    },
+    "sim-model/asimov_1_27dof/meshes/left_gripper_base_link.STL": {
+     "sha256": "f05d51030c442ec5e8d4037c444fa74c2cac3cfa6a675ea88e476ebbfa2c433c",
+     "bytes": 9750084
+    },
+    "sim-model/asimov_1_27dof/meshes/left_gripper_driver_link.STL": {
+     "sha256": "30c16f3416e155055603c1a6b66fb2ee4195795ced25663194b77774f8fbdac8",
+     "bytes": 370834
+    },
+    "sim-model/asimov_1_27dof/meshes/left_gripper_driver_parallel_link.STL": {
+     "sha256": "21af4b317b0c6e86f6ad8e42a601fd5f7bb2ca6884af4f0393d5a5d075f184f0",
+     "bytes": 351584
+    },
+    "sim-model/asimov_1_27dof/meshes/left_gripper_finger_follower_link.STL": {
+     "sha256": "019ce02baa22a716461a17dcc8f34f9b4a34d82b6f2312ebb8a5e5a1aaef5acf",
+     "bytes": 254934
+    },
+    "sim-model/asimov_1_27dof/meshes/left_gripper_finger_link.STL": {
+     "sha256": "3c448beb465864df3666543e62e1f420e390829f46ef708ee51fb62f73eff55d",
+     "bytes": 255534
+    },
+    "sim-model/asimov_1_27dof/meshes/left_gripper_follower_link.STL": {
+     "sha256": "7a478a2d5bc0b8202c20f049eb68dff5667dd2b26403b2c315f6b73695cad3e5",
+     "bytes": 351134
+    },
+    "sim-model/asimov_1_27dof/meshes/left_gripper_follower_parallel_link.STL": {
+     "sha256": "248af47f1b2a0115be73feede7bdd3c8349ae3377ba08a9b40122958da8e0590",
+     "bytes": 348484
+    },
+    "sim-model/asimov_1_27dof/meshes/left_hip_pitch_link.STL": {
+     "sha256": "69d67c3d8d695203e43322e15d7da97a6dc89315bb0ce02724e74aefecd692d0",
+     "bytes": 1220134
+    },
+    "sim-model/asimov_1_27dof/meshes/left_hip_roll_link.STL": {
+     "sha256": "1433cb1c5db4c89d7a91e8f70fc298fd7754754ba967c9cffddfc42597b91d01",
+     "bytes": 370284
+    },
+    "sim-model/asimov_1_27dof/meshes/left_hip_yaw_link.STL": {
+     "sha256": "77081b3b3f779271610918d3ee09eb6b5ab422c4182696cda7c9e15b03745397",
+     "bytes": 1861384
+    },
+    "sim-model/asimov_1_27dof/meshes/left_knee_link.STL": {
+     "sha256": "cd35cd599bdfd25fbc00e5f99b49ef4be41df6c937ebb7a12daed6d4de68947e",
+     "bytes": 3449384
+    },
+    "sim-model/asimov_1_27dof/meshes/left_shoulder_pitch_link.STL": {
+     "sha256": "21f8c2c4b579ed6fc111ae318acc7f287b837d0577623a75dd028aeb203eb2b3",
+     "bytes": 239934
+    },
+    "sim-model/asimov_1_27dof/meshes/left_shoulder_roll_link.STL": {
+     "sha256": "908d4a03f9d235dedb7f3de522e4beb65b8afccaf620bdf7beda365ab4fe1faa",
+     "bytes": 868084
+    },
+    "sim-model/asimov_1_27dof/meshes/left_shoulder_yaw_link.STL": {
+     "sha256": "f2b67a0be553de3d475d2d1afd3604fc20b912d05b1025a4dea1fa7b454ba9be",
+     "bytes": 711384
+    },
+    "sim-model/asimov_1_27dof/meshes/left_wrist_yaw_link.STL": {
+     "sha256": "913c38bccc12882503171772e764fdcbde7919b00f330f73f557f1dc83582ab6",
+     "bytes": 882784
+    },
+    "sim-model/asimov_1_27dof/meshes/neck_pitch_link.STL": {
+     "sha256": "02b8f74aa436fad2316eec9923f0ccd50355ff3777bec7aec76cd21a6aa008e1",
+     "bytes": 2454684
+    },
+    "sim-model/asimov_1_27dof/meshes/neck_yaw_link.STL": {
+     "sha256": "0ec199de629a352610888d896efaaf6699cb42ccf0107849d1553dc0915bac25",
+     "bytes": 344984
+    },
+    "sim-model/asimov_1_27dof/meshes/pelvis_link.STL": {
+     "sha256": "d8a968e00ef8a3838aa760a58fd059e5f92a2b696acf7a00bc87d0d0708ef877",
+     "bytes": 9165984
+    },
+    "sim-model/asimov_1_27dof/meshes/right_6dof_link.STL": {
+     "sha256": "3b1ba2b98a30fec2ce202b60eff6cec252306c2245de209d114a1da3512a77ba",
+     "bytes": 215584
+    },
+    "sim-model/asimov_1_27dof/meshes/right_ankle_pitch_link.STL": {
+     "sha256": "47718ddb1133aa87969d0e64f05b49f34709a42e5d8876f17e6678c9611899c8",
+     "bytes": 220984
+    },
+    "sim-model/asimov_1_27dof/meshes/right_ankle_roll_link.STL": {
+     "sha256": "21f2214e42e72aeb52842f50b3702457300a2539f8412d06a977cf3742764c2a",
+     "bytes": 4091734
+    },
+    "sim-model/asimov_1_27dof/meshes/right_elbow_link.STL": {
+     "sha256": "04667620945b5a838a97146e75e50bb8a9087f930d3a0411723f8e1bd8aead85",
+     "bytes": 401284
+    },
+    "sim-model/asimov_1_27dof/meshes/right_gripper_base_link.STL": {
+     "sha256": "63f443965bf5ac38dcc63393ac04f2a63a731b49826916fbf29761c807e05db7",
+     "bytes": 9750034
+    },
+    "sim-model/asimov_1_27dof/meshes/right_gripper_driver_link.STL": {
+     "sha256": "c0a6e9e52ea52fc448b40067808eaee7809c5d0eb3486a5ed145031593e6a0be",
+     "bytes": 370834
+    },
+    "sim-model/asimov_1_27dof/meshes/right_gripper_driver_parallel_link.STL": {
+     "sha256": "858a311497284e070e5f29e4a1ea80b2aea23dfc217b1f3610a88661a99bf90b",
+     "bytes": 351584
+    },
+    "sim-model/asimov_1_27dof/meshes/right_gripper_finger_follower_link.STL": {
+     "sha256": "e4265404b49e8458c2e0bbcd2fc07e426ec286955a13246ebee25536866616e3",
+     "bytes": 254934
+    },
+    "sim-model/asimov_1_27dof/meshes/right_gripper_finger_link.STL": {
+     "sha256": "9fc4b17adb34773f580e8301b237980a5dc31fc0065dab755865375f2d19d4d9",
+     "bytes": 255534
+    },
+    "sim-model/asimov_1_27dof/meshes/right_gripper_follower_link.STL": {
+     "sha256": "cf5dd0b4bdb6f22e5ef1c31e0e95e60c90722487f162e6cdcb086a09585f7166",
+     "bytes": 351134
+    },
+    "sim-model/asimov_1_27dof/meshes/right_gripper_follower_parallel_link.STL": {
+     "sha256": "87d2089d33a011c2199ed20c5232e58468e03906605d404f3f767cc9d542b082",
+     "bytes": 348484
+    },
+    "sim-model/asimov_1_27dof/meshes/right_hip_pitch_link.STL": {
+     "sha256": "7ecc884721b175aaed091b2b3d67d94b8409649edabdeedde8e3d475a6869248",
+     "bytes": 1236034
+    },
+    "sim-model/asimov_1_27dof/meshes/right_hip_roll_link.STL": {
+     "sha256": "32f245002354c905702e352dbe0fa42b65f36f3430e2b739c293db9982f7da14",
+     "bytes": 368284
+    },
+    "sim-model/asimov_1_27dof/meshes/right_hip_yaw_link.STL": {
+     "sha256": "771cccee7503546623598c96894a2ae79d739648e72eeceb8e39ec67f3815a33",
+     "bytes": 1864784
+    },
+    "sim-model/asimov_1_27dof/meshes/right_knee_link.STL": {
+     "sha256": "69c407ee36dfe7e820ec7caf6f17bd9998ad561c84aedc08107c304ed11c22bb",
+     "bytes": 3447184
+    },
+    "sim-model/asimov_1_27dof/meshes/right_shoulder_pitch_link.STL": {
+     "sha256": "02c73779b8d8405cfa3280d8784c8d8d0ce4ca9aed6c092ee85b0cac6022b3f6",
+     "bytes": 239734
+    },
+    "sim-model/asimov_1_27dof/meshes/right_shoulder_roll_link.STL": {
+     "sha256": "4155d9397583a6acf550ef970c9a482fc6fb2e0de69ed53def50a1748f799379",
+     "bytes": 881284
+    },
+    "sim-model/asimov_1_27dof/meshes/right_shoulder_yaw_link.STL": {
+     "sha256": "9b1a1650100c784d64da9b45cfb8bc9bd35726236aa0708d0db45f5ec1b79217",
+     "bytes": 700984
+    },
+    "sim-model/asimov_1_27dof/meshes/right_wrist_yaw_link.STL": {
+     "sha256": "1a5c3740c0c23209b07397098eb6e0eb1ee89a209609d5bd46e321cc6d702b30",
+     "bytes": 882184
+    },
+    "sim-model/asimov_1_27dof/meshes/waist_yaw_link.STL": {
+     "sha256": "4574372f4057cbea7a5e4032bdf45a5c132b8f80e9a4618494a248fa369ce98f",
+     "bytes": 9750034
+    }
+   }
   }
  ],
  "userSupplied": [

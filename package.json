@@ -16,7 +16,8 @@
     "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test tests/*.test.ts",
     "sources:verify": "node tools/sources.mjs verify",
     "sources:fetch": "node tools/sources.mjs fetch",
-    "robot:compress": "node tools/compress-glb.mjs public/robot/asimov-cad.glb public/robot/asimov-cad.glb && node tools/compress-glb.mjs public/robot/sim-links.glb public/robot/sim-links.glb"
+    "robot:compress": "node tools/compress-glb.mjs public/robot/asimov-cad.glb public/robot/asimov-cad.glb && node tools/compress-glb.mjs public/robot/sim-links.glb public/robot/sim-links.glb",
+    "robot:variants": "node tools/build-sim-variants.mjs && node tools/compress-glb.mjs public/robot/gripper.glb public/robot/gripper.glb"
   },
   "dependencies": {
     "@fontsource/barlow": "5.3.0",

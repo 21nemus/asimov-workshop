@@ -31,6 +31,7 @@ export const ICONS = {
   menu: wrap('<path d="M4 7h16M4 12h16M4 17h16"/>'),
   check: wrap('<path d="M5 12.5l4.5 4.5L19 7.5"/>'),
   lock: wrap('<rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'),
+  gripper: wrap('<path d="M12 21v-4"/><path d="M7 17h10"/><path d="M8 17V10L6 4"/><path d="M16 17V10l2-6"/><path d="M8 10h2M16 10h-2"/>'),
   // The X (Twitter) mark, filled, as on the Vibe A1 page.
   x: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>',
   share: wrap('<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/>'),

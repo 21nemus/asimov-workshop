@@ -1,0 +1,110 @@
+{
+ "source": {
+  "repository": "https://github.com/menloresearch/asimov-1",
+  "commit": "43aa368adebcce099c3d80d33b37df68b6d48bf1",
+  "path": "sim-model/asimov_1_25dof/xml/asimov_1_25dof.xml",
+  "sha256": "5d11a9002024d30572f7c34e4f12eb1c6c630f11c90862d6d8da4ff01f9aae1c",
+  "compiledWith": "MuJoCo 3.3.8 (mujoco-js 0.0.7)"
+ },
+ "note": "Neck joints of Menlo’s 25-DOF model. Its neck bodies have our rig’s frames to within 0.05 mm (frameOffsetMm, checked at build), so the CAD head turns about Menlo’s axes. Display only: the walking policy runs on the 23-DOF model with the neck fixed.",
+ "joints": [
+  {
+   "name": "neck_yaw_joint",
+   "body": "neck_yaw_link",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "range": [
+    -1.57,
+    1.57
+   ],
+   "armature": 0.0282528,
+   "frameOffsetMm": 0.0103
+  },
+  {
+   "name": "neck_pitch_joint",
+   "body": "neck_pitch_link",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "range": [
+    -0.34,
+    0.4
+   ],
+   "armature": 0.0282528,
+   "frameOffsetMm": 0
+  }
+ ],
+ "otherDifferences": [
+  {
+   "body": "left_hip_pitch_link",
+   "offsetMm": 1
+  },
+  {
+   "body": "left_hip_yaw_link",
+   "offsetMm": 7
+  },
+  {
+   "body": "left_knee_link",
+   "offsetMm": 23.8
+  },
+  {
+   "body": "left_ankle_pitch_link",
+   "offsetMm": 22.4
+  },
+  {
+   "body": "right_hip_pitch_link",
+   "offsetMm": 1
+  },
+  {
+   "body": "right_hip_yaw_link",
+   "offsetMm": 6.4
+  },
+  {
+   "body": "right_knee_link",
+   "offsetMm": 23.5
+  },
+  {
+   "body": "right_ankle_pitch_link",
+   "offsetMm": 22.4
+  },
+  {
+   "body": "right_shoulder_yaw_link",
+   "offsetMm": 0.8
+  },
+  {
+   "body": "right_elbow_link",
+   "offsetMm": 2
+  },
+  {
+   "body": "right_wrist_yaw_link",
+   "offsetMm": 75.2
+  },
+  {
+   "body": "left_shoulder_yaw_link",
+   "offsetMm": 0.8
+  },
+  {
+   "body": "left_elbow_link",
+   "offsetMm": 2.3
+  },
+  {
+   "body": "left_wrist_yaw_link",
+   "offsetMm": 75.2
+  }
+ ]
+}

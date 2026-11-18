@@ -1,7 +1,7 @@
 # Sources
 
 Everything ASIMOV WORKSHOP shows comes from one of the sources below, pinned to an exact
-revision. `references/pins.json` records the SHA-256 of every file read (62 files across the
+revision. `references/pins.json` records the SHA-256 of every file read (133 files across the
 repositories plus the docs export). `npm run sources:verify` re-hashes a local copy against it
 and `npm run sources:fetch` restores the pinned files into `.reference-cache/`.
 
@@ -9,7 +9,9 @@ Repositories retrieved 2026-10-09. Docs export re-pinned 2026-10-21 after Menlo 
 User Manual (what changed: `docs/DISCREPANCIES.md`, D1–D3). On 2026-10-21 `asimov-1` and
 `menlo-sdk` were still at the pinned revisions; `humanoid-policy-viewer` was at `a90090b`, three
 commits past our pin (its asimov checkpoint and `env.yaml` unchanged, `main.js` and other runtime
-files changed), and `cyclotron` at `870c161`.
+files changed), and `cyclotron` at `870c161`. On 2026-11-18 `asimov-1` main (`43aa368`) was pinned
+as a third revision for its newer 25-DOF and 27-DOF simulation models (neck joints and gripper,
+display only); the walking physics and the CAD stay on their own pins.
 
 ## Pinned sources
 
@@ -21,6 +23,7 @@ files changed), and `cyclotron` at `870c161`.
 | `cyclotron` | https://github.com/menloresearch/cyclotron | `d970f0633a8794506b6f2bc897eba8c4e04e1e63` | Training framework, referenced only (not installed or run) |
 | `menlo-sdk` | https://github.com/menloresearch/menlo-sdk | `7683801135a39c5881701646119e83397274c3db` (2026-10-12) | Read-only review only (not installed, never connected): firmware facts quoted in `docs/SDK_REVIEW.md` and `docs/DISCREPANCIES.md` (Apache-2.0) |
 | `docs.menlo.ai` | https://docs.menlo.ai (full-text export `llms-full.txt`) | SHA-256 `7c7ac81c…` (retrieved 2026-10-21; first pin `ce14167f…`, 2026-10-09) | Assembly steps, part organisation, joint and actuator tables, ankle mechanism mapping (the Mechanical System Tour page carries Menlo's "update in progress" notice, see D1) |
+| `asimov-1@sim-variants` | same repository | `43aa368adebcce099c3d80d33b37df68b6d48bf1` (2026-11-04) | `sim-model/asimov_1_25dof` (neck joints) and `sim-model/asimov_1_27dof` (wrist pitch, grippers), MJCF and all their STL meshes. Display only: the neck in the joint explorer and the gripper bench. TEST and the policy stay on `35ae7b3`. |
 
 ## Maintainer-supplied material
 
@@ -53,6 +56,7 @@ files changed), and `cyclotron` at `870c161`.
 | `src/data/joint-specs.json` | `tools/build-joint-specs.mjs` | docs export |
 | `src/data/ankle-linkage.json` | `tools/measure-ankle.mjs` | tessellated CAD, registration, kinematics |
 | `public/policy/model_aug_18_1/*` | `tools/build-policy.mjs` (runs the viewer's own env.yaml parser) | checkpoint and `env.yaml` at `0c21078` |
+| `src/data/neck.json`, `src/data/gripper.json`, `public/robot/gripper.glb` | `npm run robot:variants` (`tools/build-sim-variants.mjs`, MuJoCo 3.3.8 in Node; the gripper subtree is compiled on its own because the full 27-DOF model is too large for mujoco-js) | MJCF and STL meshes at `43aa368` |
 
 The intermediate CAD cache (`tools/.cache/cad/`, about 200 MB) and the reference cache
 (`.reference-cache/`) are not part of the repository; the tools rebuild them from the pins.

@@ -5,8 +5,10 @@
 // joint's qpos0 (the MJCF `ref`), and rotates it about the joint axis (body frame,
 // through the joint position) by (q - qpos0). The elbows use ref = +-0.785 rad, so
 // "angle zero" is not "MJCF pose" for them; that offset is handled here and nowhere else.
+// The two neck bodies also get Menlo's 25-DOF neck joints (NECK_HINGES): display only, so a
+// physics qpos never moves them.
 import { Group, Quaternion, Vector3 } from 'three';
-import { KINEMATICS, type BodyDef, type JointDef } from './kinematics.ts';
+import { KINEMATICS, NECK_HINGES, type BodyDef, type JointDef } from './kinematics.ts';
 import { mjQuat } from '../utils/frames.ts';
 
 export interface RigBody {
@@ -34,7 +36,7 @@ export class RobotRig {
     this.root.name = 'asimov-rig';
     for (const def of KINEMATICS.bodies) {
       if (def.id === 0) continue;
-      const hinge = def.joints.find((j) => j.type === 'hinge') ?? null;
+      const hinge = def.joints.find((j) => j.type === 'hinge') ?? NECK_HINGES.find((j) => j.body === def.name) ?? null;
       const frame = new Group();
       frame.name = `body:${def.name}`;
       frame.position.set(def.pos[0], def.pos[1], def.pos[2]);
@@ -89,7 +91,7 @@ export class RobotRig {
   setQpos(qpos: ArrayLike<number>): void {
     this.setRootPose(qpos);
     for (const b of this.bodies) {
-      if (!b.joint) continue;
+      if (!b.joint || b.joint.qposadr < 0) continue;
       const j = b.joint;
       const q = qpos[j.qposadr];
       this.q.set(j.name, q);

@@ -63,6 +63,17 @@ const SOURCES = [
     license: 'No licence stated on the documentation site (checked 2026-10-09 and 2026-10-21). Text is paraphrased and linked, not copied.',
     dir: '.', files: ['docs-llms.txt', 'docs-llms-full.txt'], urls: ['https://docs.menlo.ai/llms.txt', 'https://docs.menlo.ai/llms-full.txt'],
   },
+  {
+    id: 'asimov-1@sim-variants', repository: 'https://github.com/menloresearch/asimov-1', commit: '43aa368adebcce099c3d80d33b37df68b6d48bf1',
+    committed: '2026-11-04T15:32:43+08:00', title: 'Add shoes, dummy hands, and stool fabrication assets (#31)',
+    why: 'Repository main at retrieval (2026-11-18): the 25-DOF model (neck joints) and the 27-DOF model (wrist pitch and grippers). Display only: the walking physics stays on the viewer-submodule pin.',
+    license: 'CERN-OHL-S-2.0 (HARDWARE-LICENSE.txt); repository software GPL-2.0 (SOFTWARE-LICENSE.txt)',
+    dir: 'asimov-1@43aa368',
+    files: [
+      'sim-model/README.md', 'sim-model/asimov_1_25dof/xml/asimov_1_25dof.xml', 'sim-model/asimov_1_27dof/xml/asimov_1_27dof.xml',
+      'sim-model/asimov_1_25dof/meshes/*', 'sim-model/asimov_1_27dof/meshes/*',
+    ],
+  },
 ];
 
 const USER_SUPPLIED = [
@@ -86,7 +97,7 @@ function gitBlobSha256(repoDir, commit, path) {
 }
 
 function pin() {
-  const out = { generated: new Date().toISOString(), retrieved: '2026-10-09 (repositories); 2026-10-21 (docs.menlo.ai export)', note: 'Hashes are SHA-256 of the exact bytes read from the upstream revision.', sources: [], userSupplied: USER_SUPPLIED };
+  const out = { generated: new Date().toISOString(), retrieved: '2026-10-09 (repositories); 2026-10-21 (docs.menlo.ai export); 2026-11-18 (asimov-1 sim variants)', note: 'Hashes are SHA-256 of the exact bytes read from the upstream revision.', sources: [], userSupplied: USER_SUPPLIED };
   for (const s of SOURCES) {
     const entry = { ...s, files: {} };
     delete entry.dir; delete entry.gitObjects; delete entry.lfs;
@@ -140,6 +151,13 @@ function fetchAll() {
     execFileSync('git', ['clone', '-q', '--depth', '1', v.repository + '.git', join(CACHE, v.dir)], { stdio: 'inherit' });
     execFileSync('git', ['-C', join(CACHE, v.dir), 'fetch', '-q', '--depth', '1', 'origin', v.commit]);
     execFileSync('git', ['-C', join(CACHE, v.dir), 'checkout', '-q', '--detach', v.commit]);
+  }
+  const sv = SOURCES[5];
+  if (!existsSync(join(CACHE, sv.dir))) {
+    execFileSync('git', ['-C', repo, 'fetch', '-q', '--depth', '1', 'origin', sv.commit], { stdio: 'inherit', env: { ...process.env, GIT_LFS_SKIP_SMUDGE: '1' } });
+    mkdirSync(join(CACHE, sv.dir), { recursive: true });
+    const tar = execFileSync('git', ['-C', repo, 'archive', sv.commit, 'sim-model'], { maxBuffer: 1 << 30 });
+    execFileSync('tar', ['-x', '-C', join(CACHE, sv.dir)], { input: tar });
   }
   for (const [i, u] of SOURCES[4].urls.entries()) {
     const dest = join(CACHE, SOURCES[4].files[i]);

@@ -1,0 +1,335 @@
+{
+ "source": {
+  "repository": "https://github.com/menloresearch/asimov-1",
+  "commit": "43aa368adebcce099c3d80d33b37df68b6d48bf1",
+  "path": "sim-model/asimov_1_27dof/xml/asimov_1_27dof.xml",
+  "sha256": "cf576aea7e2811b986961bce7a549dfbb921f24ff0ad3aa0df7608392aaebaef",
+  "compiledWith": "MuJoCo 3.3.8 (mujoco-js 0.0.7)",
+  "extracted": "right_gripper_base_link subtree with its default classes, mesh assets, couplings and motor, copied verbatim (tools/build-sim-variants.mjs)"
+ },
+ "note": "Right gripper of Menlo’s 27-DOF model (fixed-base, manipulation). One motor turns the driver; MJCF equality constraints tie five more joints to it (joint = factor × driver). Display only.",
+ "mount": {
+  "parent": "right_6dof_link",
+  "pos": [
+   0.0485,
+   0.000999982,
+   0
+  ]
+ },
+ "bodies": [
+  {
+   "name": "right_gripper_base_link",
+   "parent": null,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "joint": null
+  },
+  {
+   "name": "right_gripper_driver_link",
+   "parent": "right_gripper_base_link",
+   "pos": [
+    0.03855,
+    0.0118016,
+    -0.0326723
+   ],
+   "quat": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "joint": {
+    "name": "right_gripper_driver_joint",
+    "axis": [
+     0,
+     0.006078027,
+     0.999981529
+    ],
+    "pos": [
+     0,
+     0,
+     0
+    ],
+    "range": [
+     0,
+     0.886278
+    ],
+    "factor": 1
+   }
+  },
+  {
+   "name": "right_gripper_finger_link",
+   "parent": "right_gripper_driver_link",
+   "pos": [
+    0.042,
+    0,
+    0
+   ],
+   "quat": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "joint": {
+    "name": "right_gripper_finger_joint",
+    "axis": [
+     0,
+     0.006078027,
+     0.999981529
+    ],
+    "pos": [
+     0,
+     0,
+     0
+    ],
+    "range": [
+     -0.886278,
+     0
+    ],
+    "factor": -1
+   }
+  },
+  {
+   "name": "right_gripper_follower_link",
+   "parent": "right_gripper_base_link",
+   "pos": [
+    0.03855,
+    -0.0121979,
+    -0.0325265
+   ],
+   "quat": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "joint": {
+    "name": "right_gripper_follower_joint",
+    "axis": [
+     0,
+     0.006078027,
+     0.999981529
+    ],
+    "pos": [
+     0,
+     0,
+     0
+    ],
+    "range": [
+     -0.886278,
+     0
+    ],
+    "factor": -1
+   }
+  },
+  {
+   "name": "right_gripper_finger_follower_link",
+   "parent": "right_gripper_follower_link",
+   "pos": [
+    0.042,
+    0,
+    0
+   ],
+   "quat": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "joint": {
+    "name": "right_gripper_finger_follower_joint",
+    "axis": [
+     0,
+     0.006078027,
+     0.999981529
+    ],
+    "pos": [
+     0,
+     0,
+     0
+    ],
+    "range": [
+     0,
+     0.886278
+    ],
+    "factor": 1
+   }
+  },
+  {
+   "name": "right_gripper_driver_parallel_link",
+   "parent": "right_gripper_base_link",
+   "pos": [
+    0.0310256,
+    0.0325708,
+    -0.0169483
+   ],
+   "quat": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "joint": {
+    "name": "right_gripper_driver_parallel_joint",
+    "axis": [
+     0,
+     -0.006078027,
+     -0.999981529
+    ],
+    "pos": [
+     0,
+     0,
+     0
+    ],
+    "range": [
+     -0.886278,
+     0
+    ],
+    "factor": -1
+   }
+  },
+  {
+   "name": "right_gripper_follower_parallel_link",
+   "parent": "right_gripper_base_link",
+   "pos": [
+    0.0310256,
+    -0.0327744,
+    -0.0165511
+   ],
+   "quat": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "joint": {
+    "name": "right_gripper_follower_parallel_joint",
+    "axis": [
+     0,
+     -0.006078027,
+     -0.999981529
+    ],
+    "pos": [
+     0,
+     0,
+     0
+    ],
+    "range": [
+     0,
+     0.886278
+    ],
+    "factor": 1
+   }
+  }
+ ],
+ "driver": "right_gripper_driver_joint",
+ "motor": {
+  "name": "right_gripper_motor",
+  "joint": "right_gripper_driver_joint",
+  "gear": 1,
+  "ctrlrange": [
+   -1.47,
+   1.47
+  ]
+ },
+ "jawGapMm": {
+  "note": "Closest points between the two finger meshes as drawn (simplified within 0.2 mm), over the driver range",
+  "samples": [
+   [
+    0,
+    0
+   ],
+   [
+    0.0443,
+    3.7
+   ],
+   [
+    0.0886,
+    7.4
+   ],
+   [
+    0.1329,
+    11.1
+   ],
+   [
+    0.1773,
+    14.8
+   ],
+   [
+    0.2216,
+    18.5
+   ],
+   [
+    0.2659,
+    22.1
+   ],
+   [
+    0.3102,
+    25.6
+   ],
+   [
+    0.3545,
+    29.2
+   ],
+   [
+    0.3988,
+    32.6
+   ],
+   [
+    0.4431,
+    36
+   ],
+   [
+    0.4875,
+    39.3
+   ],
+   [
+    0.5318,
+    42.6
+   ],
+   [
+    0.5761,
+    45.8
+   ],
+   [
+    0.6204,
+    48.8
+   ],
+   [
+    0.6647,
+    51.8
+   ],
+   [
+    0.709,
+    54.7
+   ],
+   [
+    0.7533,
+    57.5
+   ],
+   [
+    0.7977,
+    60.1
+   ],
+   [
+    0.842,
+    62.7
+   ],
+   [
+    0.8863,
+    65.1
+   ]
+  ]
+ },
+ "jawTiltDegMax": 0.000002
+}

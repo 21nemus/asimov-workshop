@@ -116,7 +116,8 @@ export class TestMode implements Mode {
     const sim = this.sim;
     if (!sim || sim.status !== 'INSPECTION_FROZEN') return;
     const body = hit ? this.ctx.robot.rig.body(hit.part.body) : null;
-    this.inspectJoint = body?.joint?.name ?? null;
+    // Only joints in the physics state can be inspected; the neck is fixed in the walking model.
+    this.inspectJoint = body?.joint && body.joint.qposadr >= 0 ? body.joint.name : null;
     if (hit && !this.inspectJoint) this.ctx.ui.toast(`${hit.part.body} has no actuated joint (the pelvis floats; the neck is fixed in the model).`);
     this.renderInspection();
   }

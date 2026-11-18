@@ -23,7 +23,7 @@ for before/after captures, scope, precise asset sizes and residual CAD seam issu
 
 | Check | Result |
 | --- | --- |
-| `npm test` | **52 / 52 pass** (39 at v1; 3 firmware-fact, 2 simulation-mesh and 8 CAD surface/mesh tests added 2026-10-21) |
+| `npm test` | **57 / 57 pass** (39 at v1; 3 firmware-fact, 2 simulation-mesh and 8 CAD surface/mesh tests added 2026-10-21; 5 neck and gripper tests added 2026-11-18) |
 | `npx tsc --noEmit` | clean |
 | `npm run build` (typecheck + Vite) | succeeds; 25 MB `dist/` (see sizes below) |
 | Upstream baseline reproduced in the browser, unmodified viewer | yes: stand, walk 0.5 m/s, 150 N push recovered |

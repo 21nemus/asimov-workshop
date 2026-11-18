@@ -67,6 +67,27 @@ ARCHITECTURE, TEST_REPORT, this file.
 - **Support**: `src/config/support.ts`, disabled and empty, guarded renderer, tests.
 - **Licences**: `LICENSE` (MIT, original code), `public/licenses/` full texts, register.
 
+### Gripper bench and moving neck (2026-11-18)
+Menlo's `asimov-1` main (`43aa368`) added two simulation models: 25-DOF (neck joints) and 27-DOF
+(fixed base, wrist pitch, a parallel gripper per hand). Pinned as `asimov-1@sim-variants` (133
+hashed files); `npm run robot:variants` builds `src/data/neck.json`, `src/data/gripper.json` and
+`public/robot/gripper.glb`. Display only; TEST, the policy and the CAD keep their pins.
+- **Neck**: the 25-DOF neck bodies match our rig to 0.01 mm, so Menlo's neck yaw (z, ±1.57) and
+  pitch (−y, −0.34 to 0.40) are display-only rig joints (`NECK_HINGES`, qposadr −1, never moved by
+  a physics qpos; `PoseDriver.display()` returns them to rest). Joint explorer: Neck group, both
+  ranges, firmware IDs, "not driven by the walking policy". TEST's freeze inspector ignores them.
+- **Gripper bench** (`#understand/gripper`, `src/understand/gripper-bench.ts`): the right gripper on
+  a post on the assembly bench's mat. One motor (driver 0 to 0.886 rad, ±1.47 N·m ctrlrange), five
+  joints tied at ±1 (MJCF equality constraints, applied exactly), jaw gap 0 to 65.1 mm from the
+  finger meshes, jaw tilt at most 2e-6°. Labelled simulation model only (R4); the 27-DOF arm differs
+  from our robot's (G6), so the gripper is not on the wrist.
+- The full 27-DOF model runs mujoco-js out of memory (two 195,000-triangle meshes); the tool
+  compiles the right-gripper subtree copied verbatim instead.
+- New discrepancies: J6 (neck pitch range), J7 (wrist yaw half range), G6 (newer body geometry),
+  R4 (gripper hardware unpublished); R1 resolved upstream.
+- Checked in the browser: gripper bench opens, motions and readout exact under fixed frames
+  (closed 0.0 mm, open 65.1 mm), neck yaw 0.8 rad turns the head 0.8 rad and resets on TEST.
+
 ### Simulation model view fixed; promo video (2026-10-21)
 UNDERSTAND's "Simulation model" drew Menlo's MJCF links 10 to 25 times too large since v1: the
 compressed `sim-links.glb` keeps each mesh's dequantisation scale on its node and the view dropped

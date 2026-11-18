@@ -8,8 +8,10 @@ humanoid, Asimov 1. It runs entirely in the browser:
 - **BUILD**: assemble the left leg (or any of the six modules) in place on the robot, step by
   step, following Menlo's documented assembly guide. Every part is the published CAD part.
 - **UNDERSTAND**: explode and section the robot, compare the hardware with the simulation
-  model, move every joint through its range, and put the parallel ankle under the microscope:
-  the RSU linkage measured from the CAD and solved exactly, live.
+  model, move every joint through its range (the neck too, from Menlo's newer 25-DOF model), and
+  put the parallel ankle under the microscope: the RSU linkage measured from the CAD and solved
+  exactly, live. The gripper bench shows the parallel gripper of Menlo's 27-DOF simulation model:
+  one motor, five joints tied to it, two jaws that stay parallel.
 - **TEST**: Menlo's published walking policy running in MuJoCo, in your browser. Command it,
   push it with a defined load, change the surface, freeze any instant and read the controller's
   numbers. A fall is shown as a fall.
@@ -50,7 +52,7 @@ npm run dev
 ```
 
 Then open http://127.0.0.1:5180/. Deep links: `#build/left-leg%2F03`, `#understand/ankle`,
-`#test`, `#watch`.
+`#understand/gripper`, `#test`, `#watch`.
 
 ```bash
 npm test

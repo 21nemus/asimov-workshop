@@ -6,7 +6,8 @@ silently: the app shows both values, or the one the running code uses, and says 
 
 Revisions: CAD and repository `asimov-1@f71f3fe`, simulation model `asimov-1@35ae7b3`, policy
 viewer `0c21078`, docs export retrieved 2026-10-21 (re-pinned; first pin 2026-10-09), BOM "Public
-Release V1.1 – 2026". Every docs-based row below was re-checked against the 2026-10-21 export and
+Release V1.1 – 2026"; display-only extras from the newer simulation models at `asimov-1@43aa368`
+(J6, J7, G6, R4). Every docs-based row below was re-checked against the 2026-10-21 export and
 still holds.
 
 ## Simulation and policy
@@ -32,6 +33,8 @@ still holds.
 | J3 | **Neck.** Docs list neck yaw and pitch as powered joints; the MJCF fixes the neck (23 DOF). Menlo's docs say the neck is locked for walking. | docs, MJCF | Joint explorer note |
 | J4 | **Ankle actuator rows hold joint-space values.** The docs' table lists actuators A and B (IDs 5/6, 11/12) with rated 40/17 N·m and peak 145.4/57.6 N·m, while each EC-A4310 is rated 12 and peak 36 N·m. The peaks are the ankle's joint-space pitch and roll: the CAD-measured lever ratios give 2.019 × (36 + 36) = 145.4 N·m pitch and 0.800 × 72 = 57.6 N·m roll. The rated 40/17 are **not** reproduced the same way (2 × 12 N·m gives 48.5 and 19.2); unresolved. env.yaml uses 40 and 17 as the simulated ankle torque limits. | docs table, `tools/measure-ankle.mjs`, `env.yaml` | Ankle microscope explains the peaks; TEST uses env.yaml's 40/17 |
 | J5 | **Ankle range in older docs.** The asimov/0 hardware chapter lists ankle pitch ±0.50 and roll ±0.35 rad; Asimov 1's tables and the MJCF use ±0.35 and ±0.10. | docs (asimov/0 vs asimov/1) | Asimov 1 values used |
+| J6 | **Neck pitch range.** Docs: neck pitch −0.79 to 0.79 rad. Menlo's 25-DOF model: −0.34 to 0.40 rad (neck yaw agrees, ±1.57). | docs joint table, `src/data/neck.json` | Joint explorer shows both, flagged; the head moves within the model's range |
+| J7 | **Wrist yaw range.** Docs: ±3.14 rad. Menlo's 25- and 27-DOF models give each wrist a 3.14 rad span in one direction only (for example −3.14 to 0 rad); the 23-DOF walking model allows ±3.14. | docs, MJCF at `43aa368` and `35ae7b3` | Not shown: the arms use the walking model |
 
 ## Hardware geometry (CAD) vs simulation model (MJCF)
 
@@ -42,6 +45,7 @@ still holds.
 | G3 | **CAD assembly pose.** The CAD is posed with shoulder pitch about ∓20.8°, shoulder yaw +10/-13.6° and elbows about 51° straighter than the MJCF reference. | registration `qCad` | Parts are re-posed on the rig |
 | G4 | **Ankle axes agree.** Fitted on the CAD bores, the pitch axis is 1.2 mm above and 1.5 mm in front of the MJCF pitch axis, the roll axis 1.3 mm above the MJCF roll axis, and the two axes are 10.0 mm apart in both. (An earlier estimate of "6.2 mm lower" compared the cross block's bounding-box centre and is withdrawn.) | `tools/measure-ankle.mjs` | Ankle microscope |
 | G5 | **Link meshes group parts differently.** The MJCF visual meshes put the knee side plates with the thigh; the foot mesh is labelled as coming from a different CAD ("friend's CAD"). | MJCF, STL inspection | UNDERSTAND hardware vs simulation view |
+| G6 | **The newer models are a different body.** Against the walking model (`35ae7b3`), the 25- and 27-DOF models (`43aa368`) move the knees 23.5 to 23.8 mm, the ankles 22.4 mm, the hips 1 to 7 mm, and the wrists 75 mm with a new axis along the forearm (the 27-DOF arm adds a wrist pitch joint). The knee move is about the size of the CAD-versus-MJCF difference in G1; whether the newer model now matches the CAD has not been re-measured. Only the neck bodies are unchanged (to 0.01 mm). | `tools/build-sim-variants.mjs` (`neck.json` otherDifferences) | TEST stays on the model the policy was trained on; only the neck joints are taken over, and the gripper stands on its own bench |
 | G6 | **Thigh cap tessellation.** Eight near-spherical torus surfaces in the pinned STEP have major radius −0.000137970042855 mm. The importer creates folded triangles outside their trim boundaries, causing the BUILD step 6 shards. All four 04C/14C thigh housings share this representation. | Raw vs shipped meshes, original STEP edge loops; [investigation and images](THIGH_MESH_FIX.md) | CAD DERIVED display-only APPROXIMATION: spherical limit before tessellation, at most 0.138 micrometres surface displacement. Original CAD and registration unchanged; corrections recorded per part. |
 
 ## Ankle mechanism (docs mapping vs CAD)
@@ -98,6 +102,7 @@ threadlocker note on many steps.
 
 | # | Finding | Evidence |
 | --- | --- | --- |
-| R1 | The asimov-1 README links `FABRICATION_MANIFEST.csv`, which is not in the repository at `f71f3fe`. | repository tree |
+| R1 | The asimov-1 README links `FABRICATION_MANIFEST.csv`, which is not in the repository at `f71f3fe`. Resolved upstream: present on main at `43aa368`. | repository tree |
 | R2 | The repository states CERN-OHL-S-2.0 (hardware) and GPL-2.0 (software) without saying which covers `sim-model/`. | README badges, licence files |
 | R3 | The docs site states no licence; the BOM is distributed through an email form without a licence. | docs.menlo.ai |
+| R4 | The 27-DOF simulation model has grippers, but no gripper CAD, parts list, assembly steps or control docs are published; the gripper's electrical interface board is in an open pull request (#30), and the docs' “Extend Asimov 1” page says guidance is coming soon (checked 2026-11-18). The gripper bench labels it simulation model only. | `asimov-1@43aa368`, PR #30, docs.menlo.ai |

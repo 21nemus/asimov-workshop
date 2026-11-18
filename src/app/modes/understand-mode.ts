@@ -11,11 +11,12 @@ import { h, clear, fmt } from '../../ui/dom.ts';
 import { button, icon, kv, sectionTitle, segmented, slider, stamp } from '../../ui/components.ts';
 import { partCard } from '../../ui/part-card.ts';
 import { LabelLayer } from '../../ui/labels.ts';
-import { HINGES, KINEMATICS } from '../../robot/kinematics.ts';
+import { DISPLAY_HINGES, KINEMATICS, NECK_SOURCE } from '../../robot/kinematics.ts';
 import { TRAINED_DEFAULT_POSE } from '../../robot/poses.ts';
 import { HOME } from '../../scene/layout.ts';
 import { benchLegPose, type AnkleMicroscope } from '../../understand/ankle-microscope.ts';
 import { meshFromNode } from '../../understand/node-mesh.ts';
+import { COUPLED, DRIVER_RANGE, GRIPPER, GripperBench, jawGapMm } from '../../understand/gripper-bench.ts';
 import type { Side } from '../../understand/ankle-linkage.ts';
 import { applyExplode, explodeVectors } from '../../robot/explode.ts';
 import specs from '../../data/joint-specs.json' with { type: 'json' };
@@ -24,14 +25,16 @@ import type { AppContext, Mode, ModeId, ModeParams } from '../context.ts';
 import type { PartHit, PartInfo } from '../../robot/robot-model.ts';
 import type { PolicyContract } from '../../simulation/contract.ts';
 
-type View = 'overview' | 'ankle';
+type View = 'overview' | 'ankle' | 'gripper';
 type Motion = null | { kind: 'pitch' | 'roll' | 'circle' | 'motorA' | 'motorB'; t: number };
+type Grip = null | { kind: 'open' | 'close' | 'cycle'; t: number; from: number };
+const GRIP_CYCLE_S = 3;
 
 export const UNDERSTAND_SHOT = { position: [HOME.x + 1.75, 1.15, 1.55] as [number, number, number], target: [HOME.x, 0.6, 0] as [number, number, number] };
 const DOC_LIMITS = specs.ankleJointLimits as unknown as Record<string, { range: [number, number] }>;
 const jointLabel = (name: string) => { const s = name.replace(/_joint$/, '').replace(/_/g, ' '); return s.charAt(0).toUpperCase() + s.slice(1); };
 const deg = (r: number, d = 1) => `${((r * 180) / Math.PI).toFixed(d)}°`;
-const GROUPS: [string, RegExp][] = [['Left leg', /^left_(hip|knee|ankle)/], ['Right leg', /^right_(hip|knee|ankle)/], ['Waist', /^waist/], ['Left arm', /^left_(shoulder|elbow|wrist)/], ['Right arm', /^right_(shoulder|elbow|wrist)/]];
+const GROUPS: [string, RegExp][] = [['Left leg', /^left_(hip|knee|ankle)/], ['Right leg', /^right_(hip|knee|ankle)/], ['Waist', /^waist/], ['Neck', /^neck/], ['Left arm', /^left_(shoulder|elbow|wrist)/], ['Right arm', /^right_(shoulder|elbow|wrist)/]];
 
 export class UnderstandMode implements Mode {
   readonly id = 'understand' as const;
@@ -57,6 +60,10 @@ export class UnderstandMode implements Mode {
   private microEls: Record<string, HTMLElement> = {};
   private sliders: { pitch?: ReturnType<typeof slider>; roll?: ReturnType<typeof slider> } = {};
   private active = false;
+  /** The gripper of Menlo's 27-DOF simulation model, on the assembly bench (built on first use). */
+  private gripper: GripperBench | null = null;
+  private grip: Grip = null;
+  private gripEls: { readout?: HTMLElement; slider?: ReturnType<typeof slider> } = {};
 
   constructor(ctx: AppContext) {
     this.ctx = ctx;
@@ -68,12 +75,14 @@ export class UnderstandMode implements Mode {
     this.ctx.pose.display();
     void fetch(`${this.ctx.base}policy/model_aug_18_1/contract.json`).then((r) => r.json()).then((c: PolicyContract) => { this.contract = c; if (this.active && this.joint) this.renderPanel(); }).catch(() => undefined);
     if (params?.step === 'ankle' || params?.step === 'ankle-right') this.openAnkle(from ? 1.6 : 0, params.step === 'ankle-right' ? 'right' : 'left');
+    else if (params?.step === 'gripper') this.openGripper(from ? 1.6 : 0);
     else this.openOverview(from ? 1.3 : 0);
   }
 
   exit(): void {
     this.active = false;
     this.closeAnkle(0);
+    this.closeGripper();
     this.setExplode(0);
     this.setSection(false);
     this.setModel('hardware');
@@ -90,12 +99,13 @@ export class UnderstandMode implements Mode {
       const r = this.micro.update();
       this.renderReadout(r);
     }
+    if (this.view === 'gripper' && this.grip) this.stepGrip(dt);
     const c = this.ctx.stage.renderer.domElement;
     this.labels.update(this.ctx.stage.camera, c.clientWidth, c.clientHeight);
   }
 
   key(e: KeyboardEvent): boolean {
-    if (e.key === 'Escape' && this.view === 'ankle') { this.openOverview(1.4); return true; }
+    if (e.key === 'Escape' && (this.view === 'ankle' || this.view === 'gripper')) { this.openOverview(1.4); return true; }
     if (e.key === 'Escape' && this.joint) { this.selectJoint(null); this.renderPanel(); return true; }
     return false;
   }
@@ -116,6 +126,7 @@ export class UnderstandMode implements Mode {
   // ---------- views ----------
   private openOverview(duration: number): void {
     const wasAnkle = this.view === 'ankle';
+    if (this.view === 'gripper') this.closeGripper();
     this.view = 'overview';
     history.replaceState(null, '', '#understand');
     this.ctx.ui.hint('Drag to orbit · Click a body to select its joint');
@@ -127,6 +138,7 @@ export class UnderstandMode implements Mode {
   /** Takes one lower leg off the robot to the mechanism bench and opens its linkage. */
   private openAnkle(duration: number, side: Side = this.side): void {
     if (this.view === 'ankle') this.closeAnkle(0);
+    if (this.view === 'gripper') this.closeGripper();
     this.selectJoint(null);
     this.setExplode(0);
     this.setSection(false);
@@ -171,6 +183,127 @@ export class UnderstandMode implements Mode {
     this.micro = null;
     if (this.view === 'ankle') this.view = 'overview';
     this.ctx.bench.retire(this.ctx.reducedMotion() ? 0 : duration, restore);
+  }
+
+  /** Shows the gripper of Menlo's 27-DOF simulation model, standing on the assembly bench. */
+  private openGripper(duration: number): void {
+    if (this.view === 'ankle') this.closeAnkle(0);
+    this.selectJoint(null);
+    this.setExplode(0);
+    this.setSection(false);
+    void this.setModel('hardware');
+    this.view = 'gripper';
+    this.grip = null;
+    history.replaceState(null, '', '#understand/gripper');
+    this.ctx.ui.hint('Drag the motor slider or pick a motion · Esc back to the robot');
+    if (!this.gripper) {
+      this.gripper = new GripperBench(this.ctx.base);
+      this.ctx.stage.scene.add(this.gripper.group);
+    }
+    const g = this.gripper;
+    this.renderGripper();
+    g.load().then(() => {
+      if (this.view !== 'gripper') return;
+      g.group.visible = true;
+      g.setDriver(DRIVER_RANGE[1] * 0.6);
+      void this.ctx.camera.goTo(g.shot(), this.ctx.reducedMotion() ? 0 : duration);
+      this.labels.clear();
+      // Phones in either orientation (the CSS breakpoints: narrow, or short and wide) get compact labels.
+      g.addLabels(this.labels, this.ctx.ui.root.clientWidth <= 720 || this.ctx.ui.root.clientHeight <= 480);
+      this.renderGripper();
+    }, (e: unknown) => {
+      if (this.view !== 'gripper') return;
+      this.ctx.ui.panel.body.append(h('p', { class: 'note note--warn mono' }, `The gripper model could not load: ${e instanceof Error ? e.message : String(e)}`));
+    });
+  }
+
+  private closeGripper(): void {
+    this.grip = null;
+    if (this.gripper) this.gripper.group.visible = false;
+    if (this.view === 'gripper') {
+      this.labels.clear();
+      this.view = 'overview';
+    }
+  }
+
+  private renderGripper(): void {
+    if (this.view !== 'gripper' || !this.gripper) return;
+    const g = this.gripper;
+    const { panel } = this.ctx.ui;
+    panel.show('Gripper bench', 'Understand · right gripper, simulation model');
+    clear(panel.body);
+    const mono = (t: string) => h('span', { class: 'mono' }, t);
+    const s = slider('Motor (driver joint)', { min: DRIVER_RANGE[0], max: DRIVER_RANGE[1], step: 0.005, value: g.driver, format: (v) => `${v.toFixed(2)} rad (${deg(v)})`, onInput: (v) => { this.grip = null; g.setDriver(v); this.renderGripReadout(); } });
+    const readout = h('div', { class: 'readout' });
+    this.gripEls = { slider: s, readout };
+    const motions: [NonNullable<Grip>['kind'], string][] = [['open', 'Open'], ['close', 'Close'], ['cycle', 'Open and close']];
+    const short = (n: string) => n.replace(/^right_gripper_/, '').replace(/_joint$/, '').replace(/_/g, ' ');
+    panel.body.append(
+      h('p', { class: 'lede' }, 'One motor, two jaws. In Menlo’s 27-DOF simulation model each hand ends in a parallel gripper: the motor turns one link, five more joints are tied to it, and both jaws move together while staying parallel.'),
+      ...(g.group.visible ? [] : [h('p', { class: 'mono', style: 'color:var(--ink-3)' }, 'Loading the gripper model')]),
+      sectionTitle('Motor', stamp('SIM VALUE')),
+      s.el,
+      h('div', { class: 'chips' }, ...motions.map(([kind, label]) => {
+        const b = h('button', { type: 'button', class: 'chip' }, label);
+        b.addEventListener('click', () => this.startGrip(kind));
+        return b;
+      })),
+      readout,
+      sectionTitle('How it is tied together', stamp('SIM VALUE')),
+      kv([
+        ['Motor', mono(`±${GRIPPER.motor.ctrlrange[1]} N·m limit (MJCF ctrlrange, gear ${GRIPPER.motor.gear})`)],
+        ['Driver range', mono(`${DRIVER_RANGE[0]} to ${DRIVER_RANGE[1].toFixed(3)} rad, closed to open`)],
+        ['Tied joints', h('span', null, ...COUPLED.flatMap((j, i) => [i ? h('br') : null, mono(`${short(j.name)}: ${j.factor > 0 ? '+' : '−'}1 × driver`)]))],
+        ['Jaw tilt', mono(`at most ${GRIPPER.jawTiltDegMax.toExponential(0)}° over the range`)],
+      ]),
+      h('p', { class: 'note' }, 'Each jaw hangs on two equal links, a parallelogram, so it slides open and shut without tilting. In MuJoCo the five tied joints are equality constraints on the driver; here they are applied exactly.'),
+      h('p', { class: 'note note--warn' }, h('b', null, 'Simulation model only. '), 'Menlo has not published gripper CAD, a parts list or assembly steps yet: the docs say extension guidance is coming soon, and the gripper’s electrical interface board is in an open pull request. The 27-DOF arm also differs from the arm on this robot, so the gripper stands on its own. Colours are illustrative.'),
+      h('div', { class: 'row' },
+        button('Sources for this view', { icon: 'sources', onClick: () => this.ctx.ui.drawer.openWith('Gripper sources', gripperSources()) }),
+        button('Back to the robot', { icon: 'prev', kind: 'quiet', onClick: () => this.openOverview(1.4) }),
+      ),
+    );
+    this.renderGripReadout();
+  }
+
+  private renderGripReadout(): void {
+    const el = this.gripEls.readout;
+    if (!el || !this.gripper) return;
+    const q = this.gripper.driver;
+    clear(el);
+    el.append(kv([
+      ['Driver', h('span', { class: 'mono' }, `${q.toFixed(3)} rad (${deg(q)})`)],
+      ['Jaw gap', h('span', null, h('span', { class: 'mono' }, `${jawGapMm(q).toFixed(1)} mm`), ' ', stamp('SIM VALUE'))],
+    ]));
+  }
+
+  private startGrip(kind: NonNullable<Grip>['kind']): void {
+    const g = this.gripper;
+    if (!g) return;
+    if (this.ctx.reducedMotion()) {
+      this.grip = null;
+      g.setDriver(kind === 'close' ? DRIVER_RANGE[0] : DRIVER_RANGE[1]);
+      this.gripEls.slider?.set(g.driver);
+      this.renderGripReadout();
+      return;
+    }
+    // The cycle starts from the current opening, so nothing jumps.
+    const t = kind === 'cycle' ? (Math.acos(1 - (2 * g.driver) / DRIVER_RANGE[1]) * GRIP_CYCLE_S) / (2 * Math.PI) : 0;
+    this.grip = { kind, t, from: g.driver };
+  }
+
+  private stepGrip(dt: number): void {
+    const m = this.grip!, g = this.gripper!;
+    m.t += dt;
+    const hi = DRIVER_RANGE[1];
+    if (m.kind === 'cycle') g.setDriver(hi * 0.5 * (1 - Math.cos((2 * Math.PI * m.t) / GRIP_CYCLE_S)));
+    else {
+      const k = Math.min(1, m.t / 0.9);
+      g.setDriver(m.from + ((m.kind === 'open' ? hi : DRIVER_RANGE[0]) - m.from) * k * k * (3 - 2 * k));
+      if (k >= 1) this.grip = null;
+    }
+    this.gripEls.slider?.set(g.driver);
+    this.renderGripReadout();
   }
 
   // ---------- overview tools ----------
@@ -297,9 +430,12 @@ export class UnderstandMode implements Mode {
     const col = button('Collision shapes', { ariaPressed: this.collision, onClick: () => { this.collision = !this.collision; this.setCollision(this.collision); col.setAttribute('aria-pressed', String(this.collision)); } });
     const ankleCard = h('button', { type: 'button', class: 'area area--feature', 'aria-label': 'Ankle microscope: two actuators, two push rods, one foot' }, icon('ankle'), h('span', null, h('span', { class: 'area__title' }, 'Ankle microscope'), h('span', { class: 'area__text' }, 'Two actuators, two push rods, one foot. Watch the parallel linkage solve every pose.')), icon('next', 'icon area__go'));
     ankleCard.addEventListener('click', () => this.openAnkle(1.6, 'left'));
+    const gripperCard = h('button', { type: 'button', class: 'area area--feature', 'aria-label': 'Gripper bench: one motor, two parallel jaws' }, icon('gripper'), h('span', null, h('span', { class: 'area__title' }, 'Gripper bench'), h('span', { class: 'area__text' }, 'New in Menlo’s simulation model: one motor, five tied joints, two jaws that stay parallel.')), icon('next', 'icon area__go'));
+    gripperCard.addEventListener('click', () => this.openGripper(1.6));
     panel.body.append(
-      h('p', { class: 'lede' }, 'The robot here is the hardware CAD, hung on the simulation’s 23 joints. Take it apart, cut it open, and compare it with the much simpler body the physics engine sees.'),
+      h('p', { class: 'lede' }, 'The robot here is the hardware CAD, hung on the simulation’s joints: the walking model’s 23 and the neck’s two from Menlo’s newer 25-DOF model. Take it apart, cut it open, and compare it with the much simpler body the physics engine sees.'),
       ankleCard,
+      gripperCard,
       sectionTitle('Take it apart'),
       ex.el,
       h('div', { class: 'row' }, sec),
@@ -312,7 +448,7 @@ export class UnderstandMode implements Mode {
       kv([
         ['Mass', h('span', null, h('span', { class: 'mono' }, `${KINEMATICS.totalMass.toFixed(2)} kg`), ' simulation ', stamp('SIM VALUE'), h('br'), h('span', { class: 'mono' }, '35 kg'), ' robot ', stamp('SOURCE SPEC'))],
         ['Height', h('span', null, h('span', { class: 'mono' }, '1.2 m'), ' ', stamp('SOURCE SPEC'))],
-        ['Powered joints', h('span', null, h('span', { class: 'mono' }, '25'), ' on the robot ', stamp('SOURCE SPEC'), h('br'), h('span', { class: 'mono' }, '23'), ' in the simulation (neck fixed) ', stamp('SIM VALUE'))],
+        ['Powered joints', h('span', null, h('span', { class: 'mono' }, '25'), ' on the robot ', stamp('SOURCE SPEC'), h('br'), h('span', { class: 'mono' }, '23'), ' in the walking simulation (neck fixed) ', stamp('SIM VALUE'))],
       ]),
       sectionTitle('Joints', 'drag to move, click a body to select'),
       this.jointPanel(),
@@ -323,7 +459,8 @@ export class UnderstandMode implements Mode {
     const wrap = h('div', { class: 'joints' });
     if (this.joint) {
       const name = this.joint;
-      const j = HINGES.find((x) => x.name === name)!;
+      const j = DISPLAY_HINGES.find((x) => x.name === name)!;
+      const displayOnly = j.qposadr < 0;
       const range = j.range ?? [-Math.PI, Math.PI];
       const spec = specs.actuators.find((a) => a.role === name);
       const docRange = spec?.range ?? DOC_LIMITS[name]?.range ?? null;
@@ -338,12 +475,12 @@ export class UnderstandMode implements Mode {
           h('p', { class: 'tag__pn' }, jointLabel(name)),
           s.el,
           kv([
-            ['Sim range', j.range ? h('span', null, h('span', { class: 'mono' }, `${range[0].toFixed(2)} to ${range[1].toFixed(2)} rad`), ' ', stamp('SIM VALUE')) : 'unlimited'],
+            ['Sim range', j.range ? h('span', null, h('span', { class: 'mono' }, `${range[0].toFixed(2)} to ${range[1].toFixed(2)} rad`), displayOnly ? ' (Menlo’s 25-DOF model) ' : ' ', stamp('SIM VALUE')) : 'unlimited'],
             ['Docs range', docRange ? h('span', null, h('span', { class: 'mono' }, `${docRange[0].toFixed(2)} to ${docRange[1].toFixed(2)} rad`), ' ', stamp('SOURCE SPEC')) : 'not listed'],
             ['Axis', h('span', { class: 'mono' }, `${j.axis.map((v) => +v.toFixed(3)).join(' ')} (body frame)`)],
             ['Actuator', spec ? h('span', null, h('span', { class: 'mono' }, spec.model), ` · ${spec.ratedTorque} N·m rated, ${spec.peakTorque} N·m peak `, stamp('SOURCE SPEC')) : /ankle/.test(name) ? 'Two actuators through the ankle linkage' : 'not listed'],
             ['Firmware ID', fw.length ? h('span', null, h('span', { class: 'mono' }, fw.map((a) => `${a.id} · ${a.name}`).join(', ')), ' ', stamp('SOURCE SPEC')) : 'not listed'],
-            ['Sim torque limit', simTorque !== null ? h('span', null, h('span', { class: 'mono' }, `±${simTorque} N·m`), ' ', stamp('SIM VALUE')) : 'loading'],
+            ['Sim torque limit', displayOnly ? 'none: the walking policy does not drive the neck' : simTorque !== null ? h('span', null, h('span', { class: 'mono' }, `±${simTorque} N·m`), ' ', stamp('SIM VALUE')) : 'loading'],
           ]),
           differs ? h('p', { class: 'note note--warn' }, 'The documented range and the simulation model’s range differ. Both are shown as published.') : null,
           h('div', { class: 'row' },
@@ -355,7 +492,7 @@ export class UnderstandMode implements Mode {
       );
     }
     for (const [group, re] of GROUPS) {
-      const list = HINGES.filter((j) => re.test(j.name));
+      const list = DISPLAY_HINGES.filter((j) => re.test(j.name));
       if (!list.length) continue;
       wrap.append(h('p', { class: 'joints__group' }, group), h('div', { class: 'chips' }, ...list.map((j) => {
         const b = h('button', { type: 'button', class: 'chip', 'aria-pressed': String(j.name === this.joint) }, jointLabel(j.name.replace(/^(left|right)_/, '')));
@@ -365,7 +502,7 @@ export class UnderstandMode implements Mode {
     }
     const neck = [...firmwareActuators('neck_yaw_joint'), ...firmwareActuators('neck_pitch_joint')].map((a) => `${a.id} · ${a.name}`).join(' and ');
     wrap.append(
-      h('p', { class: 'fine' }, `The neck’s two joints are fixed in the simulation model, so 23 of the robot’s 25 powered joints move here. On the robot the neck is powered (firmware IDs ${neck}) and held locked while the walking policy runs.`),
+      h('p', { class: 'fine' }, `All 25 powered joints move here. The neck’s two (firmware IDs ${neck}) come from Menlo’s 25-DOF model (asimov-1 @ ${NECK_SOURCE.commit.slice(0, 7)}); the 23-DOF model the walking policy runs on fixes the neck, and the robot holds it locked while walking.`),
       h('p', { class: 'fine' }, `Firmware IDs and names: Menlo’s docs and the motor table quoted in the Menlo SDK (@ ${SDK.short}).`),
     );
     return wrap;
@@ -492,5 +629,25 @@ function ankleSources(side: Side): HTMLElement {
       h('p', null, 'The policy’s model drives ankle pitch and roll as two ideal joints (MJCF at asimov-1 @ 35ae7b3). The linkage shown here is explanatory and adds nothing to the physics in TEST.')),
     h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Model limits ', stamp('APPROXIMATION')),
       h('p', null, 'Rigid links, ideal ball joints, no compliance, backlash or rod-end clearance. Validated in tests/ankle.test.ts: closure at the CAD pose, inverse and forward solutions agree, and the measured levers reproduce Menlo’s 145.4 and 57.6 N·m ankle peaks.')),
+  );
+}
+
+/** What the gripper bench is built from, with links. */
+function gripperSources(): HTMLElement {
+  const a = (href: string, text: string) => h('a', { class: 'ext', href, target: '_blank', rel: 'noopener' }, text, icon('link'));
+  const src = GRIPPER.source;
+  const open = GRIPPER.jawGapMm.samples[GRIPPER.jawGapMm.samples.length - 1][1];
+  return h('div', null,
+    h('p', { class: 'lede' }, 'The right gripper as drawn and posed here.'),
+    h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Model ', stamp('SIM VALUE')),
+      h('p', null, `Menlo’s 27-DOF simulation model, asimov-1 @ ${src.commit.slice(0, 7)}, ${src.path} (sha256 ${src.sha256.slice(0, 8)}…). Bodies, joint axes and ranges, the five couplings (MJCF equality constraints) and the motor’s ctrlrange are read from it, compiled with ${src.compiledWith}. The meshes are its seven right-gripper STL files, simplified for display.`),
+      h('p', null, a(`${src.repository}/tree/${src.commit}/sim-model/asimov_1_27dof`, `sim-model/asimov_1_27dof at ${src.commit.slice(0, 7)}`))),
+    h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Computed here ', stamp('SIM VALUE')),
+      h('p', null, `Jaw gap: the closest points between the two finger meshes, sampled over the driver range (0 mm closed, ${open} mm open). Jaw tilt: how far either jaw turns over the range. Both by tools/build-sim-variants.mjs.`)),
+    h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Not published yet'),
+      h('p', null, 'Gripper CAD, parts list, assembly steps and control. The gripper’s electrical interface board is in an open pull request, and the docs say extension guidance is coming soon.'),
+      h('p', { class: 'row' }, a('https://github.com/menloresearch/asimov-1/pull/30', 'asimov-1 pull request #30'), a('https://docs.menlo.ai/asimov/1/extend', 'Extend Asimov 1, docs.menlo.ai'))),
+    h('div', { class: 'src' }, h('p', { class: 'src__title' }, 'Licence'),
+      h('p', null, 'asimov-1 states CERN-OHL-S-2.0 for hardware and GPL-2.0 for software without saying which covers sim-model/; either allows this use with the source and notices kept.')),
   );
 }
